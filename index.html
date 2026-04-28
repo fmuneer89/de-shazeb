@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>DE-SHAZEB | Premium Men's Shirts — Bulk Orders & Export</title>
+<meta name="description" content="De-Shazeb — Premium men's formal shirts manufacturer in Karachi. Bulk orders, wholesale & international export available."/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --g1:#1a6b35;
+  --g2:#2d8a4e;
+  --g3:#3da865;
+  --c1:#c9784a;
+  --c2:#d4956a;
+  --c3:#e8b898;
+  --blk:#080f0a;
+  --dark:#0f1f14;
+  --mid:#1e3d28;
+  --txt:#2a4a34;
+  --ltxt:#5a7a65;
+  --cream:#f6f2ed;
+  --cream2:#ede6dc;
+  --white:#fdfcfa;
+  --border:rgba(45,138,78,.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--blk);background:var(--white);overflow-x:hidden}
+
+/* ── ANNOUNCEMENT ── */
+.ann{background:var(--blk);color:rgba(255,255,255,.7);text-align:center;padding:9px 20px;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500;border-bottom:1px solid rgba(45,138,78,.3)}
+.ann span{color:var(--c2)}
+
+/* ── NAV ── */
+nav{background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 70px;height:78px;position:sticky;top:0;z-index:9999;box-shadow:0 4px 30px rgba(26,107,53,.07)}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-logo img{width:52px;height:52px;object-fit:contain}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1}
+.nav-logo-main{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;letter-spacing:4px;text-transform:uppercase;background:linear-gradient(135deg,var(--g1),var(--c1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-logo-sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ltxt);font-weight:500}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--txt);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;transition:color .2s;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,var(--g2),var(--c1));transition:width .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--g1)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-right{display:flex;gap:18px;align-items:center}
+.nav-ico{width:19px;height:19px;color:var(--txt);transition:color .2s;cursor:pointer}
+.nav-ico:hover{color:var(--g1)}
+.nav-bulk{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;padding:9px 20px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;font-family:'Jost',sans-serif;text-decoration:none;transition:opacity .2s;display:inline-block}
+.nav-bulk:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--blk);display:block;transition:all .3s}
+
+/* ── BUTTONS ── */
+.btn{display:inline-block;padding:15px 38px;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;cursor:pointer;border:2px solid transparent;transition:all .3s;font-family:'Jost',sans-serif;text-decoration:none;text-align:center}
+.btn-green{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border-color:var(--g1)}
+.btn-green:hover{background:transparent;color:var(--g1)}
+.btn-copper{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;border-color:var(--c1)}
+.btn-copper:hover{background:transparent;color:var(--c1)}
+.btn-outline{border-color:rgba(255,255,255,.6);color:#fff;background:transparent}
+.btn-outline:hover{background:#fff;color:var(--g1)}
+.btn-dark{background:var(--blk);color:#fff;border-color:var(--blk)}
+.btn-dark:hover{background:transparent;color:var(--blk)}
+.btn-border-green{border-color:var(--g1);color:var(--g1);background:transparent}
+.btn-border-green:hover{background:var(--g1);color:#fff}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:95vh;overflow:hidden;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,var(--blk) 0%,var(--dark) 30%,var(--mid) 60%,#163020 100%)}
+.hero-mesh{position:absolute;inset:0;background-image:radial-gradient(ellipse at 20% 50%,rgba(45,138,78,.18) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(201,120,74,.12) 0%,transparent 50%),radial-gradient(ellipse at 60% 80%,rgba(45,138,78,.1) 0%,transparent 40%)}
+.hero-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(45,138,78,.04) 80px,rgba(45,138,78,.04) 81px),repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(45,138,78,.04) 80px,rgba(45,138,78,.04) 81px)}
+.hero-img{position:absolute;right:0;top:0;width:50%;height:100%;background:url('https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=1000') center/cover no-repeat;clip-path:polygon(18% 0%,100% 0%,100% 100%,0% 100%);opacity:.4}
+.hero-img::before{content:'';position:absolute;left:0;top:0;width:50%;height:100%;background:linear-gradient(to right,var(--dark),transparent)}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--dark) 0%,transparent 30%)}
+.hero-c{position:relative;z-index:2;padding:80px 70px;max-width:750px;animation:hup 1.1s cubic-bezier(.16,1,.3,1) both}
+@keyframes hup{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(201,120,74,.4);background:rgba(201,120,74,.08);padding:7px 18px;margin-bottom:30px}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--c2)}
+.hero-badge span{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--c2);font-weight:600}
+.hero-logo-img{width:80px;height:80px;object-fit:contain;margin-bottom:18px;filter:drop-shadow(0 8px 30px rgba(45,138,78,.5))}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,8vw,96px);line-height:.92;color:#fff;font-weight:300;letter-spacing:-1px;margin-bottom:12px}
+.hero h1 .line2{display:block;background:linear-gradient(135deg,var(--g3),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-style:italic;font-weight:600}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:22px;color:rgba(255,255,255,.55);font-weight:300;font-style:italic;margin-bottom:28px;letter-spacing:.5px}
+.hero p{color:rgba(255,255,255,.55);font-size:14px;line-height:1.8;margin-bottom:42px;max-width:480px;font-weight:300}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:50px}
+.hero-stats{display:flex;gap:40px;padding-top:36px;border-top:1px solid rgba(255,255,255,.1)}
+.hstat{text-align:left}
+.hstat-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;background:linear-gradient(135deg,var(--g3),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.hstat-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:500;margin-top:4px}
+
+/* ── TRUST BAR ── */
+.trust{background:linear-gradient(90deg,var(--g1),var(--dark),var(--g1));padding:20px 70px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.8)}
+.trust-ico{font-size:22px;flex-shrink:0}
+.trust-item strong{display:block;font-size:11px;letter-spacing:1px;color:#a8d9b8;font-weight:600;text-transform:uppercase}
+.trust-item span{font-size:11px;color:rgba(255,255,255,.45)}
+
+/* ── SECTION COMMONS ── */
+.slbl{display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--g1);font-weight:700;margin-bottom:14px}
+.slbl::before{content:'';width:28px;height:1.5px;background:linear-gradient(90deg,var(--g1),var(--c1))}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,54px);font-weight:300;color:var(--blk);line-height:1.05;margin-bottom:14px}
+.ssub{font-size:14px;color:var(--ltxt);line-height:1.9;font-weight:300;max-width:520px}
+
+/* ── BULK / EXPORT SECTION ── */
+.bulk-sec{background:var(--blk);padding:100px 70px;position:relative;overflow:hidden}
+.bulk-sec::before{content:'BULK';position:absolute;right:-30px;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:260px;font-weight:700;color:rgba(45,138,78,.05);pointer-events:none;white-space:nowrap;letter-spacing:-10px}
+.bulk-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2}
+.bulk-txt .slbl{color:var(--g3)}
+.bulk-txt .slbl::before{background:linear-gradient(90deg,var(--g3),var(--c2))}
+.bulk-txt .stitle{color:#fff}
+.bulk-txt p{color:rgba(255,255,255,.55);font-size:14px;line-height:1.9;font-weight:300;margin-bottom:32px}
+.bulk-features{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:36px}
+.bulk-feat{background:rgba(45,138,78,.08);border:1px solid rgba(45,138,78,.2);padding:20px}
+.bulk-feat-ico{font-size:26px;margin-bottom:10px}
+.bulk-feat h4{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--g3);font-weight:600;margin-bottom:5px}
+.bulk-feat p{font-size:12px;color:rgba(255,255,255,.45);font-weight:300;margin-bottom:0}
+.bulk-visual{position:relative}
+.bulk-main-img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--mid)}
+.bulk-accent{position:absolute;bottom:-24px;left:-24px;background:linear-gradient(135deg,var(--g1),var(--g2));padding:28px 32px}
+.bulk-accent .n{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:#fff;line-height:1}
+.bulk-accent .l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:600;margin-top:3px}
+.bulk-flag{position:absolute;top:20px;right:20px;background:rgba(0,0,0,.7);padding:12px 16px;display:flex;gap:8px;flex-wrap:wrap}
+.bulk-flag span{font-size:18px}
+
+/* ── PRODUCTS ── */
+.products-sec{background:var(--cream);padding:100px 70px}
+.sec-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;flex-wrap:wrap;gap:20px}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:50px}
+.pc{background:var(--white);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.pc:hover{transform:translateY(-7px);box-shadow:0 24px 64px rgba(26,107,53,.15)}
+.pc-imgw{position:relative;overflow:hidden}
+.pc-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .6s;background:var(--cream2)}
+.pc:hover .pc-img{transform:scale(1.06)}
+.pc-badge{position:absolute;top:14px;left:14px;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:5px 11px}
+.bg{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff}
+.bsale{background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff}
+.bnew{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff}
+.pc-moq{position:absolute;bottom:0;left:0;right:0;background:rgba(26,107,53,.9);color:#fff;text-align:center;padding:8px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;transform:translateY(100%);transition:transform .3s}
+.pc:hover .pc-moq{transform:translateY(0)}
+.pc-info{padding:16px 18px 20px;border-top:1px solid var(--border)}
+.pc-name{font-size:13px;font-weight:500;color:var(--blk);letter-spacing:.5px;margin-bottom:5px}
+.pc-moq-tag{font-size:10px;color:var(--g1);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.pc-price{font-size:13px;color:var(--txt)}
+.pc-price strong{font-size:15px;color:var(--blk);font-weight:600}
+.pc-old{text-decoration:line-through;color:var(--ltxt);margin-right:6px;font-size:12px}
+.pc-sale{color:#c0392b;font-weight:600}
+.dots{display:flex;gap:5px;margin-bottom:6px}
+.dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(0,0,0,.12);display:inline-block}
+
+/* ── PROCESS ── */
+.process{background:var(--white);padding:100px 70px}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.process-grid::before{content:'';position:absolute;top:32px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,var(--g1),var(--c1),var(--g1))}
+.proc-step{text-align:center;padding:0 20px;position:relative;z-index:2}
+.proc-num{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 24px rgba(26,107,53,.3)}
+.proc-title{font-size:13px;font-weight:600;color:var(--blk);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.proc-desc{font-size:13px;color:var(--ltxt);line-height:1.7;font-weight:300}
+
+/* ── EXPORT ── */
+.export-sec{background:linear-gradient(135deg,var(--dark),var(--mid));padding:100px 70px}
+.export-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.export-txt .slbl{color:var(--g3)}
+.export-txt .slbl::before{background:linear-gradient(90deg,var(--g3),var(--c2))}
+.export-txt .stitle{color:#fff}
+.export-txt .ssub{color:rgba(255,255,255,.55);max-width:none;margin-bottom:32px}
+.countries{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:36px}
+.country{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:14px 16px;display:flex;align-items:center;gap:10px;transition:all .3s}
+.country:hover{background:rgba(45,138,78,.15);border-color:rgba(45,138,78,.4)}
+.country-flag{font-size:22px}
+.country-name{font-size:12px;font-weight:500;color:rgba(255,255,255,.7);letter-spacing:.5px}
+.export-visual{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.exp-card{background:rgba(255,255,255,.05);border:1px solid rgba(45,138,78,.2);padding:28px;transition:all .3s}
+.exp-card:hover{background:rgba(45,138,78,.1);border-color:rgba(45,138,78,.4)}
+.exp-card-ico{font-size:32px;margin-bottom:14px}
+.exp-card h4{font-family:'Cormorant Garamond',serif;font-size:20px;color:#fff;font-weight:400;margin-bottom:8px}
+.exp-card p{font-size:12px;color:rgba(255,255,255,.45);line-height:1.7;font-weight:300}
+
+/* ── TESTIMONIALS ── */
+.testi-sec{background:var(--cream);padding:100px 70px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.testi-card{background:var(--white);padding:36px;border-left:3px solid;position:relative}
+.testi-card:nth-child(1){border-color:var(--g1)}
+.testi-card:nth-child(2){border-color:var(--c1)}
+.testi-card:nth-child(3){border-color:var(--g2)}
+.testi-stars{color:var(--g1);font-size:14px;margin-bottom:16px;letter-spacing:2px}
+.testi-text{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--txt);line-height:1.6;margin-bottom:20px}
+.testi-author strong{display:block;font-size:12px;font-weight:600;color:var(--blk);letter-spacing:1px;text-transform:uppercase}
+.testi-author span{font-size:11px;color:var(--ltxt)}
+.testi-quote{position:absolute;top:24px;right:28px;font-family:'Cormorant Garamond',serif;font-size:72px;color:var(--border);line-height:1}
+
+/* ── CTA ── */
+.cta-sec{background:var(--blk);padding:100px 70px;text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(45,138,78,.12) 0%,transparent 70%)}
+.cta-sec .stitle{color:#fff;max-width:600px;margin:0 auto 16px}
+.cta-sec p{color:rgba(255,255,255,.5);font-size:15px;margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.8}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-contact{display:flex;justify-content:center;gap:40px;margin-top:50px;padding-top:40px;border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+.cta-c-item{display:flex;align-items:center;gap:12px}
+.cta-c-ico{width:44px;height:44px;background:rgba(45,138,78,.15);border:1px solid rgba(45,138,78,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cta-c-item strong{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:3px}
+.cta-c-item a,.cta-c-item span{font-size:14px;color:rgba(255,255,255,.75);text-decoration:none}
+.cta-c-item a:hover{color:var(--g3)}
+
+/* ── FOOTER ── */
+footer{background:#040a06;color:rgba(255,255,255,.4);padding:64px 70px 28px}
+.ft{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:56px;padding-bottom:50px;border-bottom:1px solid rgba(45,138,78,.1);margin-bottom:28px}
+.fb-brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:16px}
+.fb-brand img{width:46px;height:46px;object-fit:contain}
+.fb-brand-txt .n{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;letter-spacing:4px;text-transform:uppercase;background:linear-gradient(135deg,var(--g3),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.fb-brand-txt .s{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.fb p{font-size:13px;line-height:1.8;max-width:220px;margin-bottom:22px}
+.fb-contact{font-size:12px;line-height:2.2}
+.fb-contact a{color:var(--c2);text-decoration:none}
+.fb-contact span{display:block;color:rgba(255,255,255,.4)}
+.fc h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#fff;font-weight:600;margin-bottom:22px;position:relative;padding-bottom:10px}
+.fc h4::after{content:'';position:absolute;bottom:0;left:0;width:20px;height:1.5px;background:linear-gradient(90deg,var(--g2),var(--c1))}
+.fc ul{list-style:none}
+.fc ul li{margin-bottom:11px}
+.fc ul a{font-size:13px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
+.fc ul a:hover{color:var(--g3)}
+.fbot{display:flex;align-items:center;justify-content:space-between;font-size:11px;flex-wrap:wrap;gap:9px}
+.fbl{display:flex;gap:22px}
+.fbl a{color:rgba(255,255,255,.25);text-decoration:none;font-size:11px;transition:color .2s}
+.fbl a:hover{color:var(--g3)}
+.f-made{font-size:11px;color:rgba(255,255,255,.2)}
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:1000;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 8px 30px rgba(37,211,102,.4);transition:transform .3s;text-decoration:none}
+.wa-float:hover{transform:scale(1.1)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1200px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1024px){
+  .bulk-grid,.export-grid{grid-template-columns:1fr;gap:50px}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .process-grid{grid-template-columns:repeat(2,1fr);gap:40px}
+  .process-grid::before{display:none}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .ft{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:768px){
+  nav{padding:0 22px}
+  .nav-links{display:none;position:fixed;top:78px;left:0;right:0;background:var(--white);flex-direction:column;gap:0;border-bottom:1px solid var(--border);z-index:9998;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:16px 24px;border-bottom:1px solid var(--border);display:block}
+  .nav-bulk{display:none}
+  .hamburger{display:flex}
+  .hero-c{padding:60px 22px}
+  .hero-img{display:none}
+  .hero h1{font-size:52px}
+  .hero-stats{gap:24px}
+  .trust{grid-template-columns:1fr 1fr;padding:18px 22px;gap:14px}
+  .bulk-sec,.products-sec,.process,.export-sec,.testi-sec,.cta-sec{padding:64px 22px}
+  .pgrid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .bulk-features{grid-template-columns:1fr}
+  .countries{grid-template-columns:1fr 1fr}
+  .export-visual{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .cta-contact{gap:24px}
+  .ft{grid-template-columns:1fr}
+  footer{padding:44px 22px 20px}
+  .process-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="ann">
+  🌍 International Export Available &nbsp;|&nbsp; <span>Bulk Orders Welcome — MOQ 50 Pieces</span> &nbsp;|&nbsp; WhatsApp: +92-333-3084397
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="De-Shazeb"/>
+    <div class="nav-logo-text">
+      <span class="nav-logo-main">De-Shazeb</span>
+      <span class="nav-logo-sub">Est. 2019 · Karachi</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="shop.html">Products</a></li>
+    <li><a href="bulk.html">Bulk & Export</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-bulk">Get a Quote</a>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-mesh"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-img"></div>
+  <div class="hero-c">
+    <img src="logo.png" alt="De-Shazeb" class="hero-logo-img"/>
+    <div class="hero-badge"><div class="hero-badge-dot"></div><span>Premium Garment Manufacturer · Karachi</span></div>
+    <h1>Dress the World<br/><span class="line2">in Excellence.</span></h1>
+    <div class="hero-sub">Premium Men's Formal Shirts — Bulk & Export</div>
+    <p>Manufacturer and exporter of premium quality men's formal shirts. Serving retailers, wholesalers, and international buyers from Karachi, Pakistan.</p>
+    <div class="hero-btns">
+      <a href="shop.html" class="btn btn-green">View Products</a>
+      <a href="contact.html" class="btn btn-copper">Get Bulk Quote</a>
+      <a href="about.html" class="btn btn-outline">Our Story</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num">5+</div><div class="hstat-lbl">Years Experience</div></div>
+      <div class="hstat"><div class="hstat-num">2K+</div><div class="hstat-lbl">Happy Clients</div></div>
+      <div class="hstat"><div class="hstat-num">50+</div><div class="hstat-lbl">Products</div></div>
+      <div class="hstat"><div class="hstat-num">12+</div><div class="hstat-lbl">Export Countries</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-item"><div class="trust-ico">📦</div><div><strong>MOQ 50 Pieces</strong><span>Per design per color</span></div></div>
+  <div class="trust-item"><div class="trust-ico">🌍</div><div><strong>Worldwide Export</strong><span>UAE, UK, USA & more</span></div></div>
+  <div class="trust-item"><div class="trust-ico">🏭</div><div><strong>Direct Manufacturer</strong><span>No middlemen</span></div></div>
+  <div class="trust-item"><div class="trust-ico">🎨</div><div><strong>Custom Branding</strong><span>Your label, your design</span></div></div>
+</div>
+
+<!-- BULK ORDERS SECTION -->
+<div class="bulk-sec">
+  <div class="bulk-grid">
+    <div class="bulk-txt">
+      <div class="slbl">Why Choose Us</div>
+      <h2 class="stitle">Built for Bulk.<br/>Designed for Business.</h2>
+      <p>De-Shazeb is a direct manufacturer based in Karachi, Pakistan. We specialize in large-scale production of premium men's formal shirts for retailers, wholesalers, and international importers.</p>
+      <div class="bulk-features">
+        <div class="bulk-feat">
+          <div class="bulk-feat-ico">🧵</div>
+          <h4>Premium Fabric</h4>
+          <p>100% cotton, poly-blend & linen options available</p>
+        </div>
+        <div class="bulk-feat">
+          <div class="bulk-feat-ico">🎨</div>
+          <h4>Custom Colors</h4>
+          <p>Any Pantone color available on bulk orders</p>
+        </div>
+        <div class="bulk-feat">
+          <div class="bulk-feat-ico">🏷️</div>
+          <h4>Private Label</h4>
+          <p>Your brand, our quality. Full OEM available</p>
+        </div>
+        <div class="bulk-feat">
+          <div class="bulk-feat-ico">🚢</div>
+          <h4>Export Ready</div>
+          <p>Proper packaging, documentation & shipping</p>
+        </div>
+      </div>
+      <a href="contact.html" class="btn btn-green">Request Bulk Quote</a>
+    </div>
+    <div class="bulk-visual">
+      <img class="bulk-main-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700" alt="Bulk Manufacturing"/>
+      <div class="bulk-accent"><div class="n">50+</div><div class="l">Min. Order Qty</div></div>
+      <div class="bulk-flag">
+        <span title="Pakistan">🇵🇰</span>
+        <span title="UAE">🇦🇪</span>
+        <span title="UK">🇬🇧</span>
+        <span title="USA">🇺🇸</span>
+        <span title="Saudi Arabia">🇸🇦</span>
+        <span title="Canada">🇨🇦</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products-sec">
+  <div class="sec-hdr">
+    <div>
+      <div class="slbl">Our Collection</div>
+      <h2 class="stitle">Featured Products</h2>
+      <p class="ssub">All products available for bulk ordering. Custom sizes, colors & branding available.</p>
+    </div>
+    <a href="shop.html" class="btn btn-dark">View All Products</a>
+  </div>
+  <div class="pgrid">
+
+    <div class="pc">
+      <div class="pc-imgw"><img class="pc-img" src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500" alt="Classic White Formal Shirt"/><span class="pc-badge bg">Best Seller</span></div>
+      <div class="pc-info">
+        <div class="pc-name">Classic White Formal Shirt</div>
+        <div class="pc-moq-tag">MOQ: 50 pcs</div>
+        <div class="dots"><span class="dot" style="background:#fff;border:1.5px solid #ddd"></span><span class="dot" style="background:#2c3e6b"></span></div>
+        <div class="pc-price"><strong>Rs 1,200</strong> /piece</div>
+      </div>
+      <div class="pc-moq">Bulk: Rs 950/pc (100+ pcs)</div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-imgw"><img class="pc-img" src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500" alt="Navy Blue Slim Fit"/><span class="pc-badge bsale">Sale</span></div>
+      <div class="pc-info">
+        <div class="pc-name">Navy Blue Slim Fit</div>
+        <div class="pc-moq-tag">MOQ: 50 pcs</div>
+        <div class="dots"><span class="dot" style="background:#2c3e6b"></span></div>
+        <div class="pc-price"><span class="pc-old">Rs 1,800</span><span class="pc-sale"> Rs 1,450</span></div>
+      </div>
+      <div class="pc-moq">Bulk: Rs 1,100/pc (100+ pcs)</div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-imgw"><img class="pc-img" src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=500" alt="Charcoal Business Shirt"/><span class="pc-badge bnew">New</span></div>
+      <div class="pc-info">
+        <div class="pc-name">Charcoal Business Shirt</div>
+        <div class="pc-moq-tag">MOQ: 50 pcs</div>
+        <div class="dots"><span class="dot" style="background:#4a4540"></span></div>
+        <div class="pc-price"><strong>Rs 1,350</strong> /piece</div>
+      </div>
+      <div class="pc-moq">Bulk: Rs 1,050/pc (100+ pcs)</div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-imgw"><img class="pc-img" src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=500" alt="Black Formal Shirt"/><span class="pc-badge bg">Best Seller</span></div>
+      <div class="pc-info">
+        <div class="pc-name">Black Formal Shirt</div>
+        <div class="pc-moq-tag">MOQ: 50 pcs</div>
+        <div class="dots"><span class="dot" style="background:#1a1814"></span></div>
+        <div class="pc-price"><strong>Rs 1,500</strong> /piece</div>
+      </div>
+      <div class="pc-moq">Bulk: Rs 1,150/pc (100+ pcs)</div>
+    </div>
+
+  </div>
+  <div style="text-align:center"><a href="shop.html" class="btn btn-dark">View All 12 Products</a></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="process">
+  <div style="text-align:center">
+    <div class="slbl">Simple Process</div>
+    <h2 class="stitle">How to Order</h2>
+  </div>
+  <div class="process-grid">
+    <div class="proc-step">
+      <div class="proc-num">1</div>
+      <div class="proc-title">Contact Us</div>
+      <p class="proc-desc">Reach out via WhatsApp, email or our contact form with your requirements.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">2</div>
+      <div class="proc-title">Get a Quote</div>
+      <p class="proc-desc">We'll send you pricing, fabric swatches and samples within 24 hours.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">3</div>
+      <div class="proc-title">Confirm Order</div>
+      <p class="proc-desc">Approve the sample, confirm quantity and pay 50% advance.</p>
+    </div>
+    <div class="proc-step">
+      <div class="proc-num">4</div>
+      <div class="proc-title">Receive Delivery</div>
+      <p class="proc-desc">Production in 2–3 weeks. Delivered to your door or exported worldwide.</p>
+    </div>
+  </div>
+</div>
+
+<!-- EXPORT SECTION -->
+<div class="export-sec">
+  <div class="export-grid">
+    <div class="export-txt">
+      <div class="slbl">Global Reach</div>
+      <h2 class="stitle">We Export Worldwide</h2>
+      <p class="ssub">De-Shazeb proudly exports premium men's formal shirts to retailers and wholesalers across the globe. Competitive FOB pricing, proper documentation, and reliable shipping.</p>
+      <div class="countries">
+        <div class="country"><span class="country-flag">🇦🇪</span><span class="country-name">UAE</span></div>
+        <div class="country"><span class="country-flag">🇬🇧</span><span class="country-name">UK</span></div>
+        <div class="country"><span class="country-flag">🇺🇸</span><span class="country-name">USA</span></div>
+        <div class="country"><span class="country-flag">🇸🇦</span><span class="country-name">Saudi Arabia</span></div>
+        <div class="country"><span class="country-flag">🇨🇦</span><span class="country-name">Canada</span></div>
+        <div class="country"><span class="country-flag">🌍</span><span class="country-name">& More</span></div>
+      </div>
+      <a href="contact.html" class="btn btn-green">Enquire for Export</a>
+    </div>
+    <div class="export-visual">
+      <div class="exp-card">
+        <div class="exp-card-ico">📋</div>
+        <h4>Full Documentation</h4>
+        <p>Commercial invoice, packing list, certificate of origin & all export docs provided.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-ico">🚢</div>
+        <h4>Flexible Shipping</h4>
+        <p>Sea freight, air cargo or courier — we ship via your preferred method.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-ico">💰</div>
+        <h4>Competitive FOB</h4>
+        <p>Best factory prices with no hidden charges. Volume discounts available.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-ico">🏷️</div>
+        <h4>Private Label</h4>
+        <p>Your logo, your label. Full white-label manufacturing available.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testi-sec">
+  <div style="text-align:center">
+    <div class="slbl">What Clients Say</div>
+    <h2 class="stitle">Trusted by Businesses</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">Ordered 500 pieces for our Dubai retail chain. Quality was excellent, delivery was on time. Will order again!</div>
+      <div class="testi-author"><strong>Ahmed Al-Rashid</strong><span>Retail Chain Owner, Dubai UAE</span></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">Best bulk supplier in Pakistan. Pricing is fair, fabric quality is premium and customer service is excellent.</div>
+      <div class="testi-author"><strong>Tariq Mahmood</strong><span>Wholesale Distributor, Lahore</span></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">We import monthly from De-Shazeb. Consistent quality, good packaging and all export documents are always ready.</div>
+      <div class="testi-author"><strong>Yusuf Hassan</strong><span>Importer, London UK</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-sec">
+  <div class="slbl" style="justify-content:center;color:var(--g3)">Start Today</div>
+  <h2 class="stitle">Ready to Place a<br/><em style="font-style:italic;background:linear-gradient(135deg,var(--g3),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Bulk Order?</em></h2>
+  <p>Contact us now for pricing, samples and custom quotes. We respond within 2 hours on WhatsApp.</p>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn btn-green">Get a Free Quote</a>
+    <a href="https://wa.me/923333084397" target="_blank" class="btn btn-copper">WhatsApp Now</a>
+    <a href="shop.html" class="btn btn-outline">View Products</a>
+  </div>
+  <div class="cta-contact">
+    <div class="cta-c-item">
+      <div class="cta-c-ico">📞</div>
+      <div><strong>Call / WhatsApp</strong><a href="tel:+923333084397">+92-333-3084397</a></div>
+    </div>
+    <div class="cta-c-item">
+      <div class="cta-c-ico">✉️</div>
+      <div><strong>Email</strong><a href="mailto:info@de-shazeb.com">info@de-shazeb.com</a></div>
+    </div>
+    <div class="cta-c-item">
+      <div class="cta-c-ico">📍</div>
+      <div><strong>Address</strong><span>Plot 210/1, 97 Street 5, Sector I, Manzoor Colony, Karachi</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="fb">
+      <a href="index.html" class="fb-brand">
+        <img src="logo.png" alt="De-Shazeb"/>
+        <div class="fb-brand-txt"><span class="n">De-Shazeb</span><span class="s">Garment Manufacturer</span></div>
+      </a>
+      <p>Premium men's formal shirts manufacturer & exporter. Based in Karachi, Pakistan. Serving retailers and wholesalers worldwide since 2019.</p>
+      <div class="fb-contact">
+        <a href="tel:+923333084397">+92-333-3084397</a>
+        <a href="mailto:info@de-shazeb.com">info@de-shazeb.com</a>
+        <span>Plot 210/1, 97 Street 5, Sector I</span>
+        <span>Manzoor Colony, Karachi, Pakistan</span>
+      </div>
+    </div>
+    <div class="fc"><h4>Products</h4><ul>
+      <li><a href="shop.html">All Products</a></li>
+      <li><a href="shop.html">Formal Shirts</a></li>
+      <li><a href="shop.html">Party Wear</a></li>
+      <li><a href="shop.html">Casual Shirts</a></li>
+      <li><a href="shop.html">New Arrivals</a></li>
+    </ul></div>
+    <div class="fc"><h4>Business</h4><ul>
+      <li><a href="bulk.html">Bulk Orders</a></li>
+      <li><a href="bulk.html">Export Enquiry</a></li>
+      <li><a href="bulk.html">Private Label</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul></div>
+    <div class="fc"><h4>Policies</h4><ul>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Shipping Policy</a></li>
+      <li><a href="#">Return Policy</a></li>
+      <li><a href="#">Terms & Conditions</a></li>
+      <li><a href="https://wa.me/923333084397" target="_blank">WhatsApp Us</a></li>
+    </ul></div>
+  </div>
+  <div class="fbot">
+    <span>© 2025 Junaid Garment · De-Shazeb. All rights reserved. · Karachi, Pakistan</span>
+    <div class="fbl"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Shipping</a></div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/923333084397" class="wa-float" target="_blank" title="Chat on WhatsApp">💬</a>
+
+</body>
+</html>
