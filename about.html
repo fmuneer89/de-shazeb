@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About Us | DE-SHAZEB — Garment Manufacturer, Karachi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--g1:#1a6b35;--g2:#2d8a4e;--g3:#3da865;--c1:#c9784a;--c2:#d4956a;--blk:#080f0a;--dark:#0f1f14;--mid:#1e3d28;--txt:#2a4a34;--ltxt:#5a7a65;--cream:#f6f2ed;--cream2:#ede6dc;--white:#fdfcfa;--border:rgba(45,138,78,.15)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Jost',sans-serif;color:var(--blk);background:var(--white);overflow-x:hidden}
+.ann{background:var(--blk);color:rgba(255,255,255,.7);text-align:center;padding:9px 20px;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500}
+.ann span{color:var(--c2)}
+nav{background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 70px;height:78px;position:sticky;top:0;z-index:9999;box-shadow:0 4px 30px rgba(26,107,53,.07)}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.nav-logo img{width:52px;height:52px;object-fit:contain}
+.nav-logo-main{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;letter-spacing:4px;text-transform:uppercase;background:linear-gradient(135deg,var(--g1),var(--c1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.nav-logo-sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ltxt);font-weight:500}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--txt);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;transition:color .2s;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,var(--g2),var(--c1));transition:width .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--g1)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-right{display:flex;gap:18px;align-items:center}
+.nav-bulk{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;padding:9px 20px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;text-decoration:none}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--blk);display:block}
+.btn{display:inline-block;padding:14px 36px;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;cursor:pointer;border:2px solid transparent;transition:all .3s;font-family:'Jost',sans-serif;text-decoration:none;text-align:center}
+.btn-green{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border-color:var(--g1)}
+.btn-green:hover{background:transparent;color:var(--g1)}
+.btn-copper{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;border-color:var(--c1)}
+.btn-copper:hover{background:transparent;color:var(--c1)}
+.btn-dark{background:var(--blk);color:#fff;border-color:var(--blk)}
+.btn-dark:hover{background:transparent;color:var(--blk)}
+.slbl{display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--g1);font-weight:700;margin-bottom:14px}
+.slbl::before{content:'';width:28px;height:1.5px;background:linear-gradient(90deg,var(--g1),var(--c1))}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,54px);font-weight:300;line-height:1.05;margin-bottom:14px}
+/* HERO */
+.ab-hero{background:linear-gradient(160deg,var(--blk),var(--dark),var(--mid));padding:100px 70px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;overflow:hidden}
+.ab-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(45,138,78,.15) 0%,transparent 60%)}
+.ab-hero-txt{position:relative;z-index:2}
+.ab-hero-txt .slbl{color:var(--g3)}
+.ab-hero-txt .slbl::before{background:linear-gradient(90deg,var(--g3),var(--c2))}
+.ab-hero-txt .stitle{color:#fff}
+.ab-hero-txt p{color:rgba(255,255,255,.55);font-size:15px;line-height:1.9;font-weight:300;margin-bottom:28px}
+.ab-hero-img{width:100%;aspect-ratio:4/3;object-fit:cover;background:rgba(255,255,255,.05);position:relative;z-index:2}
+/* STATS */
+.stats{background:linear-gradient(135deg,var(--g1),var(--g2));padding:50px 70px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:#fff;line-height:1}
+.stat-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:600;margin-top:4px}
+/* STORY */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:100px 70px;background:var(--white)}
+.story-imgs{position:relative}
+.story-mi{width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--cream2)}
+.story-ai{position:absolute;width:48%;aspect-ratio:1;object-fit:cover;bottom:-28px;right:-28px;border:6px solid var(--white);box-shadow:0 14px 40px rgba(26,107,53,.2);background:var(--cream)}
+.story-stat{position:absolute;top:28px;left:-28px;background:linear-gradient(135deg,var(--g1),var(--g2));padding:22px 26px;z-index:2}
+.story-stat .n{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:700;color:#fff;line-height:1}
+.story-stat .l{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:600;margin-top:3px}
+.story-txt blockquote{border-left:3px solid var(--c1);padding-left:20px;margin:24px 0;font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--txt);line-height:1.5}
+.story-txt p{font-size:14px;line-height:1.9;color:var(--ltxt);font-weight:300;margin-bottom:13px}
+/* VALUES */
+.vals{padding:100px 70px;background:var(--cream)}
+.vals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:54px}
+.vc{background:var(--white);padding:36px;border-top:3px solid transparent;transition:border-color .3s,box-shadow .3s}
+.vc:hover{border-color:var(--g1);box-shadow:0 12px 40px rgba(26,107,53,.1)}
+.vc-ico{font-size:36px;margin-bottom:18px}
+.vc-t{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:10px;color:var(--blk)}
+.vc-d{font-size:14px;line-height:1.8;color:var(--ltxt);font-weight:300}
+/* ADDRESS */
+.addr-sec{background:var(--dark);padding:80px 70px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.addr-txt .stitle{color:#fff}
+.addr-txt .slbl{color:var(--g3)}
+.addr-txt .slbl::before{background:linear-gradient(90deg,var(--g3),var(--c2))}
+.addr-items{margin-top:32px;display:flex;flex-direction:column;gap:22px}
+.addr-item{display:flex;align-items:flex-start;gap:16px}
+.addr-ico{width:46px;height:46px;background:rgba(45,138,78,.15);border:1px solid rgba(45,138,78,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.addr-item strong{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--g3);font-weight:600;margin-bottom:4px}
+.addr-item span,.addr-item a{font-size:14px;color:rgba(255,255,255,.6);text-decoration:none;line-height:1.7;display:block}
+.addr-item a:hover{color:var(--g3)}
+.addr-map{width:100%;height:320px;background:rgba(255,255,255,.05);border:1px solid rgba(45,138,78,.2)}
+.addr-map iframe{width:100%;height:100%;border:none;filter:grayscale(60%) contrast(90%);opacity:.8}
+/* FOOTER */
+footer{background:#040a06;color:rgba(255,255,255,.4);padding:60px 70px 26px}
+.ft{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:56px;padding-bottom:46px;border-bottom:1px solid rgba(45,138,78,.1);margin-bottom:26px}
+.fb-brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:14px}
+.fb-brand img{width:44px;height:44px;object-fit:contain}
+.fb-n{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;letter-spacing:4px;text-transform:uppercase;background:linear-gradient(135deg,var(--g3),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.fb-s{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.fb p{font-size:13px;line-height:1.8;max-width:200px;margin-bottom:14px}
+.fb-ci{font-size:12px;line-height:2.2}
+.fb-ci a{color:var(--c2);text-decoration:none;display:block}
+.fb-ci span{display:block;color:rgba(255,255,255,.35)}
+.fc h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#fff;font-weight:600;margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid rgba(45,138,78,.2)}
+.fc ul{list-style:none}
+.fc ul li{margin-bottom:10px}
+.fc ul a{font-size:13px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
+.fc ul a:hover{color:var(--g3)}
+.fbot{display:flex;align-items:center;justify-content:space-between;font-size:11px;flex-wrap:wrap;gap:9px}
+.fbl{display:flex;gap:20px}
+.fbl a{color:rgba(255,255,255,.25);text-decoration:none;font-size:11px}
+.fbl a:hover{color:var(--g3)}
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:1000;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 8px 30px rgba(37,211,102,.4);transition:transform .3s;text-decoration:none}
+.wa-float:hover{transform:scale(1.1)}
+@media(max-width:1024px){.ab-hero,.story,.addr-sec{grid-template-columns:1fr;gap:50px}.stats{grid-template-columns:repeat(2,1fr)}.vals-grid{grid-template-columns:1fr 1fr}.ft{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){nav{padding:0 22px}.nav-links{display:none;position:fixed;top:78px;left:0;right:0;background:var(--white);flex-direction:column;gap:0;border-bottom:1px solid var(--border);z-index:9998}.nav-links.open{display:flex}.nav-links a{padding:16px 24px;border-bottom:1px solid var(--border);display:block}.nav-bulk{display:none}.hamburger{display:flex}.ab-hero,.vals,.story,.addr-sec{padding:60px 22px}.stats{padding:36px 22px}.vals-grid{grid-template-columns:1fr}.ft{grid-template-columns:1fr}footer{padding:40px 22px 20px}.story-stat{left:0}.story-ai{right:0}}
+</style>
+</head>
+<body>
+
+<div class="ann">🌍 Worldwide Export Available &nbsp;|&nbsp; <span>Bulk Orders Welcome</span> &nbsp;|&nbsp; +92-333-3084397</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="De-Shazeb"/>
+    <div><span class="nav-logo-main">De-Shazeb</span><span class="nav-logo-sub">Est. 2019 · Karachi</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Products</a></li>
+    <li><a href="bulk.html">Bulk & Export</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-bulk">Get a Quote</a>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="ab-hero">
+  <div class="ab-hero-txt">
+    <div class="slbl">Our Journey</div>
+    <h1 class="stitle">Crafting Excellence<br/>Since 2019</h1>
+    <p>De-Shazeb (Junaid Garment) is a premium men's formal shirt manufacturer based in Karachi, Pakistan. We produce high-quality shirts for local retailers, wholesalers, and international importers.</p>
+    <p>Our focus is on delivering consistent quality, competitive pricing, and reliable service to businesses around the world.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px">
+      <a href="shop.html" class="btn btn-green">View Products</a>
+      <a href="contact.html" class="btn btn-copper">Get a Quote</a>
+    </div>
+  </div>
+  <img class="ab-hero-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700" alt="De-Shazeb Store"/>
+</div>
+
+<div class="stats">
+  <div><div class="stat-num">5+</div><div class="stat-lbl">Years Experience</div></div>
+  <div><div class="stat-num">2K+</div><div class="stat-lbl">Happy Clients</div></div>
+  <div><div class="stat-num">50+</div><div class="stat-lbl">Products</div></div>
+  <div><div class="stat-num">12+</div><div class="stat-lbl">Export Countries</div></div>
+</div>
+
+<div class="story">
+  <div class="story-imgs">
+    <div class="story-stat"><div class="n">50+</div><div class="l">MOQ Pieces</div></div>
+    <img class="story-mi" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600" alt="Our Factory"/>
+    <img class="story-ai" src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400" alt="Product Quality"/>
+  </div>
+  <div class="story-txt">
+    <div class="slbl">Our Story</div>
+    <h2 class="stitle">Built on Quality<br/>& Commitment</h2>
+    <blockquote>"Every shirt is a promise of quality delivered."</blockquote>
+    <p>Junaid Garment was founded in Karachi with a clear mission — to manufacture premium men's formal shirts that meet international quality standards while remaining competitively priced.</p>
+    <p>Operating from our facility at <strong>Plot 210/1, 97 Street 5, Sector I, Manzoor Colony, Karachi</strong>, we serve local retailers, wholesale distributors, and international importers.</p>
+    <p>We take pride in being a trusted supplier to businesses in UAE, UK, USA, Saudi Arabia and beyond — with proper documentation, reliable quality, and on-time delivery.</p>
+    <br/>
+    <a href="contact.html" class="btn btn-green">Start a Partnership</a>
+  </div>
+</div>
+
+<div class="vals">
+  <div style="text-align:center">
+    <div class="slbl">What We Stand For</div>
+    <h2 class="stitle">Our Values</h2>
+  </div>
+  <div class="vals-grid">
+    <div class="vc"><div class="vc-ico">🧵</div><div class="vc-t">Premium Quality</div><p class="vc-d">We use only the finest cotton and poly-blend fabrics. Every shirt passes strict quality control before leaving our facility.</p></div>
+    <div class="vc"><div class="vc-ico">🌍</div><div class="vc-t">Export Expertise</div><p class="vc-d">Full export documentation, FOB pricing, and flexible shipping. We make international trade simple and reliable.</p></div>
+    <div class="vc"><div class="vc-ico">🤝</div><div class="vc-t">Business First</div><p class="vc-d">We understand your business needs. Competitive bulk pricing, private label options, and dedicated account support.</p></div>
+    <div class="vc"><div class="vc-ico">⏱️</div><div class="vc-t">On-Time Delivery</div><p class="vc-d">Production completed in 2–3 weeks. We respect your deadlines and keep you updated at every stage.</p></div>
+    <div class="vc"><div class="vc-ico">🎨</div><div class="vc-t">Custom Manufacturing</div><p class="vc-d">Custom colors, sizes, fabrics, and your private label. We manufacture exactly what your customers need.</p></div>
+    <div class="vc"><div class="vc-ico">📞</div><div class="vc-t">Direct Support</div><p class="vc-d">Talk directly to our team on WhatsApp or phone. No call centers — real people, real answers, fast responses.</p></div>
+  </div>
+</div>
+
+<div class="addr-sec">
+  <div class="addr-txt">
+    <div class="slbl">Find Us</div>
+    <h2 class="stitle" style="color:#fff">Our Location</h2>
+    <div class="addr-items">
+      <div class="addr-item">
+        <div class="addr-ico">📍</div>
+        <div><strong>Factory Address</strong><span>Plot # 210/1, 97 Street 5, Sector I</span><span>Manzoor Colony, Karachi, Pakistan</span></div>
+      </div>
+      <div class="addr-item">
+        <div class="addr-ico">📞</div>
+        <div><strong>Phone & WhatsApp</strong><a href="tel:+923333084397">+92-333-3084397</a></div>
+      </div>
+      <div class="addr-item">
+        <div class="addr-ico">✉️</div>
+        <div><strong>Email</strong><a href="mailto:info@de-shazeb.com">info@de-shazeb.com</a></div>
+      </div>
+      <div class="addr-item">
+        <div class="addr-ico">🕐</div>
+        <div><strong>Working Hours</strong><span>Mon–Sat: 9:00 AM – 8:00 PM</span><span>Sunday: 11:00 AM – 5:00 PM</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="addr-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.123456789!2d67.0099!3d24.8607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDUxJzM4LjUiTiA2N8KwMDAnMzUuNiJF!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</div>
+
+<footer>
+  <div class="ft">
+    <div class="fb">
+      <a href="index.html" class="fb-brand"><img src="logo.png" alt="De-Shazeb"/><div><span class="fb-n">De-Shazeb</span><span class="fb-s">Garment Manufacturer</span></div></a>
+      <p>Premium men's formal shirts manufacturer & exporter. Karachi, Pakistan. Since 2019.</p>
+      <div class="fb-ci"><a href="tel:+923333084397">+92-333-3084397</a><a href="mailto:info@de-shazeb.com">info@de-shazeb.com</a><span>Plot 210/1, 97 Street 5, Sector I</span><span>Manzoor Colony, Karachi</span></div>
+    </div>
+    <div class="fc"><h4>Products</h4><ul><li><a href="shop.html">All Products</a></li><li><a href="shop.html">Formal Shirts</a></li><li><a href="shop.html">Party Wear</a></li></ul></div>
+    <div class="fc"><h4>Business</h4><ul><li><a href="bulk.html">Bulk Orders</a></li><li><a href="bulk.html">Export Enquiry</a></li><li><a href="about.html">About Us</a></li></ul></div>
+    <div class="fc"><h4>Help</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="https://wa.me/923333084397" target="_blank">WhatsApp</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="fbot"><span>© 2025 Junaid Garment · De-Shazeb. All rights reserved.</span><div class="fbl"><a href="#">Privacy</a><a href="#">Terms</a></div></div>
+</footer>
+
+<a href="https://wa.me/923333084397" class="wa-float" target="_blank">💬</a>
+</body>
+</html>
