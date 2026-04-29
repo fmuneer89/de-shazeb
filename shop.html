@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Products | DE-SHAZEB</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--g1:#1a6b35;--g2:#2d8a4e;--g3:#3da865;--c1:#c9784a;--c2:#d4956a;--blk:#080f0a;--dark:#0f1f14;--mid:#1e3d28;--txt:#2a4a34;--ltxt:#5a7a65;--cream:#f6f2ed;--cream2:#ede6dc;--white:#fdfcfa;--border:rgba(45,138,78,.15)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Jost',sans-serif;color:var(--blk);background:var(--white);overflow-x:hidden}
+.ann{background:var(--blk);color:rgba(255,255,255,.7);text-align:center;padding:9px 20px;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500}
+.ann b{color:var(--c2)}
+nav{background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 70px;height:78px;position:sticky;top:0;z-index:9999;box-shadow:0 4px 30px rgba(26,107,53,.07)}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{width:50px;height:50px;object-fit:contain}
+.nav-n{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;letter-spacing:4px;text-transform:uppercase;background:linear-gradient(135deg,var(--g1),var(--c1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.nav-s{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ltxt);font-weight:500}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--txt);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:500;transition:color .2s;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:linear-gradient(90deg,var(--g2),var(--c1));transition:width .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--g1)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-right{display:flex;gap:16px;align-items:center}
+.nav-cta{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;padding:9px 20px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;text-decoration:none;display:inline-block}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--blk);display:block}
+.btn{display:inline-block;padding:12px 30px;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;cursor:pointer;border:2px solid transparent;transition:all .3s;font-family:'Jost',sans-serif;text-decoration:none;text-align:center}
+.btn-g{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;border-color:var(--g1)}
+.btn-g:hover{background:transparent;color:var(--g1)}
+.btn-d{background:var(--blk);color:#fff;border-color:var(--blk)}
+.btn-d:hover{background:transparent;color:var(--blk)}
+.slbl{display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--g1);font-weight:700;margin-bottom:14px}
+.slbl::before{content:'';width:28px;height:1.5px;background:linear-gradient(90deg,var(--g1),var(--c1));flex-shrink:0}
+.stitle{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,50px);font-weight:300;color:var(--blk);line-height:1.05;margin-bottom:12px}
+/* HERO */
+.shop-hero{background:linear-gradient(160deg,var(--blk),var(--dark),var(--mid));padding:70px;text-align:center;position:relative;overflow:hidden}
+.shop-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(45,138,78,.12) 0%,transparent 70%)}
+.shop-hero .stitle{color:#fff;position:relative;z-index:2}
+.shop-hero p{color:rgba(255,255,255,.45);font-size:14px;margin-top:10px;position:relative;z-index:2}
+.bread{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.4);margin-top:18px;justify-content:center;position:relative;z-index:2}
+.bread a{color:var(--g3);text-decoration:none}
+/* BULK BANNER */
+.bulk-banner{background:linear-gradient(135deg,var(--g1),var(--g2));padding:18px 70px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.bulk-banner p{color:#fff;font-size:13px;font-weight:400}
+.bulk-banner p b{font-weight:700}
+.bulk-banner a{background:#fff;color:var(--g1);padding:9px 22px;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:700;text-decoration:none;transition:all .3s}
+.bulk-banner a:hover{background:var(--blk);color:#fff}
+/* LAYOUT */
+.shop-lay{display:grid;grid-template-columns:250px 1fr;gap:48px;padding:60px 70px;background:var(--cream)}
+/* FILTERS */
+.filt{background:var(--white);padding:28px;position:sticky;top:96px;height:fit-content}
+.filt-ttl{font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--blk);margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--g1)}
+.fg{margin-bottom:26px;padding-bottom:26px;border-bottom:1px solid var(--border)}
+.fg:last-child{border:none;margin-bottom:0;padding-bottom:0}
+.fg-t{font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--blk);margin-bottom:13px}
+.fo{display:flex;flex-direction:column;gap:10px}
+.fol{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--txt);cursor:pointer;transition:color .2s}
+.fol:hover{color:var(--g1)}
+.fol input{accent-color:var(--g1);width:14px;height:14px}
+.cf{display:flex;flex-wrap:wrap;gap:9px}
+.cfi{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:border-color .2s;display:inline-block;title:attr(title)}
+.cfi:hover{border-color:var(--g1)}
+/* SHOP MAIN */
+.shop-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+.shop-cnt{font-size:13px;color:var(--ltxt)}
+.sort{padding:10px 14px;border:1px solid var(--border);font-family:'Jost',sans-serif;font-size:12px;color:var(--txt);background:var(--white);cursor:pointer}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pc{background:var(--white);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.pc:hover{transform:translateY(-7px);box-shadow:0 24px 64px rgba(26,107,53,.15)}
+.pc-iw{position:relative;overflow:hidden}
+.pc-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .6s;background:var(--cream2)}
+.pc:hover .pc-img{transform:scale(1.06)}
+.pc-bdg{position:absolute;top:13px;left:13px;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:5px 11px}
+.bg{background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff}
+.br{background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff}
+.bc{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff}
+.pc-hov{position:absolute;bottom:0;left:0;right:0;background:rgba(26,107,53,.92);color:#fff;text-align:center;padding:10px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;transform:translateY(100%);transition:transform .3s}
+.pc:hover .pc-hov{transform:translateY(0)}
+.pc-info{padding:15px 16px 20px;border-top:1px solid var(--border)}
+.pc-name{font-size:13px;font-weight:500;color:var(--blk);margin-bottom:4px}
+.pc-moq{font-size:10px;color:var(--g1);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.pc-dots{display:flex;gap:5px;margin-bottom:7px}
+.dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(0,0,0,.12);display:inline-block}
+.pc-price{font-size:13px;color:var(--txt);margin-bottom:10px}
+.pc-price b{font-size:15px;color:var(--blk);font-weight:600}
+.pold{text-decoration:line-through;color:var(--ltxt);margin-right:5px;font-size:12px}
+.psale{color:#c0392b;font-weight:600}
+.pc-qbtn{display:block;width:100%;padding:11px;background:transparent;border:1.5px solid var(--g1);color:var(--g1);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;cursor:pointer;font-family:'Jost',sans-serif;transition:all .3s;text-align:center;text-decoration:none}
+.pc-qbtn:hover{background:var(--g1);color:#fff}
+/* FOOTER */
+footer{background:#040a06;color:rgba(255,255,255,.4);padding:60px 70px 26px}
+.ft{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:50px;padding-bottom:44px;border-bottom:1px solid rgba(45,138,78,.1);margin-bottom:26px}
+.fb-brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:14px}
+.fb-brand img{width:44px;height:44px;object-fit:contain}
+.fbn{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;letter-spacing:4px;text-transform:uppercase;background:linear-gradient(135deg,var(--g3),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.fbs{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.fb>p{font-size:13px;line-height:1.8;max-width:200px;margin-bottom:16px}
+.fb-ci{font-size:12px;line-height:2.2}
+.fb-ci a{color:var(--c2);text-decoration:none;display:block}
+.fb-ci span{display:block;color:rgba(255,255,255,.35)}
+.fc h4{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#fff;font-weight:600;margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid rgba(45,138,78,.15)}
+.fc ul{list-style:none}
+.fc ul li{margin-bottom:10px}
+.fc ul a{font-size:13px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s}
+.fc ul a:hover{color:var(--g3)}
+.fbot{display:flex;align-items:center;justify-content:space-between;font-size:11px;flex-wrap:wrap;gap:9px}
+.fbl{display:flex;gap:20px}
+.fbl a{color:rgba(255,255,255,.25);text-decoration:none;font-size:11px}
+.fbl a:hover{color:var(--g3)}
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:1000;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 8px 30px rgba(37,211,102,.4);transition:transform .3s;text-decoration:none}
+.wa-float:hover{transform:scale(1.1)}
+@media(max-width:1024px){.sgrid{grid-template-columns:repeat(2,1fr)}.ft{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){nav{padding:0 22px}.nav-links{display:none;position:fixed;top:78px;left:0;right:0;background:var(--white);flex-direction:column;gap:0;border-bottom:1px solid var(--border);z-index:9998}.nav-links.open{display:flex}.nav-links a{padding:16px 24px;border-bottom:1px solid var(--border);display:block}.nav-cta{display:none}.hamburger{display:flex}.shop-hero,.bulk-banner{padding:50px 22px}.shop-lay{grid-template-columns:1fr;padding:36px 22px}.filt{display:none}.sgrid{grid-template-columns:repeat(2,1fr);gap:14px}.ft{grid-template-columns:1fr}footer{padding:40px 22px 20px}}
+</style>
+</head>
+<body>
+<div class="ann">✨ Bulk Orders Welcome — MOQ 50 Pieces &nbsp;|&nbsp; <b>WhatsApp: +92-333-3084397</b></div>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="De-Shazeb"/><div><span class="nav-n">De-Shazeb</span><span class="nav-s">Est. 2019 · Karachi</span></div></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html" class="active">Products</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="contact.html" class="nav-cta">Get a Quote</a>
+    <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="shop-hero">
+  <div class="slbl" style="justify-content:center">Our Collection</div>
+  <h2 class="stitle">All Products</h2>
+  <p>Premium men's formal shirts — available for retail & bulk orders. MOQ: 50 pieces.</p>
+  <div class="bread"><a href="index.html">Home</a><span>›</span><span>Products</span></div>
+</div>
+<div class="bulk-banner">
+  <p>🎯 <b>Bulk Discount:</b> Order 100+ pieces and save up to 25% per unit</p>
+  <a href="bulk.html">Get Bulk Pricing →</a>
+</div>
+<div class="shop-lay">
+  <aside>
+    <div class="filt">
+      <div class="filt-ttl">Filter Products</div>
+      <div class="fg"><div class="fg-t">Categories</div><div class="fo">
+        <label class="fol"><input type="checkbox" checked> All Shirts</label>
+        <label class="fol"><input type="checkbox"> Formal Shirts</label>
+        <label class="fol"><input type="checkbox"> Party Wear</label>
+        <label class="fol"><input type="checkbox"> Casual Shirts</label>
+        <label class="fol"><input type="checkbox"> Sale Items</label>
+      </div></div>
+      <div class="fg"><div class="fg-t">Colors</div><div class="cf">
+        <span class="cfi" style="background:#1a1814" title="Black"></span>
+        <span class="cfi" style="background:#fff;border:1.5px solid #ddd" title="White"></span>
+        <span class="cfi" style="background:#2c3e6b" title="Navy"></span>
+        <span class="cfi" style="background:#4a7c59" title="Green"></span>
+        <span class="cfi" style="background:#8b4a4a" title="Maroon"></span>
+        <span class="cfi" style="background:#c9a96e" title="Beige"></span>
+      </div></div>
+      <div class="fg"><div class="fg-t">Sizes</div><div class="fo">
+        <label class="fol"><input type="checkbox"> S (36–38")</label>
+        <label class="fol"><input type="checkbox"> M (38–40")</label>
+        <label class="fol"><input type="checkbox"> L (40–42")</label>
+        <label class="fol"><input type="checkbox"> XL (42–44")</label>
+        <label class="fol"><input type="checkbox"> XXL (44–46")</label>
+      </div></div>
+    </div>
+  </aside>
+  <div>
+    <div class="shop-top">
+      <span class="shop-cnt">Showing 12 products · All available for bulk</span>
+      <select class="sort"><option>Sort: Featured</option><option>Price: Low to High</option><option>Price: High to Low</option><option>Newest First</option></select>
+    </div>
+    <div class="sgrid">
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500" alt="Classic White Formal Shirt"/><span class="pc-bdg bg">Best Seller</span></div><div class="pc-info"><div class="pc-name">Classic White Formal Shirt</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#fff;border:1.5px solid #ddd"></span><span class="dot" style="background:#2c3e6b"></span></div><div class="pc-price"><b>Rs 1,200</b>/pc &nbsp;·&nbsp; <span style="color:var(--g1);font-size:11px">Bulk: Rs 950</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs · Custom sizes available</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500" alt="Navy Blue Slim Fit"/><span class="pc-bdg br">Sale</span></div><div class="pc-info"><div class="pc-name">Navy Blue Slim Fit</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#2c3e6b"></span></div><div class="pc-price"><span class="pold">Rs 1,800</span><span class="psale"> Rs 1,450</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs · Custom colors available</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=500" alt="Charcoal Business Shirt"/><span class="pc-bdg bc">New</span></div><div class="pc-info"><div class="pc-name">Charcoal Business Shirt</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#4a4540"></span></div><div class="pc-price"><b>Rs 1,350</b>/pc &nbsp;·&nbsp; <span style="color:var(--g1);font-size:11px">Bulk: Rs 1,050</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs · OEM available</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=500" alt="Maroon Party Wear"/><span class="pc-bdg br">Sale</span></div><div class="pc-info"><div class="pc-name">Maroon Party Wear</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#8b4a4a"></span></div><div class="pc-price"><span class="pold">Rs 2,000</span><span class="psale"> Rs 1,600</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=500" alt="Light Blue Office Shirt"/></div><div class="pc-info"><div class="pc-name">Light Blue Office Shirt</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#6b9ac4"></span></div><div class="pc-price"><b>Rs 1,100</b>/pc &nbsp;·&nbsp; <span style="color:var(--g1);font-size:11px">Bulk: Rs 880</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=500" alt="Black Formal Shirt"/><span class="pc-bdg bg">Best Seller</span></div><div class="pc-info"><div class="pc-name">Black Formal Shirt</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#1a1814"></span></div><div class="pc-price"><b>Rs 1,500</b>/pc &nbsp;·&nbsp; <span style="color:var(--g1);font-size:11px">Bulk: Rs 1,150</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs · Private label available</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500" alt="Striped Cotton Shirt"/><span class="pc-bdg br">Sale</span></div><div class="pc-info"><div class="pc-name">Striped Cotton Shirt</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#2c3e6b"></span><span class="dot" style="background:#fff;border:1.5px solid #ddd"></span></div><div class="pc-price"><span class="pold">Rs 1,200</span><span class="psale"> Rs 980</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=500" alt="Beige Linen Shirt"/><span class="pc-bdg bc">New</span></div><div class="pc-info"><div class="pc-name">Beige Linen Shirt</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#c9a96e"></span></div><div class="pc-price"><b>Rs 1,300</b>/pc &nbsp;·&nbsp; <span style="color:var(--g1);font-size:11px">Bulk: Rs 1,020</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1566479179817-c0e5c0b45a69?w=500" alt="Royal Blue Ceremonial"/></div><div class="pc-info"><div class="pc-name">Royal Blue Ceremonial</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#2c3e6b"></span></div><div class="pc-price"><b>Rs 1,800</b>/pc &nbsp;·&nbsp; <span style="color:var(--g1);font-size:11px">Bulk: Rs 1,400</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=500" alt="Grey Textured Shirt"/><span class="pc-bdg br">Sale</span></div><div class="pc-info"><div class="pc-name">Grey Textured Shirt</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#6b6b8a"></span></div><div class="pc-price"><span class="pold">Rs 1,500</span><span class="psale"> Rs 1,250</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500" alt="Ivory Wedding Shirt"/><span class="pc-bdg bc">New</span></div><div class="pc-info"><div class="pc-name">Ivory Wedding Shirt</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#faf9f7;border:1.5px solid #ddd"></span></div><div class="pc-price"><b>Rs 2,000</b>/pc &nbsp;·&nbsp; <span style="color:var(--g1);font-size:11px">Bulk: Rs 1,550</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs</div></div>
+      <div class="pc"><div class="pc-iw"><img class="pc-img" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500" alt="Dark Green Casual"/></div><div class="pc-info"><div class="pc-name">Dark Green Casual</div><div class="pc-moq">MOQ: 50 pcs</div><div class="pc-dots"><span class="dot" style="background:#4a7c59"></span></div><div class="pc-price"><b>Rs 1,100</b>/pc &nbsp;·&nbsp; <span style="color:var(--g1);font-size:11px">Bulk: Rs 870</span></div><a href="contact.html" class="pc-qbtn">Request Quote</a></div><div class="pc-hov">Min. 50 pcs</div></div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="ft">
+    <div class="fb"><a href="index.html" class="fb-brand"><img src="logo.png" alt="De-Shazeb"/><div><span class="fbn">De-Shazeb</span><span class="fbs">Garment Manufacturer · Est. 2019</span></div></a><p>Premium men's formal shirts manufacturer. Karachi, Pakistan.</p><div class="fb-ci"><a href="tel:+923333084397">+92-333-3084397</a><a href="mailto:info@de-shazeb.com">info@de-shazeb.com</a><span>Plot 210/1, 97 Street 5, Sector I</span><span>Manzoor Colony, Karachi</span></div></div>
+    <div class="fc"><h4>Products</h4><ul><li><a href="shop.html">All Products</a></li><li><a href="shop.html">Formal Shirts</a></li><li><a href="shop.html">Party Wear</a></li><li><a href="shop.html">New Arrivals</a></li></ul></div>
+    <div class="fc"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="bulk.html">Bulk Orders</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Return Policy</a></li></ul></div>
+    <div class="fc"><h4>Contact</h4><ul><li><a href="https://wa.me/923333084397" target="_blank">WhatsApp Us</a></li><li><a href="mailto:info@de-shazeb.com">Email Us</a></li><li><a href="contact.html">Send a Message</a></li></ul></div>
+  </div>
+  <div class="fbot"><span>© 2025 De-Shazeb. All rights reserved. · Karachi, Pakistan</span><div class="fbl"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Returns</a></div></div>
+</footer>
+<a href="https://wa.me/923333084397" class="wa-float" target="_blank">💬</a>
+</body>
+</html>
