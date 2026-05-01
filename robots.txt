@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.de-shazeb.com/sitemap.xml
