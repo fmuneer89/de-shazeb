@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>De-Shazeb — Est. 2019 | Men's Formal Shirts</title>
+  <meta name="description" content="De-Shazeb — Premium men's formal shirts crafted with precision. Est. 2019." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Snipcart CSS -->
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.2/default/snipcart.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a08;
+      --cream: #f7f4ef;
+      --gold: #b8962e;
+      --gold-light: #d4af5a;
+      --warm-gray: #7a7570;
+      --border: #e0dbd2;
+      --white: #ffffff;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--black);
+      font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(247, 244, 239, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .cart-btn {
+      background: none;
+      border: 1px solid var(--black);
+      padding: 0.55rem 1.4rem;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+      color: var(--black);
+    }
+
+    .cart-btn:hover {
+      background: var(--black);
+      color: var(--cream);
+    }
+
+    .hero {
+      padding-top: 5rem;
+    }
+
+    /* hero-text / hero-visual kept for mobile fallback only */
+    .hero-text {
+      display: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 5.5rem;
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 2rem;
+      color: var(--black);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: var(--warm-gray);
+      max-width: 380px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--black);
+      color: var(--cream);
+      padding: 1rem 2.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s;
+      align-self: flex-start;
+    }
+
+    .hero-cta:hover { background: var(--gold); }
+
+    .hero-visual {
+      background: #050e12;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image:
+        repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+      background-size: 30px 30px;
+    }
+
+    .hero-badge {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .hero-badge-main {
+      font-family: var(--font-display);
+      font-size: 8rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-badge-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,0.5);
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .hero-badge-year {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: rgba(247,244,239,0.3);
+      margin-top: 1rem;
+      display: block;
+      letter-spacing: 0.15em;
+    }
+
+    /* VIDEO HERO OVERRIDE */
+    .hero {
+      min-height: 100vh;
+      display: block !important;
+      position: relative;
+      overflow: hidden;
+      padding-top: 0 !important;
+    }
+    .hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-video-wrap video {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .hero-video-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(10,10,8,0.52) 0%, rgba(10,10,8,0.32) 55%, rgba(10,10,8,0.12) 100%);
+    }
+    .hero-video-fallback {
+      position: absolute; inset: 0; z-index: -1;
+      background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400') center/cover no-repeat;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 8rem 5rem 5rem;
+      max-width: 680px;
+    }
+    .scroll-indicator {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      opacity: 0.4; animation: scrollbounce 2.2s ease-in-out infinite;
+    }
+    .scroll-indicator span { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream); }
+    .scroll-indicator::after { content: '↓'; font-size: 1rem; color: var(--gold); }
+    @keyframes scrollbounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      background: var(--black);
+      padding: 1rem 0;
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+
+    .marquee-item {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .marquee-dot {
+      color: rgba(184,150,46,0.4);
+      margin: 0 1rem;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* SECTION COMMON */
+    section { padding: 6rem 5rem; }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-title em { font-style: italic; }
+
+    .section-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 3rem;
+    }
+
+    /* COLLECTION GRID */
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(10,10,8,0.1);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      background: #1a1a18;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: rgba(184,150,46,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(10,10,8,0.7));
+    }
+
+    .product-img-label {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      z-index: 2;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,0.5);
+    }
+
+    /* Shirt illustrations via CSS */
+    .shirt-1 { background: #1c2236; }
+    .shirt-2 { background: #1a1a18; }
+    .shirt-3 { background: #1e1a1a; }
+    .shirt-4 { background: #16201e; }
+    .shirt-5 { background: #1f1c16; }
+    .shirt-6 { background: #1c1c20; }
+
+    .shirt-svg {
+      width: 80px;
+      opacity: 0.35;
+    }
+
+    .product-info {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+
+    .product-fabric {
+      font-size: 0.72rem;
+      color: var(--warm-gray);
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--gold);
+    }
+
+    .product-price span {
+      font-size: 0.75rem;
+      font-family: var(--font-body);
+      color: var(--warm-gray);
+      font-weight: 300;
+      margin-left: 2px;
+    }
+
+    .add-btn {
+      background: var(--black);
+      color: var(--cream);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .add-btn:hover { background: var(--gold); }
+
+    /* CRAFTSMANSHIP SECTION */
+    .craft-section {
+      background: var(--black);
+      color: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+    }
+
+    .craft-text {
+      padding: 6rem 4rem 6rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .craft-text .section-title { color: var(--cream); }
+
+    .craft-desc {
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: rgba(247,244,239,0.55);
+      max-width: 380px;
+      margin-bottom: 3rem;
+    }
+
+    .craft-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 2.5rem;
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,0.35);
+      margin-top: 0.4rem;
+    }
+
+    .craft-visual {
+      background: #111;
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .craft-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image:
+        linear-gradient(var(--gold) 1px, transparent 1px),
+        linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .craft-icon {
+      position: relative;
+      z-index: 2;
+      font-family: var(--font-display);
+      font-size: 10rem;
+      color: rgba(184,150,46,0.15);
+      user-select: none;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background: var(--white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      padding: 2rem;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.2;
+      position: absolute;
+      top: 0.5rem;
+      left: 1.5rem;
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: var(--warm-gray);
+      margin-bottom: 1.5rem;
+      padding-top: 1.5rem;
+    }
+
+    .testimonial-author {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .testimonial-location {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    /* NEWSLETTER */
+    .newsletter-section {
+      background: var(--black);
+      text-align: center;
+      padding: 5rem;
+    }
+
+    .newsletter-section .section-title { color: var(--cream); }
+    .newsletter-section .section-label { justify-content: center; display: block; }
+    .newsletter-section .section-line { margin: 0 auto 3rem; }
+
+    .newsletter-desc {
+      color: rgba(247,244,239,0.5);
+      font-size: 0.88rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 440px;
+      margin: 0 auto;
+      gap: 0;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-right: none;
+      padding: 0.85rem 1.25rem;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .newsletter-input::placeholder { color: rgba(247,244,239,0.25); }
+
+    .newsletter-btn {
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      color: var(--black);
+      padding: 0.85rem 1.8rem;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 400;
+      transition: background 0.2s;
+    }
+
+    .newsletter-btn:hover { background: var(--gold-light); }
+
+    /* FOOTER */
+    footer {
+      background: #f0ede8;
+      color: #5a5550;
+      padding: 4rem 5rem 2rem;
+      border-top: 3px solid var(--gold);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      max-width: 240px;
+      color: #5a5550;
+    }
+
+    .footer-heading {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+
+    .footer-links { list-style: none; }
+
+    .footer-links li { margin-bottom: 0.6rem; }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: #7a7570;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--teal, #1a6b72); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(0,0,0,0.1);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: #9a9590;
+    }
+
+    .footer-gold { color: var(--gold); }
+
+    /* SIZE SELECTOR */
+    .size-row {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .size-chip {
+      font-size: 0.65rem;
+      padding: 0.3rem 0.55rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.15s;
+      background: none;
+      font-family: var(--font-body);
+      letter-spacing: 0.05em;
+    }
+
+    .size-chip:hover, .size-chip.active {
+      background: var(--black);
+      color: var(--cream);
+      border-color: var(--black);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero-content { padding: 6rem 1.5rem 4rem; }
+      .hero-title { font-size: 3rem !important; }
+      .scroll-indicator { display: none; }
+      .hero-title { font-size: 3.5rem; }
+      section { padding: 4rem 2rem; }
+      .collection-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .craft-section { grid-template-columns: 1fr; }
+      .craft-visual { display: none; }
+      .craft-text { padding: 4rem 2rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 3rem 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div style="background:#0a0a08;color:rgba(247,244,239,0.6);font-size:0.72rem;letter-spacing:0.1em;text-align:center;padding:0.55rem 1rem;font-family:var(--font-body);">
+  ✨ Bulk Orders Welcome — MOQ 50 Pieces &nbsp;|&nbsp;
+  <a href="https://wa.me/923332518070" style="color:#b8962e;text-decoration:none;">WhatsApp: +92-333-2518070</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="De-Shazeb" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="#craft">Craftsmanship</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="cart-btn snipcart-checkout">
+      Cart <span class="snipcart-items-count"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding: 0;">
+
+  <!-- VIDEO BACKGROUND -->
+  <div class="hero-video-wrap">
+    <!-- Your own sewing machine video — place hero-video-1.mp4 in the same folder -->
+    <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400">
+      <source src="hero-video-1.mp4" type="video/mp4" />
+    </video>
+    <!-- Fallback background image (shows if video doesn't load) -->
+    <div class="hero-video-fallback"></div>
+  </div>
+
+  <!-- HERO CONTENT -->
+  <div class="hero-content">
+    <p class="hero-eyebrow" style="color:var(--gold-light);margin-bottom:1rem;">
+      Est. 2019 · Karachi, Pakistan · Premium Garment Manufacturer
+    </p>
+
+    <h1 class="hero-title" style="color:var(--cream);font-size:5rem;">
+      Dress the World<br>in <em style="color:var(--gold);">Excellence.</em>
+    </h1>
+
+    <p class="hero-desc" style="color:rgba(247,244,239,0.65);max-width:480px;margin-top:1.2rem;">
+      Premium Men's Formal Shirts — Bulk &amp; Wholesale. Manufacturer of premium quality shirts
+      serving retailers and wholesalers across Pakistan and internationally from Karachi.
+    </p>
+
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem;">
+      <a href="shop.html" class="hero-cta">View Products</a>
+      <a href="contact.html"
+         style="display:inline-block;border:1px solid rgba(247,244,239,0.3);color:rgba(247,244,239,0.8);padding:1rem 2.2rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;"
+         onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'"
+         onmouseout="this.style.borderColor='rgba(247,244,239,0.3)';this.style.color='rgba(247,244,239,0.8)'">
+        Get Bulk Quote
+      </a>
+      <a href="about.html"
+         style="display:inline-block;border:1px solid rgba(247,244,239,0.15);color:rgba(247,244,239,0.5);padding:1rem 2.2rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;"
+         onmouseover="this.style.color='rgba(247,244,239,0.8)';this.style.borderColor='rgba(247,244,239,0.3)'"
+         onmouseout="this.style.color='rgba(247,244,239,0.5)';this.style.borderColor='rgba(247,244,239,0.15)'">
+        Our Story
+      </a>
+    </div>
+
+    <!-- Mini stats -->
+    <div style="display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;">
+      <div>
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--gold);line-height:1;">5+</div>
+        <div style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(247,244,239,0.35);margin-top:0.2rem;">Years Experience</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--gold);line-height:1;">2K+</div>
+        <div style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(247,244,239,0.35);margin-top:0.2rem;">Happy Clients</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--gold);line-height:1;">50+</div>
+        <div style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(247,244,239,0.35);margin-top:0.2rem;">Products</div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--gold);line-height:1;">50</div>
+        <div style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(247,244,239,0.35);margin-top:0.2rem;">Min. Order Qty</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+  </div>
+
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <!-- duplicated for infinite scroll -->
+    <span class="marquee-item">Premium Egyptian Cotton</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Tailored Excellence</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Est. 2019</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Formal Wear Redefined</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">De-Shazeb Collection</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Crafted with Precision</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Premium Egyptian Cotton</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Tailored Excellence</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Est. 2019</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Formal Wear Redefined</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">De-Shazeb Collection</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Crafted with Precision</span><span class="marquee-dot">✦</span>
+  </div>
+</div>
+
+<!-- COLLECTION -->
+<section id="collection" style="background: var(--cream);">
+  <p class="section-label">The Collection</p>
+  <h2 class="section-title">Signature <em>Shirts</em></h2>
+  <div class="section-line"></div>
+
+  <div class="collection-grid">
+
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-image shirt-1">
+        <svg class="shirt-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10 L10 35 L25 40 L25 110 L75 110 L75 40 L90 35 L70 10 L60 20 Q50 28 40 20 Z" stroke="#b8962e" stroke-width="1.5" fill="none"/>
+          <line x1="50" y1="28" x2="50" y2="110" stroke="#b8962e" stroke-width="0.8" stroke-dasharray="3,4"/>
+        </svg>
+        <span class="product-img-label">Navy Oxford</span>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">The Oxford Classic</h3>
+        <p class="product-fabric">Egyptian Cotton · Oxford Weave</p>
+        <div class="size-row">
+          <button class="size-chip">S</button>
+          <button class="size-chip active">M</button>
+          <button class="size-chip">L</button>
+          <button class="size-chip">XL</button>
+          <button class="size-chip">XXL</button>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">PKR 4,500 <span>/shirt</span></div>
+          <button
+            class="add-btn snipcart-add-item"
+            data-item-id="oxford-classic"
+            data-item-name="The Oxford Classic"
+            data-item-price="4500"
+            data-item-url="/index.html"
+            data-item-description="Premium Egyptian Cotton Oxford weave formal shirt"
+            data-item-image=""
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="product-image shirt-2">
+        <svg class="shirt-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10 L10 35 L25 40 L25 110 L75 110 L75 40 L90 35 L70 10 L60 20 Q50 28 40 20 Z" stroke="#b8962e" stroke-width="1.5" fill="none"/>
+          <line x1="50" y1="28" x2="50" y2="110" stroke="#b8962e" stroke-width="0.8" stroke-dasharray="3,4"/>
+          <rect x="44" y="30" width="12" height="5" rx="1" stroke="#b8962e" stroke-width="0.8" fill="none"/>
+        </svg>
+        <span class="product-img-label">Ivory Poplin</span>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">The Ivory Poplin</h3>
+        <p class="product-fabric">100% Pima Cotton · Poplin</p>
+        <div class="size-row">
+          <button class="size-chip">S</button>
+          <button class="size-chip">M</button>
+          <button class="size-chip active">L</button>
+          <button class="size-chip">XL</button>
+          <button class="size-chip">XXL</button>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">PKR 3,800 <span>/shirt</span></div>
+          <button
+            class="add-btn snipcart-add-item"
+            data-item-id="ivory-poplin"
+            data-item-name="The Ivory Poplin"
+            data-item-price="3800"
+            data-item-url="/index.html"
+            data-item-description="100% Pima Cotton Poplin formal shirt"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <div class="product-image shirt-3">
+        <svg class="shirt-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10 L10 35 L25 40 L25 110 L75 110 L75 40 L90 35 L70 10 L60 20 Q50 28 40 20 Z" stroke="#b8962e" stroke-width="1.5" fill="none"/>
+          <line x1="50" y1="28" x2="50" y2="110" stroke="#b8962e" stroke-width="0.8" stroke-dasharray="3,4"/>
+          <path d="M35 50 Q50 55 65 50" stroke="#b8962e" stroke-width="0.6" fill="none"/>
+          <path d="M35 65 Q50 70 65 65" stroke="#b8962e" stroke-width="0.6" fill="none"/>
+        </svg>
+        <span class="product-img-label">Charcoal Herringbone</span>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Charcoal Herringbone</h3>
+        <p class="product-fabric">Wool Blend · Herringbone Weave</p>
+        <div class="size-row">
+          <button class="size-chip">S</button>
+          <button class="size-chip">M</button>
+          <button class="size-chip">L</button>
+          <button class="size-chip active">XL</button>
+          <button class="size-chip">XXL</button>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">PKR 5,200 <span>/shirt</span></div>
+          <button
+            class="add-btn snipcart-add-item"
+            data-item-id="charcoal-herringbone"
+            data-item-name="Charcoal Herringbone"
+            data-item-price="5200"
+            data-item-url="/index.html"
+            data-item-description="Wool Blend Herringbone weave formal shirt"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card">
+      <div class="product-image shirt-4">
+        <svg class="shirt-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10 L10 35 L25 40 L25 110 L75 110 L75 40 L90 35 L70 10 L60 20 Q50 28 40 20 Z" stroke="#b8962e" stroke-width="1.5" fill="none"/>
+          <line x1="50" y1="28" x2="50" y2="110" stroke="#b8962e" stroke-width="0.8" stroke-dasharray="3,4"/>
+        </svg>
+        <span class="product-img-label">Slate Blue Twill</span>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Slate Blue Twill</h3>
+        <p class="product-fabric">Egyptian Cotton · Twill Weave</p>
+        <div class="size-row">
+          <button class="size-chip active">S</button>
+          <button class="size-chip">M</button>
+          <button class="size-chip">L</button>
+          <button class="size-chip">XL</button>
+          <button class="size-chip">XXL</button>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">PKR 4,200 <span>/shirt</span></div>
+          <button
+            class="add-btn snipcart-add-item"
+            data-item-id="slate-blue-twill"
+            data-item-name="Slate Blue Twill"
+            data-item-price="4200"
+            data-item-url="/index.html"
+            data-item-description="Egyptian Cotton Twill weave formal shirt"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="product-card">
+      <div class="product-image shirt-5">
+        <svg class="shirt-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10 L10 35 L25 40 L25 110 L75 110 L75 40 L90 35 L70 10 L60 20 Q50 28 40 20 Z" stroke="#b8962e" stroke-width="1.5" fill="none"/>
+          <line x1="50" y1="28" x2="50" y2="110" stroke="#b8962e" stroke-width="0.8" stroke-dasharray="3,4"/>
+        </svg>
+        <span class="product-img-label">Champagne Linen</span>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Champagne Linen</h3>
+        <p class="product-fabric">Italian Linen · Plain Weave</p>
+        <div class="size-row">
+          <button class="size-chip">S</button>
+          <button class="size-chip active">M</button>
+          <button class="size-chip">L</button>
+          <button class="size-chip">XL</button>
+          <button class="size-chip">XXL</button>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">PKR 4,800 <span>/shirt</span></div>
+          <button
+            class="add-btn snipcart-add-item"
+            data-item-id="champagne-linen"
+            data-item-name="Champagne Linen"
+            data-item-price="4800"
+            data-item-url="/index.html"
+            data-item-description="Italian Linen plain weave formal shirt"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="product-card">
+      <div class="product-image shirt-6">
+        <svg class="shirt-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 10 L10 35 L25 40 L25 110 L75 110 L75 40 L90 35 L70 10 L60 20 Q50 28 40 20 Z" stroke="#b8962e" stroke-width="1.5" fill="none"/>
+          <line x1="50" y1="28" x2="50" y2="110" stroke="#b8962e" stroke-width="0.8" stroke-dasharray="3,4"/>
+        </svg>
+        <span class="product-img-label">Midnight Jacquard</span>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">Midnight Jacquard</h3>
+        <p class="product-fabric">Silk Blend · Jacquard Weave</p>
+        <div class="size-row">
+          <button class="size-chip">S</button>
+          <button class="size-chip">M</button>
+          <button class="size-chip active">L</button>
+          <button class="size-chip">XL</button>
+          <button class="size-chip">XXL</button>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">PKR 6,500 <span>/shirt</span></div>
+          <button
+            class="add-btn snipcart-add-item"
+            data-item-id="midnight-jacquard"
+            data-item-name="Midnight Jacquard"
+            data-item-price="6500"
+            data-item-url="/index.html"
+            data-item-description="Silk Blend Jacquard weave formal shirt"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CRAFTSMANSHIP -->
+<section id="craft" class="craft-section">
+  <div class="craft-text">
+    <p class="section-label">Our Philosophy</p>
+    <h2 class="section-title">Crafted with<br><em>Intention</em></h2>
+    <div class="section-line"></div>
+    <p class="craft-desc">
+      Every De-Shazeb shirt begins as a conversation between fabric and form.
+      We source only the finest cotton, linen, and silk blends — then cut, stitch,
+      and finish each piece by hand. No shortcuts. No compromises.
+    </p>
+    <div class="craft-stats">
+      <div>
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Years of Craft</div>
+      </div>
+      <div>
+        <div class="stat-num">42</div>
+        <div class="stat-label">Steps Per Shirt</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Premium Fabrics</div>
+      </div>
+      <div>
+        <div class="stat-num">5K+</div>
+        <div class="stat-label">Satisfied Clients</div>
+      </div>
+    </div>
+  </div>
+  <div class="craft-visual">
+    <div class="craft-grid"></div>
+    <div class="craft-icon">✦</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="about" class="testimonials-section">
+  <p class="section-label">Customer Stories</p>
+  <h2 class="section-title">Worn with <em>Pride</em></h2>
+  <div class="section-line"></div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <p class="testimonial-text">
+        I wore the Oxford Classic to my corporate presentation. Three clients asked
+        where I got my shirt. De-Shazeb is simply in a league of its own.
+      </p>
+      <div class="testimonial-author">Arsalan Mirza</div>
+      <div class="testimonial-location">Karachi · Corporate Director</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">
+        The fabric quality is exceptional — soft yet structured. After two years
+        of wear, my De-Shazeb shirts still look pristine. Worth every rupee.
+      </p>
+      <div class="testimonial-author">Faisal Mahmood</div>
+      <div class="testimonial-location">Lahore · Barrister-at-Law</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">
+        As someone who attends formal events regularly, I need shirts that hold
+        their elegance through a long day. De-Shazeb delivers consistently.
+      </p>
+      <div class="testimonial-author">Omar Khalid</div>
+      <div class="testimonial-location">Islamabad · Senior Executive</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="contact" class="newsletter-section">
+  <p class="section-label">Stay in Touch</p>
+  <h2 class="section-title" style="color: var(--cream);">New Arrivals &<br><em>Exclusive Offers</em></h2>
+  <div class="section-line"></div>
+  <p class="newsletter-desc">Be the first to know about new collections, fabric stories, and styling guides.</p>
+  <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+    <input class="newsletter-input" type="email" placeholder="Your email address" required />
+    <button class="newsletter-btn" type="submit">Subscribe</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div style="margin-bottom: 1rem;">
+        <img src="logo.png" alt="De-Shazeb" style="height: 80px; width: auto;" />
+      </div>
+      <p class="footer-tagline">Premium men's formal shirts manufacturer. Based in Karachi, Pakistan. Est. 2019.</p>
+      <p style="font-size:0.75rem;line-height:1.9;color:#7a7570;">
+        <a href="tel:+923332518070" style="color:var(--teal, #1a6b72);text-decoration:none;font-weight:500;">+92-333-2518070</a><br>
+        <a href="mailto:info@de-shazeb.com" style="color:var(--teal, #1a6b72);text-decoration:none;font-weight:500;">info@de-shazeb.com</a><br>
+        Plot 210/1, 97 Street 5, Sector I<br>Manzoor Colony, Karachi
+      </p>
+    </div>
+    <div>
+      <p class="footer-heading">Collection</p>
+      <ul class="footer-links">
+        <li><a href="#collection">Oxford Shirts</a></li>
+        <li><a href="#collection">Poplin Shirts</a></li>
+        <li><a href="#collection">Twill Shirts</a></li>
+        <li><a href="#collection">Linen Shirts</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Company</p>
+      <ul class="footer-links">
+        <li><a href="#craft">Our Story</a></li>
+        <li><a href="#about">Testimonials</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Support</p>
+      <ul class="footer-links">
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Care Instructions</a></li>
+        <li><a href="#">Track Order</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <span class="footer-gold">De-Shazeb</span>. All rights reserved.</span>
+    <span>Crafted with precision in Pakistan</span>
+  </div>
+</footer>
+
+<!-- Snipcart -->
+<div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY_HERE" data-currency="pkr"></div>
+<script async src="https://cdn.snipcart.com/themes/v3.3.2/default/snipcart.js"></script>
+
+<script>
+  // Size chip toggle
+  document.querySelectorAll('.size-row').forEach(row => {
+    row.querySelectorAll('.size-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        row.querySelectorAll('.size-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
+  });
+
+  // Newsletter
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Subscribed ✓';
+    btn.style.background = '#3B6D11';
+    e.target.reset();
+  }
+</script>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/923332518070" target="_blank"
+   style="position:fixed;bottom:1.5rem;right:1.5rem;width:52px;height:52px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.4);z-index:999;transition:transform 0.2s;"
+   onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  💬
+</a>
+
+</body>
+</html>
