@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop Men's Formal Shirts | DE-SHAZEB Pakistan</title>
+  <meta name="description" content="Buy premium men's formal shirts online in Pakistan. Slim fit, executive and cotton shirts. Fast nationwide delivery. DE-SHAZEB Est. 2019 Karachi." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.2/default/snipcart.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a08;
+      --cream: #f7f4ef;
+      --gold: #b8962e;
+      --gold-light: #d4af5a;
+      --teal: #1a6b72;
+      --teal-light: #2a9ba5;
+      --warm-gray: #7a7570;
+      --border: #e0dbd2;
+      --white: #ffffff;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--black); font-weight: 300; }
+
+    /* TOPBAR */
+    .topbar {
+      background: var(--black);
+      color: rgba(247,244,239,0.7);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+      padding: 0.55rem 1rem;
+    }
+    .topbar a { color: var(--gold); text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(247,244,239,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem; font-weight: 400; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .wa-btn {
+      background: #25d366; color: white; border: none;
+      padding: 0.5rem 1rem; font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-body);
+      transition: background 0.2s;
+    }
+    .wa-btn:hover { background: #1da851; }
+    .cart-btn {
+      background: none; border: 1px solid var(--black);
+      padding: 0.5rem 1.2rem; font-family: var(--font-body); font-size: 0.7rem;
+      font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.2s; color: var(--black);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .cart-btn:hover { background: var(--black); color: var(--cream); }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: var(--black);
+      padding: 3.5rem 4rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--cream);
+    }
+    .page-header h1 em { font-style: italic; color: var(--gold); }
+    .page-header p { color: rgba(247,244,239,0.45); font-size: 0.85rem; margin-top: 0.4rem; }
+    .breadcrumb { font-size: 0.7rem; letter-spacing: 0.12em; color: rgba(247,244,239,0.3); }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+
+    /* DELIVERY STRIP */
+    .delivery-strip {
+      background: var(--teal);
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 0.75rem 2rem;
+      flex-wrap: wrap;
+    }
+    .delivery-strip span {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.85);
+      text-transform: uppercase;
+    }
+    .delivery-strip strong { color: white; }
+
+    /* SHOP LAYOUT */
+    .shop-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 0;
+      min-height: 80vh;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      background: var(--white);
+      border-right: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      position: sticky;
+      top: 68px;
+      height: fit-content;
+    }
+    .sidebar-heading {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 1rem;
+      margin-top: 1.5rem;
+    }
+    .sidebar-heading:first-child { margin-top: 0; }
+    .filter-btn {
+      display: block; width: 100%; text-align: left;
+      background: none; border: none; padding: 0.45rem 0.7rem;
+      font-family: var(--font-body); font-size: 0.82rem;
+      cursor: pointer; color: var(--black); transition: all 0.15s;
+      border-radius: 3px;
+    }
+    .filter-btn:hover { background: var(--cream); }
+    .filter-btn.active { background: var(--black); color: var(--cream); }
+    .size-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem; }
+    .size-filter {
+      background: none; border: 1px solid var(--border);
+      padding: 0.35rem 0; text-align: center;
+      font-family: var(--font-body); font-size: 0.72rem;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .size-filter:hover, .size-filter.active {
+      background: var(--black); color: var(--cream); border-color: var(--black);
+    }
+    .sidebar-divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+
+    /* PRODUCTS AREA */
+    .products-area { padding: 2rem 2.5rem; }
+    .products-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .products-count { font-size: 0.8rem; color: var(--warm-gray); }
+    .sort-select {
+      font-family: var(--font-body); font-size: 0.78rem;
+      border: 1px solid var(--border); padding: 0.4rem 0.8rem;
+      background: var(--white); cursor: pointer; outline: none;
+    }
+
+    /* PRODUCT GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .product-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+    .product-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(10,10,8,0.09); }
+    .product-img-wrap { position: relative; overflow: hidden; aspect-ratio: 3/4; }
+    .product-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.04); }
+    .product-badge {
+      position: absolute; top: 0.75rem; left: 0.75rem;
+      font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 0.3rem 0.6rem; font-weight: 500;
+    }
+    .badge-bestseller { background: var(--gold); color: var(--black); }
+    .badge-new { background: var(--teal); color: white; }
+    .badge-sale { background: #c0392b; color: white; }
+
+    .product-body { padding: 1rem 1.1rem 1.3rem; }
+    .product-name {
+      font-family: var(--font-display); font-size: 1.15rem;
+      font-weight: 400; margin-bottom: 0.2rem; line-height: 1.3;
+    }
+    .product-stars { color: var(--gold); font-size: 0.7rem; margin-bottom: 0.7rem; }
+    .product-stars span { color: var(--warm-gray); font-size: 0.68rem; margin-left: 3px; }
+    .price-row { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.8rem; }
+    .price-main {
+      font-family: var(--font-display); font-size: 1.3rem;
+      font-weight: 500; color: var(--teal);
+    }
+    .price-old {
+      font-size: 0.82rem; color: var(--warm-gray);
+      text-decoration: line-through;
+    }
+    .price-bulk {
+      font-size: 0.68rem; color: var(--gold);
+      background: rgba(184,150,46,0.08);
+      padding: 0.2rem 0.5rem; border-radius: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Size row on card */
+    .card-sizes { display: flex; gap: 0.3rem; margin-bottom: 0.9rem; }
+    .card-size {
+      font-size: 0.62rem; padding: 0.25rem 0.45rem;
+      border: 1px solid var(--border); cursor: pointer;
+      transition: all 0.15s; background: none; font-family: var(--font-body);
+    }
+    .card-size:hover, .card-size.active {
+      background: var(--black); color: var(--cream); border-color: var(--black);
+    }
+
+    .add-to-cart-btn {
+      width: 100%; background: var(--black); color: var(--cream);
+      border: none; padding: 0.65rem; font-family: var(--font-body);
+      font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .add-to-cart-btn:hover { background: var(--teal); }
+
+    .wa-order-btn {
+      width: 100%; background: none; color: #25d366;
+      border: 1px solid #25d366; padding: 0.5rem; font-family: var(--font-body);
+      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; margin-top: 0.4rem; transition: all 0.2s;
+    }
+    .wa-order-btn:hover { background: #25d366; color: white; }
+
+    /* FOOTER */
+    footer {
+      background: #060604;
+      color: rgba(247,244,239,0.4);
+      padding: 3.5rem 4rem 2rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 3rem;
+    }
+    .footer-tagline { font-size: 0.8rem; line-height: 1.7; margin: 0.75rem 0 1rem; max-width: 220px; }
+    .footer-contact { font-size: 0.78rem; line-height: 1.9; }
+    .footer-contact a { color: var(--gold); text-decoration: none; }
+    .footer-heading {
+      font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--cream); margin-bottom: 1rem;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.55rem; }
+    .footer-links a { font-size: 0.8rem; color: rgba(247,244,239,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;
+      display: flex; justify-content: space-between; font-size: 0.72rem;
+    }
+    .footer-gold { color: var(--gold); }
+
+    @media (max-width: 960px) {
+      nav { padding: 0.9rem 1.2rem; }
+      .nav-links { display: none; }
+      .shop-layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .products-area { padding: 1.5rem; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .page-header { padding: 2.5rem 1.5rem; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 2.5rem 1.5rem 1.5rem; }
+      .delivery-strip { gap: 1rem; }
+    }
+    @media (max-width: 560px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  🚚 Free Delivery Above Rs 2,000 &nbsp;|&nbsp; Easy Returns — 7 Days &nbsp;|&nbsp;
+  <a href="https://wa.me/923332518070">WhatsApp: +92-333-2518070</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo" style="display:flex;align-items:center;">
+    <img src="logo.png" alt="De-Shazeb" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html" class="active">Shop</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="https://wa.me/923332518070" class="wa-btn" target="_blank">
+      💬 WhatsApp
+    </a>
+    <button class="cart-btn snipcart-checkout">
+      🛒 Cart <span class="snipcart-items-count"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div>
+    <p class="breadcrumb"><a href="index.html">Home</a> › Shop</p>
+    <h1>Men's Formal <em>Shirts</em></h1>
+    <p>Premium quality crafted for the modern professional. Delivery across Pakistan.</p>
+  </div>
+  <div style="text-align:right;">
+    <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(247,244,239,0.3);">Est. 2019 · Karachi</p>
+  </div>
+</div>
+
+<!-- DELIVERY STRIP -->
+<div class="delivery-strip">
+  <span>🚚 <strong>Free delivery</strong> above Rs 2,000</span>
+  <span>🔒 <strong>Secure checkout</strong></span>
+  <span>🔄 <strong>7-day</strong> easy returns</span>
+  <span>✅ <strong>Premium</strong> quality guaranteed</span>
+  <span>💬 <strong>WhatsApp</strong> support</span>
+</div>
+
+<!-- SHOP LAYOUT -->
+<div class="shop-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <p class="sidebar-heading">Categories</p>
+    <button class="filter-btn active" data-filter="all">All Shirts</button>
+    <button class="filter-btn" data-filter="formal">Formal Shirts</button>
+    <button class="filter-btn" data-filter="party">Party Wear</button>
+    <button class="filter-btn" data-filter="casual">Casual Shirts</button>
+    <button class="filter-btn" data-filter="sale">Sale Items</button>
+
+    <div class="sidebar-divider"></div>
+
+    <p class="sidebar-heading">Sizes</p>
+    <div class="size-grid">
+      <button class="size-filter" data-size="S">S</button>
+      <button class="size-filter" data-size="M">M</button>
+      <button class="size-filter" data-size="L">L</button>
+      <button class="size-filter" data-size="XL">XL</button>
+      <button class="size-filter" data-size="XXL">XXL</button>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <p class="sidebar-heading">Bulk Orders</p>
+    <p style="font-size:0.78rem;line-height:1.7;color:var(--warm-gray);margin-bottom:1rem;">
+      MOQ 50 pieces per design. Custom colors & branding available.
+    </p>
+    <a href="https://wa.me/923332518070?text=Hi, I'd like to place a bulk order."
+       target="_blank"
+       style="display:block;background:var(--black);color:var(--cream);text-align:center;padding:0.65rem;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;"
+       onmouseover="this.style.background='#1a6b72'" onmouseout="this.style.background='var(--black)'">
+      Get Bulk Quote
+    </a>
+  </aside>
+
+  <!-- PRODUCTS -->
+  <div class="products-area">
+    <div class="products-toolbar">
+      <p class="products-count" id="product-count">Showing <strong>12</strong> products</p>
+      <select class="sort-select" id="sort-select">
+        <option value="featured">Sort: Featured</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="newest">Newest First</option>
+      </select>
+    </div>
+
+    <div class="product-grid" id="product-grid">
+
+      <!-- 1 -->
+      <div class="product-card" data-category="formal" data-price="1200" data-id="classic-white">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600" alt="Classic White Formal Shirt" loading="lazy" />
+          <span class="product-badge badge-bestseller">Best Seller</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Classic White Formal Shirt</h3>
+          <div class="product-stars">★★★★★ <span>(24 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 1,200</span>
+            <span class="price-bulk">Bulk: Rs 950 (100+ pcs)</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size active">S</button>
+            <button class="card-size">M</button>
+            <button class="card-size">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="classic-white"
+            data-item-name="Classic White Formal Shirt"
+            data-item-price="1200"
+            data-item-url="/shop.html"
+            data-item-description="Classic white formal shirt. Premium cotton fabric. Best seller."
+            data-item-image="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Classic White Formal Shirt', 'Rs 1,200')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="product-card" data-category="formal" data-price="1450" data-id="navy-executive">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600" alt="Navy Executive Shirt" loading="lazy" />
+          <span class="product-badge badge-new">New</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Navy Executive Shirt</h3>
+          <div class="product-stars">★★★★★ <span>(18 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 1,450</span>
+            <span class="price-bulk">Bulk: Rs 1,100 (100+ pcs)</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size">S</button>
+            <button class="card-size active">M</button>
+            <button class="card-size">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="navy-executive"
+            data-item-name="Navy Executive Shirt"
+            data-item-price="1450"
+            data-item-url="/shop.html"
+            data-item-description="Navy blue slim fit executive formal shirt."
+            data-item-image="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Navy Executive Shirt', 'Rs 1,450')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="product-card" data-category="formal" data-price="1350" data-id="charcoal-business">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=600" alt="Charcoal Business Shirt" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Charcoal Business Shirt</h3>
+          <div class="product-stars">★★★★☆ <span>(9 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 1,350</span>
+            <span class="price-bulk">Bulk: Rs 1,050 (100+ pcs)</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size">S</button>
+            <button class="card-size">M</button>
+            <button class="card-size active">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="charcoal-business"
+            data-item-name="Charcoal Business Shirt"
+            data-item-price="1350"
+            data-item-url="/shop.html"
+            data-item-description="Charcoal grey business formal shirt."
+            data-item-image="https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Charcoal Business Shirt', 'Rs 1,350')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="product-card" data-category="party" data-price="1600" data-id="maroon-party">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=600" alt="Maroon Party Wear Shirt" loading="lazy" />
+          <span class="product-badge badge-sale">Sale −20%</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Maroon Party Wear Shirt</h3>
+          <div class="product-stars">★★★★★ <span>(15 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 1,600</span>
+            <span class="price-old">Rs 2,000</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size">S</button>
+            <button class="card-size active">M</button>
+            <button class="card-size">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="maroon-party"
+            data-item-name="Maroon Party Wear Shirt"
+            data-item-price="1600"
+            data-item-url="/shop.html"
+            data-item-description="Maroon party wear shirt. Was Rs 2,000 now Rs 1,600."
+            data-item-image="https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Maroon Party Wear Shirt', 'Rs 1,600 (Sale)')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="product-card" data-category="formal" data-price="1100" data-id="light-blue-office">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600" alt="Light Blue Office Shirt" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Light Blue Office Shirt</h3>
+          <div class="product-stars">★★★★☆ <span>(11 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 1,100</span>
+            <span class="price-bulk">Bulk: Rs 870 (100+ pcs)</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size active">S</button>
+            <button class="card-size">M</button>
+            <button class="card-size">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="light-blue-office"
+            data-item-name="Light Blue Office Shirt"
+            data-item-price="1100"
+            data-item-url="/shop.html"
+            data-item-description="Light blue office formal shirt."
+            data-item-image="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Light Blue Office Shirt', 'Rs 1,100')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="product-card" data-category="formal" data-price="1500" data-id="black-formal">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600" alt="Black Formal Shirt" loading="lazy" />
+          <span class="product-badge badge-bestseller">Best Seller</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Black Formal Shirt</h3>
+          <div class="product-stars">★★★★★ <span>(31 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 1,500</span>
+            <span class="price-bulk">Bulk: Rs 1,150 (100+ pcs)</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size">S</button>
+            <button class="card-size active">M</button>
+            <button class="card-size">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="black-formal"
+            data-item-name="Black Formal Shirt"
+            data-item-price="1500"
+            data-item-url="/shop.html"
+            data-item-description="Classic black formal shirt. Best seller."
+            data-item-image="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Black Formal Shirt', 'Rs 1,500')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="product-card" data-category="sale casual" data-price="980" data-id="striped-cotton">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?w=600" alt="Striped Cotton Shirt" loading="lazy" />
+          <span class="product-badge badge-sale">Sale −18%</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Striped Cotton Shirt</h3>
+          <div class="product-stars">★★★★☆ <span>(7 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 980</span>
+            <span class="price-old">Rs 1,200</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size">S</button>
+            <button class="card-size active">M</button>
+            <button class="card-size">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="striped-cotton"
+            data-item-name="Striped Cotton Shirt"
+            data-item-price="980"
+            data-item-url="/shop.html"
+            data-item-description="Striped cotton shirt. Was Rs 1,200 now Rs 980."
+            data-item-image="https://images.unsplash.com/photo-1603252109303-2751441dd157?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Striped Cotton Shirt', 'Rs 980 (Sale)')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="product-card" data-category="formal" data-price="1300" data-id="beige-linen">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=600" alt="Beige Linen Shirt" loading="lazy" />
+          <span class="product-badge badge-new">New</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Beige Linen Shirt</h3>
+          <div class="product-stars">★★★★★ <span>(6 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 1,300</span>
+            <span class="price-bulk">Bulk: Rs 1,020 (100+ pcs)</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size">S</button>
+            <button class="card-size">M</button>
+            <button class="card-size active">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="beige-linen"
+            data-item-name="Beige Linen Shirt"
+            data-item-price="1300"
+            data-item-url="/shop.html"
+            data-item-description="Beige linen formal shirt. New arrival."
+            data-item-image="https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Beige Linen Shirt', 'Rs 1,300')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="product-card" data-category="party" data-price="1800" data-id="royal-blue">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1566479179817-c0e5c0b45a69?w=600" alt="Royal Blue Ceremonial Shirt" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Royal Blue Ceremonial Shirt</h3>
+          <div class="product-stars">★★★★★ <span>(4 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 1,800</span>
+            <span class="price-bulk">Bulk: Rs 1,400 (100+ pcs)</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size">S</button>
+            <button class="card-size active">M</button>
+            <button class="card-size">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="royal-blue"
+            data-item-name="Royal Blue Ceremonial Shirt"
+            data-item-price="1800"
+            data-item-url="/shop.html"
+            data-item-description="Royal blue ceremonial formal shirt."
+            data-item-image="https://images.unsplash.com/photo-1566479179817-c0e5c0b45a69?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Royal Blue Ceremonial Shirt', 'Rs 1,800')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="product-card" data-category="sale formal" data-price="1250" data-id="grey-textured">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=600" alt="Grey Textured Shirt" loading="lazy" />
+          <span class="product-badge badge-sale">Sale −17%</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Grey Textured Shirt</h3>
+          <div class="product-stars">★★★★☆ <span>(8 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 1,250</span>
+            <span class="price-old">Rs 1,500</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size">S</button>
+            <button class="card-size">M</button>
+            <button class="card-size active">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="grey-textured"
+            data-item-name="Grey Textured Shirt"
+            data-item-price="1250"
+            data-item-url="/shop.html"
+            data-item-description="Grey textured shirt. Was Rs 1,500 now Rs 1,250."
+            data-item-image="https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Grey Textured Shirt', 'Rs 1,250 (Sale)')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="product-card" data-category="party" data-price="2000" data-id="ivory-wedding">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600" alt="Ivory Wedding Shirt" loading="lazy" />
+          <span class="product-badge badge-new">New</span>
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Ivory Wedding Shirt</h3>
+          <div class="product-stars">★★★★★ <span>(3 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 2,000</span>
+            <span class="price-bulk">Bulk: Rs 1,600 (100+ pcs)</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size">S</button>
+            <button class="card-size active">M</button>
+            <button class="card-size">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="ivory-wedding"
+            data-item-name="Ivory Wedding Shirt"
+            data-item-price="2000"
+            data-item-url="/shop.html"
+            data-item-description="Ivory wedding ceremonial shirt."
+            data-item-image="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Ivory Wedding Shirt', 'Rs 2,000')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="product-card" data-category="casual" data-price="1100" data-id="dark-green">
+        <div class="product-img-wrap">
+          <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600" alt="Dark Green Casual Shirt" loading="lazy" />
+        </div>
+        <div class="product-body">
+          <h3 class="product-name">Dark Green Casual Shirt</h3>
+          <div class="product-stars">★★★★☆ <span>(5 reviews)</span></div>
+          <div class="price-row">
+            <span class="price-main">Rs 1,100</span>
+            <span class="price-bulk">Bulk: Rs 870 (100+ pcs)</span>
+          </div>
+          <div class="card-sizes">
+            <button class="card-size">S</button>
+            <button class="card-size">M</button>
+            <button class="card-size active">L</button>
+            <button class="card-size">XL</button>
+            <button class="card-size">XXL</button>
+          </div>
+          <button class="add-to-cart-btn snipcart-add-item"
+            data-item-id="dark-green"
+            data-item-name="Dark Green Casual Shirt"
+            data-item-price="1100"
+            data-item-url="/shop.html"
+            data-item-description="Dark green casual shirt."
+            data-item-image="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600"
+            data-item-custom1-name="Size"
+            data-item-custom1-options="S|M|L|XL|XXL">
+            Add to Cart
+          </button>
+          <button class="wa-order-btn" onclick="orderViaWhatsApp('Dark Green Casual Shirt', 'Rs 1,100')">
+            💬 Order via WhatsApp
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+  </div><!-- /products-area -->
+</div><!-- /shop-layout -->
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <img src="logo.png" alt="De-Shazeb" style="height:60px;width:auto;margin-bottom:0.75rem;" />
+      <p class="footer-tagline">Premium men's formal shirts manufacturer. Based in Karachi, Pakistan. Est. 2019.</p>
+      <div class="footer-contact">
+        <a href="tel:+923332518070">+92-333-2518070</a><br />
+        <a href="mailto:info@de-shazeb.com">info@de-shazeb.com</a><br />
+        Plot 210/1, 97 Street 5, Sector I<br />
+        Manzoor Colony, Karachi, Pakistan
+      </div>
+    </div>
+    <div>
+      <p class="footer-heading">Shop</p>
+      <ul class="footer-links">
+        <li><a href="shop.html">All Shirts</a></li>
+        <li><a href="shop.html">Formal Shirts</a></li>
+        <li><a href="shop.html">Party Wear</a></li>
+        <li><a href="shop.html">Sale Items</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Company</p>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Return Policy</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Support</p>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/923332518070" target="_blank">WhatsApp Us</a></li>
+        <li><a href="mailto:info@de-shazeb.com">Email Us</a></li>
+        <li><a href="https://www.facebook.com/people/De-Shazeb/61584268585183/" target="_blank">Facebook</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <span class="footer-gold">De-Shazeb</span>. All rights reserved. · Karachi, Pakistan</span>
+    <span>Premium Men's Formal Shirts · Est. 2019</span>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/923332518070" target="_blank"
+   style="position:fixed;bottom:1.5rem;right:1.5rem;width:52px;height:52px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.4);z-index:999;transition:transform 0.2s;"
+   onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  💬
+</a>
+
+<!-- Snipcart -->
+<div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY_HERE" data-currency="pkr"></div>
+<script async src="https://cdn.snipcart.com/themes/v3.3.2/default/snipcart.js"></script>
+
+<script>
+  // Size chip toggle within each card
+  document.querySelectorAll('.card-sizes').forEach(row => {
+    row.querySelectorAll('.card-size').forEach(chip => {
+      chip.addEventListener('click', e => {
+        e.stopPropagation();
+        row.querySelectorAll('.card-size').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
+  });
+
+  // Category filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      filterProducts(filter, null);
+    });
+  });
+
+  function filterProducts(category, sort) {
+    const cards = document.querySelectorAll('.product-card');
+    let visible = 0;
+    cards.forEach(card => {
+      const cat = card.dataset.category || '';
+      const show = category === 'all' || cat.includes(category);
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    document.getElementById('product-count').innerHTML = `Showing <strong>${visible}</strong> products`;
+  }
+
+  // Sort
+  document.getElementById('sort-select').addEventListener('change', function() {
+    const grid = document.getElementById('product-grid');
+    const cards = [...grid.querySelectorAll('.product-card')];
+    if (this.value === 'low') {
+      cards.sort((a, b) => +a.dataset.price - +b.dataset.price);
+    } else if (this.value === 'high') {
+      cards.sort((a, b) => +b.dataset.price - +a.dataset.price);
+    }
+    cards.forEach(c => grid.appendChild(c));
+  });
+
+  // WhatsApp order
+  function orderViaWhatsApp(product, price) {
+    const msg = encodeURIComponent(`Hi De-Shazeb! I'd like to order:\n\n*${product}*\nPrice: ${price}\n\nPlease let me know availability and payment details.`);
+    window.open(`https://wa.me/923332518070?text=${msg}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
