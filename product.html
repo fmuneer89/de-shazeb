@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product | DE-SHAZEB</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.2/default/snipcart.css" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#0a0a08;--cream:#f7f4ef;--gold:#b8962e;
+      --teal:#1a6b72;--gray:#7a7570;--border:#e0dbd2;--white:#fff;
+      --fd:'Cormorant Garamond',Georgia,serif;--fb:'Jost',sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);background:var(--cream);color:var(--black);font-weight:300}
+
+    .topbar{background:var(--black);color:rgba(247,244,239,.6);font-size:.7rem;letter-spacing:.1em;text-align:center;padding:.5rem 1rem}
+    .topbar a{color:var(--gold);text-decoration:none}
+    nav{position:sticky;top:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:.9rem 3rem;background:rgba(247,244,239,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .nav-logo img{height:42px;width:auto}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--black);text-decoration:none;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--teal)}
+    .nav-right{display:flex;gap:.8rem;align-items:center}
+    .btn-wa{background:#25d366;color:#fff;padding:.45rem 1rem;font-family:var(--fb);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+    .btn-wa:hover{background:#1da851}
+    .btn-cart{background:none;border:1px solid var(--black);color:var(--black);padding:.45rem 1rem;font-family:var(--fb);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+    .btn-cart:hover{background:var(--black);color:var(--cream)}
+
+    .breadcrumb-bar{background:var(--white);border-bottom:1px solid var(--border);padding:.65rem 4rem;font-size:.7rem;color:var(--gray);display:flex;gap:.5rem;align-items:center}
+    .breadcrumb-bar a{color:var(--gray);text-decoration:none}
+    .breadcrumb-bar a:hover{color:var(--teal)}
+
+    /* PRODUCT LAYOUT */
+    .product-wrap{max-width:1200px;margin:0 auto;padding:2.5rem 3rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+
+    /* ── GALLERY WITH ZOOM ── */
+    .gallery{position:sticky;top:80px}
+    .zoom-wrapper{position:relative;display:block}
+    .zoom-container{
+      position:relative;aspect-ratio:3/4;
+      background:var(--white);border:1px solid var(--border);
+      overflow:hidden;cursor:crosshair;
+    }
+    .zoom-container img.main-img{
+      width:100%;height:100%;object-fit:cover;
+      display:block;pointer-events:none;
+    }
+    .zoom-lens{
+      position:absolute;
+      width:90px;height:90px;
+      border:2px solid rgba(10,10,8,.5);
+      background:rgba(255,255,255,.08);
+      pointer-events:none;
+      display:none;
+      z-index:10;
+    }
+    /* Zoom result — full overlay inside the image itself */
+    .zoom-result{
+      position:absolute;
+      inset:0;
+      overflow:hidden;
+      display:none;
+      z-index:5;
+      pointer-events:none;
+      border:2px solid var(--border);
+    }
+    .zoom-result-img{
+      position:absolute;
+      display:block;
+      pointer-events:none;
+      max-width:none;
+    }
+    /* Small label shown on hover */
+    .zoom-hint{
+      position:absolute;
+      bottom:.7rem;right:.7rem;
+      background:rgba(10,10,8,.6);
+      color:rgba(247,244,239,.8);
+      font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;
+      padding:.25rem .6rem;
+      z-index:20;pointer-events:none;
+    }
+    .img-badge{position:absolute;top:.8rem;left:.8rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.28rem .65rem;font-weight:500;z-index:2}
+    .b-best{background:var(--gold);color:var(--black)}
+    .b-new{background:var(--teal);color:#fff}
+    .b-sale{background:#c0392b;color:#fff}
+    .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-top:.6rem}
+    .thumb{aspect-ratio:1;overflow:hidden;border:2px solid transparent;cursor:pointer;transition:border-color .2s}
+    .thumb.active{border-color:var(--black)}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+
+    /* ── INFO ── */
+    .info-sku-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+    .info-sku{font-size:.68rem;color:var(--gray);letter-spacing:.1em}
+    .info-label{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem}
+    .info-name{font-family:var(--fd);font-size:2.5rem;font-weight:300;line-height:1.1;margin-bottom:1rem}
+    .stars-row{display:flex;align-items:center;gap:.5rem;margin-bottom:1.2rem}
+    .stars{color:var(--gold);font-size:.9rem;letter-spacing:2px}
+    .stars-count{font-size:.72rem;color:var(--gray)}
+
+    /* ORDER TOGGLE */
+    .order-toggle{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);margin-bottom:1.3rem;overflow:hidden}
+    .toggle-btn{background:var(--white);border:none;padding:.8rem .5rem;font-family:var(--fb);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;color:var(--gray);text-align:center;line-height:1.5}
+    .toggle-btn small{display:block;font-size:.6rem;letter-spacing:0;text-transform:none;margin-top:.1rem;opacity:.75}
+    .toggle-btn.active{background:var(--black);color:var(--cream)}
+
+    .retail-price-box{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--teal);padding:1.1rem 1.3rem;margin-bottom:1.3rem}
+    .price-now{font-family:var(--fd);font-size:2.4rem;color:var(--teal);line-height:1}
+    .price-was{font-size:.95rem;color:var(--gray);text-decoration:line-through;margin-left:.5rem}
+    .price-unit{font-size:.7rem;color:var(--gray);margin-top:.3rem}
+    .delivery-note{font-size:.72rem;background:rgba(26,107,114,.07);border:1px solid rgba(26,107,114,.2);color:var(--teal);padding:.45rem .75rem;margin-top:.75rem;line-height:1.5}
+    .bulk-price-box{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1.1rem 1.3rem;margin-bottom:1.3rem}
+    .bulk-intro{font-size:.78rem;color:var(--gray);margin-bottom:.8rem;line-height:1.7}
+    .bulk-intro strong{color:var(--black)}
+    .price-divider{height:1px;background:var(--border);margin:.8rem 0}
+    .bulk-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem}
+    .bulk-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem}
+    .bulk-tier{border:1px solid var(--border);padding:.55rem .4rem;text-align:center}
+    .bulk-tier.highlight{border-color:var(--gold);background:rgba(184,150,46,.05)}
+    .bulk-qty{font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gray)}
+    .bulk-price-val{font-family:var(--fd);font-size:1.05rem;color:var(--gold);margin-top:.1rem}
+
+    /* COLLAR SIZE BUTTONS */
+    .option-block{margin-bottom:1.3rem}
+    .opt-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.55rem;display:flex;justify-content:space-between;align-items:center}
+    .opt-label span{font-size:.75rem;color:var(--gray);letter-spacing:0;text-transform:none;font-weight:300}
+    .opt-label a{font-size:.68rem;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(26,107,114,.3)}
+    .collar-sizes{display:flex;gap:.35rem;flex-wrap:wrap}
+    .csz{
+      min-width:50px;height:44px;padding:0 .6rem;
+      display:flex;align-items:center;justify-content:center;
+      border:1.5px solid var(--border);background:var(--white);
+      font-family:var(--fb);font-size:.78rem;cursor:pointer;
+      transition:all .2s;position:relative;white-space:nowrap;
+    }
+    .csz:hover{border-color:var(--black)}
+    .csz.active{background:var(--black);color:var(--cream);border-color:var(--black)}
+    .csz-oos{
+      opacity:.4;cursor:not-allowed!important;
+      background:var(--cream)!important;color:var(--gray)!important;
+      border-color:var(--border)!important;
+    }
+    .csz-oos::after{
+      content:'';position:absolute;
+      width:130%;height:1.5px;
+      background:var(--gray);
+      transform:rotate(-45deg);
+      top:50%;left:-15%;
+      pointer-events:none;
+    }
+
+    /* QTY hidden */
+    #qty{display:none}
+
+    /* CTA */
+    .cta-stack{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.3rem}
+    .btn-black{background:var(--black);color:var(--cream);border:none;padding:1rem;font-family:var(--fb);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .2s;width:100%}
+    .btn-black:hover{background:var(--teal)}
+    .btn-black:disabled{background:#ccc;cursor:not-allowed}
+    .btn-green{background:#25d366;color:#fff;border:none;padding:1rem;font-family:var(--fb);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s;width:100%}
+    .btn-green:hover{background:#1da851}
+    .btn-outline{background:none;border:1px solid var(--black);color:var(--black);padding:.9rem;font-family:var(--fb);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .2s;width:100%}
+    .btn-outline:hover{background:var(--black);color:var(--cream)}
+
+    /* TRUST */
+    .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-bottom:1.4rem}
+    .trust-item{text-align:center;padding:.65rem .3rem;border:1px solid var(--border);background:var(--white)}
+    .trust-icon{font-size:.95rem}
+    .trust-text{font-size:.6rem;color:var(--gray);margin-top:.2rem;line-height:1.4}
+
+    /* PRODUCT DETAILS SECTION — inspired by reference */
+    .product-details-section{margin-top:1.5rem;border-top:1px solid var(--border);padding-top:1.5rem}
+    .pd-title{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--black);margin-bottom:.75rem}
+    .pd-bullets{list-style:none;margin-bottom:1.5rem}
+    .pd-bullets li{display:flex;align-items:flex-start;gap:.5rem;font-size:.83rem;color:var(--gray);line-height:1.7;padding:.2rem 0}
+    .pd-bullets li::before{content:'•';color:var(--teal);font-size:1rem;flex-shrink:0;line-height:1.5}
+    .care-text{font-size:.82rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem}
+    .care-text strong{color:var(--black);font-weight:500}
+    .divider-line{height:1px;background:var(--border);margin:1.2rem 0}
+
+    /* SPECS TABLE */
+    .specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+    .spec-row{border-bottom:1px solid var(--border);padding:.55rem 0}
+    .spec-key{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-bottom:.15rem}
+    .spec-val{font-size:.83rem;color:var(--black)}
+
+    /* TABS */
+    .tab-nav{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.3rem}
+    .tab-btn{background:none;border:none;padding:.65rem 1rem;font-family:var(--fb);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;color:var(--gray);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+    .tab-btn.active{color:var(--black);border-bottom-color:var(--black)}
+    .tab-panel{display:none;font-size:.83rem;line-height:1.9;color:var(--gray)}
+    .tab-panel.active{display:block}
+    .spec-table{width:100%;border-collapse:collapse}
+    .spec-table tr{border-bottom:1px solid var(--border)}
+    .spec-table td{padding:.55rem .6rem;font-size:.81rem}
+    .spec-table td:first-child{color:var(--black);font-weight:400;width:42%}
+    .tab-panel ul{padding-left:1.1rem}
+    .tab-panel li{margin-bottom:.4rem}
+
+    /* RELATED */
+    .related{background:var(--white);padding:3.5rem 4rem;border-top:1px solid var(--border)}
+    .related-hd{font-family:var(--fd);font-size:2rem;font-weight:300;margin-bottom:.3rem}
+    .related-hd em{font-style:italic}
+    .related-sub{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem}
+    .related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+    .rel-card{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);overflow:hidden;transition:transform .2s,box-shadow .2s}
+    .rel-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(10,10,8,.08)}
+    .rel-img{aspect-ratio:3/4;overflow:hidden}
+    .rel-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+    .rel-card:hover .rel-img img{transform:scale(1.04)}
+    .rel-body{padding:.8rem .9rem 1rem;background:var(--white)}
+    .rel-name{font-family:var(--fd);font-size:.95rem;margin-bottom:.15rem}
+    .rel-price{font-size:.8rem;color:var(--teal)}
+
+    /* FOOTER */
+    footer{background:#f0ede8;border-top:3px solid var(--gold);padding:3.5rem 4rem 2rem}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+    .footer-tagline{font-size:.78rem;line-height:1.75;color:var(--gray);max-width:220px;margin:.65rem 0 1rem}
+    .footer-contact{font-size:.75rem;line-height:1.9;color:var(--gray)}
+    .footer-contact a{color:var(--teal);text-decoration:none;font-weight:500}
+    .fh{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--black);margin-bottom:.85rem;font-weight:500}
+    .fl{list-style:none}
+    .fl li{margin-bottom:.5rem}
+    .fl a{font-size:.78rem;color:var(--gray);text-decoration:none;transition:color .2s}
+    .fl a:hover{color:var(--teal)}
+    .footer-bottom{border-top:1px solid rgba(0,0,0,.1);padding-top:1.2rem;display:flex;justify-content:space-between;font-size:.7rem;color:#9a9590;flex-wrap:wrap;gap:.5rem}
+    .footer-bottom b{color:var(--gold);font-weight:400}
+    .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;width:52px;height:52px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.4);z-index:999;transition:transform .2s}
+    .wa-float:hover{transform:scale(1.1)}
+
+    @media(max-width:960px){
+      nav{padding:.8rem 1.2rem}.nav-links{display:none}
+      .breadcrumb-bar{padding:.65rem 1.2rem}
+      .product-wrap{grid-template-columns:1fr;padding:1.2rem;gap:2rem}
+      .gallery{position:static}
+      .zoom-result{display:none!important}
+      .related{padding:2.5rem 1.2rem}
+      .related-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      footer{padding:2.5rem 1.5rem 1.5rem}
+      .specs-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">Free Delivery Above Rs 2,000 &nbsp;·&nbsp; <a href="https://wa.me/923332518070">WhatsApp: +92-333-2518070</a></div>
+
+<nav>
+  <a href="index.html" style="display:flex;align-items:center;text-decoration:none;" class="nav-logo">
+    <img src="logo.png" alt="De-Shazeb" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html" class="active">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://wa.me/923332518070" class="btn-wa" target="_blank">💬 WhatsApp</a>
+    <button class="btn-cart snipcart-checkout">🛒 Cart <span class="snipcart-items-count"></span></button>
+  </div>
+</nav>
+
+<div class="breadcrumb-bar">
+  <a href="index.html">Home</a><span>›</span>
+  <a href="shop.html">Shop</a><span>›</span>
+  <span id="bc-name" style="color:var(--black);">...</span>
+</div>
+
+<div class="product-wrap">
+
+  <!-- GALLERY WITH ZOOM -->
+  <div class="gallery">
+    <div class="zoom-wrapper" id="zoom-wrapper">
+      <div class="zoom-container" id="zoom-container">
+        <span class="img-badge" id="img-badge" style="display:none;"></span>
+        <img id="main-img" src="" alt="Product" class="main-img" />
+        <div class="zoom-lens" id="zoom-lens"></div>
+        <div class="zoom-result" id="zoom-result">
+          <img id="zoom-result-img" src="" class="zoom-result-img" alt="" />
+        </div>
+        <div class="zoom-hint" id="zoom-hint">🔍 Hover to zoom</div>
+      </div>
+    </div>
+    <div class="thumbs" id="thumbs"></div>
+  </div>
+
+  <!-- INFO -->
+  <div class="info">
+    <div class="info-sku-row">
+      <p class="info-label">DE-SHAZEB · Men's Formal Shirts</p>
+      <span class="info-sku" id="psku">SKU: —</span>
+    </div>
+    <h1 class="info-name" id="pname">—</h1>
+
+    <div class="stars-row">
+      <span class="stars">★★★★★</span>
+      <span class="stars-count" id="star-count">4.9 · 0 reviews</span>
+    </div>
+
+    <!-- ORDER TYPE TOGGLE -->
+    <div class="order-toggle">
+      <button class="toggle-btn active" id="toggle-retail" onclick="setOrderType('retail')">
+        🛍️ Single Unit <small>Buy 1 piece</small>
+      </button>
+      <button class="toggle-btn" id="toggle-bulk" onclick="setOrderType('bulk')">
+        📦 Bulk / Wholesale <small>50+ pieces</small>
+      </button>
+    </div>
+
+    <!-- RETAIL PRICE -->
+    <div class="retail-price-box" id="retail-price-box">
+      <div style="display:flex;align-items:baseline;gap:.5rem;">
+        <span class="price-now" id="price-now">—</span>
+        <span class="price-was" id="price-was" style="display:none;"></span>
+      </div>
+      <div class="price-unit">Per piece · Free delivery on orders above Rs 2,000</div>
+      <div class="delivery-note" id="stock-note">✅ In stock · Ships within 2–4 working days via TCS / Leopards</div>
+    </div>
+
+    <!-- BULK PRICE -->
+    <div class="bulk-price-box" id="bulk-price-box" style="display:none;">
+      <div class="bulk-intro"><strong>Wholesale pricing</strong> — minimum <strong>50 pieces</strong> per design per colour.</div>
+      <div class="bulk-label">Bulk Pricing Tiers</div>
+      <div class="bulk-tiers">
+        <div class="bulk-tier"><div class="bulk-qty">50–99 pcs</div><div class="bulk-price-val" id="b50">—</div></div>
+        <div class="bulk-tier highlight"><div class="bulk-qty">100–299 pcs ⭐</div><div class="bulk-price-val" id="b100">—</div></div>
+        <div class="bulk-tier"><div class="bulk-qty">300+ pcs</div><div class="bulk-price-val" id="b300">—</div></div>
+      </div>
+      <div class="price-divider"></div>
+      <div style="font-size:.72rem;color:var(--gray);line-height:1.7;">🕐 Production: <strong style="color:var(--black);">2–3 weeks</strong> &nbsp;·&nbsp; 💳 <strong style="color:var(--black);">50% advance</strong></div>
+    </div>
+
+    <!-- COLLAR SIZE -->
+    <div class="option-block">
+      <div class="opt-label">
+        Collar Size <span id="sel-size">— select a size</span>
+        <a href="#" onclick="switchTab('sizeguide',event)">Size Chart</a>
+      </div>
+      <div class="collar-sizes" id="sizes"></div>
+      <div id="size-warning" style="display:none;margin-top:.6rem;font-size:.75rem;color:#c0392b;background:#fce4ec;border:1px solid rgba(192,57,43,.2);padding:.4rem .75rem;">
+        ⚠️ Only <span id="size-max-txt"></span> pieces available in this size.
+      </div>
+    </div>
+
+    <!-- HIDDEN QTY -->
+    <input type="hidden" id="qty" value="1" min="1" />
+
+    <!-- CTA RETAIL -->
+    <div class="cta-stack" id="cta-retail">
+      <button class="btn-black snipcart-add-item" id="cart-btn"
+        data-item-id="" data-item-name="" data-item-price=""
+        data-item-url="/product.html" data-item-description=""
+        data-item-image=""
+        data-item-custom1-name="Collar Size" data-item-custom1-options="14|14.5|15|15.5|16|16.5|17|17.5">
+        🛒 Add to Cart
+      </button>
+      <button class="btn-green" onclick="waOrder('retail')">💬 Order via WhatsApp</button>
+    </div>
+
+    <!-- CTA BULK -->
+    <div class="cta-stack" id="cta-bulk" style="display:none;">
+      <button class="btn-green" onclick="waOrder('bulk')">💬 WhatsApp for Bulk Quote</button>
+      <button class="btn-outline" onclick="bulkQuote()">📧 Request Formal Quote</button>
+    </div>
+
+    <!-- TRUST -->
+    <div class="trust">
+      <div class="trust-item"><div class="trust-icon">🚚</div><div class="trust-text">Free Delivery<br>Rs 2,000+</div></div>
+      <div class="trust-item"><div class="trust-icon">🔄</div><div class="trust-text">7-Day Easy<br>Returns</div></div>
+      <div class="trust-item"><div class="trust-icon">✅</div><div class="trust-text">Quality<br>Guaranteed</div></div>
+    </div>
+
+    <!-- PRODUCT DETAILS — like reference brand but original -->
+    <div class="product-details-section">
+      <div class="pd-title">Product Details</div>
+      <ul class="pd-bullets" id="pd-bullets">
+        <!-- populated by JS per product -->
+      </ul>
+
+      <div class="divider-line"></div>
+      <div class="pd-title">Care Instructions</div>
+      <p class="care-text" id="care-text">Machine wash cold, gentle cycle &nbsp;|&nbsp; Do not bleach &nbsp;|&nbsp; Hang dry, avoid direct sunlight &nbsp;|&nbsp; Steam iron at medium heat &nbsp;|&nbsp; Wash with similar colours</p>
+
+      <div class="divider-line"></div>
+      <div class="pd-title">Specifications</div>
+      <div class="specs-grid" id="specs-grid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div style="margin-top:1.5rem;">
+      <div class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('sizeguide',event)">Size Chart</button>
+        <button class="tab-btn" onclick="switchTab('shipping',event)">Shipping</button>
+      </div>
+      <div class="tab-panel active" id="tab-sizeguide">
+        <table class="spec-table">
+          <tr style="background:var(--cream);"><td><strong>Collar Size</strong></td><td><strong>Chest (in)</strong></td><td><strong>Shoulder (in)</strong></td><td><strong>Sleeve (in)</strong></td></tr>
+          <tr><td>14</td><td>36–37</td><td>16.5</td><td>32</td></tr>
+          <tr><td>14½</td><td>37–38</td><td>17.0</td><td>32½</td></tr>
+          <tr><td>15</td><td>38–39</td><td>17.5</td><td>33</td></tr>
+          <tr><td>15½</td><td>39–40</td><td>18.0</td><td>33½</td></tr>
+          <tr><td>16</td><td>40–41</td><td>18.5</td><td>34</td></tr>
+          <tr><td>16½</td><td>41–42</td><td>19.0</td><td>34½</td></tr>
+          <tr><td>17</td><td>42–43</td><td>19.5</td><td>35</td></tr>
+          <tr><td>17½</td><td>43–44</td><td>20.0</td><td>35½</td></tr>
+        </table>
+        <p style="margin-top:.9rem;font-size:.78rem;">Need custom sizing? <a href="https://wa.me/923332518070" target="_blank" style="color:var(--teal);">WhatsApp us</a>.</p>
+      </div>
+      <div class="tab-panel" id="tab-shipping">
+        <table class="spec-table">
+          <tr><td>Retail Orders</td><td>2–4 working days via TCS / Leopards</td></tr>
+          <tr><td>Bulk Orders</td><td>2–3 weeks production + 2–4 days delivery</td></tr>
+          <tr><td>Free Delivery</td><td>Orders above Rs 2,000</td></tr>
+          <tr><td>COD</td><td>Available in select cities</td></tr>
+          <tr><td>International</td><td>Available — contact for rates</td></tr>
+          <tr><td>Returns</td><td>7-day return on unused items</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED -->
+<div class="related">
+  <p class="related-sub">You May Also Like</p>
+  <h2 class="related-hd">More <em>Shirts</em></h2>
+  <div class="related-grid" id="related-grid"></div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="logo.png" alt="De-Shazeb" style="height:64px;width:auto;display:block;margin-bottom:.75rem;" />
+      <p class="footer-tagline">Premium men's formal shirts. Est. 2019, Karachi, Pakistan.</p>
+      <div class="footer-contact">
+        <a href="tel:+923332518070">+92-333-2518070</a><br>
+        <a href="mailto:info@de-shazeb.com">info@de-shazeb.com</a><br>
+        Plot 210/1, 97 Street 5, Manzoor Colony, Karachi
+      </div>
+    </div>
+    <div>
+      <p class="fh">Shop</p>
+      <ul class="fl"><li><a href="shop.html">All Shirts</a></li><li><a href="shop.html">Formal</a></li><li><a href="shop.html">Party Wear</a></li><li><a href="shop.html">Sale</a></li></ul>
+    </div>
+    <div>
+      <p class="fh">Company</p>
+      <ul class="fl"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Returns</a></li></ul>
+    </div>
+    <div>
+      <p class="fh">Support</p>
+      <ul class="fl"><li><a href="https://wa.me/923332518070" target="_blank">WhatsApp</a></li><li><a href="mailto:info@de-shazeb.com">Email</a></li><li><a href="https://www.facebook.com/people/De-Shazeb/61584268585183/" target="_blank">Facebook</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <b>De-Shazeb</b>. All rights reserved.</span>
+    <span>Premium Men's Formal Shirts · Est. 2019</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/923332518070" target="_blank" class="wa-float">💬</a>
+<div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY_HERE" data-currency="pkr"></div>
+<script async src="https://cdn.snipcart.com/themes/v3.3.2/default/snipcart.js"></script>
+
+<script>
+// ═══════════════════════════════════════════════════
+// PRODUCT DATABASE — collar sizes: 14,14.5,15,15.5,16,16.5,17,17.5
+// ═══════════════════════════════════════════════════
+var PRODUCTS = {
+  'classic-white':    {id:'classic-white',    sku:'DS-001',name:'Classic White Formal Shirt',     fabric:'Egyptian Cotton',  weave:'Oxford Weave',   fit:'Classic Fit',  collar:'Spread Collar',  cuff:'Barrel Cuff, Double Button', occasion:'Formal / Office',   reviews:24, price:1200,oldPrice:null,b50:1100,b100:950, b300:820, badge:'Best Seller',bc:'b-best',stock:{'14':0,'14.5':3,'15':5,'15.5':4,'16':2,'16.5':3,'17':1,'17.5':0}, imgs:['https://i.ibb.co/QLqZv1q/Gemini-Generated-Image-i5cvchi5cvchi5cv.png','https://i.ibb.co/QLqZv1q/Gemini-Generated-Image-i5cvchi5cvchi5cv.png','https://i.ibb.co/QLqZv1q/Gemini-Generated-Image-i5cvchi5cvchi5cv.png','https://i.ibb.co/QLqZv1q/Gemini-Generated-Image-i5cvchi5cvchi5cv.png']},
+  'navy-executive':   {id:'navy-executive',   sku:'DS-002',name:'Navy Executive Shirt',           fabric:'Cotton-Poly Blend',weave:'Twill Weave',    fit:'Slim Fit',     collar:'Spread Collar',  cuff:'Barrel Cuff, Double Button', occasion:'Corporate / Office',reviews:18, price:1450,oldPrice:null,b50:1250,b100:1100,b300:980, badge:'New',         bc:'b-new', stock:{'14':2,'14.5':4,'15':6,'15.5':3,'16':0,'16.5':2,'17':1,'17.5':0}, imgs:['https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800','https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=800','https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=800']},
+  'charcoal-business':{id:'charcoal-business',sku:'DS-003',name:'Charcoal Business Shirt',        fabric:'Cotton-Poly Blend',weave:'Plain Weave',    fit:'Regular Fit',  collar:'Spread Collar',  cuff:'Barrel Cuff, Single Button', occasion:'Business / Office', reviews:9,  price:1350,oldPrice:null,b50:1150,b100:1050,b300:900, badge:null,          bc:'',      stock:{'14':0,'14.5':2,'15':2,'15.5':4,'16':0,'16.5':0,'17':0,'17.5':0}, imgs:['https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=800','https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800','https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800']},
+  'maroon-party':     {id:'maroon-party',     sku:'DS-004',name:'Maroon Party Wear Shirt',        fabric:'Premium Cotton',   weave:'Satin Weave',    fit:'Slim Fit',     collar:'Spread Collar',  cuff:'Barrel Cuff, Double Button', occasion:'Party / Eid / Wedding',reviews:15,price:1600,oldPrice:2000,b50:1400,b100:1200,b300:1050,badge:'Sale −20%',  bc:'b-sale',stock:{'14':0,'14.5':3,'15':5,'15.5':5,'16':4,'16.5':2,'17':0,'17.5':0}, imgs:['https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=800','https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=800','https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800']},
+  'light-blue-office':{id:'light-blue-office',sku:'DS-005',name:'Light Blue Office Shirt',        fabric:'100% Cotton',      weave:'Poplin Weave',   fit:'Regular Fit',  collar:'Spread Collar',  cuff:'Barrel Cuff, Double Button', occasion:'Office / Formal',   reviews:11, price:1100,oldPrice:null,b50:950, b100:870, b300:750, badge:null,          bc:'',      stock:{'14':3,'14.5':5,'15':8,'15.5':7,'16':4,'16.5':3,'17':2,'17.5':1}, imgs:['https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800','https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800','https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=800']},
+  'black-formal':     {id:'black-formal',     sku:'DS-006',name:'Black Formal Shirt',             fabric:'Egyptian Cotton',  weave:'Twill Weave',    fit:'Slim Fit',     collar:'Spread Collar',  cuff:'Barrel Cuff, Double Button', occasion:'Formal / Evening',  reviews:31, price:1500,oldPrice:null,b50:1300,b100:1150,b300:990, badge:'Best Seller',bc:'b-best',stock:{'14':2,'14.5':4,'15':6,'15.5':5,'16':3,'16.5':2,'17':0,'17.5':0}, imgs:['https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=800','https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=800','https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800']},
+  'striped-cotton':   {id:'striped-cotton',   sku:'DS-007',name:'Striped Cotton Shirt',           fabric:'100% Cotton',      weave:'Plain Weave',    fit:'Regular Fit',  collar:'Button-Down',    cuff:'Barrel Cuff, Single Button', occasion:'Casual / Smart Casual',reviews:7,price:980, oldPrice:1200,b50:850, b100:750, b300:650, badge:'Sale −18%',  bc:'b-sale',stock:{'14':1,'14.5':1,'15':0,'15.5':0,'16':0,'16.5':0,'17':0,'17.5':0}, imgs:['https://images.unsplash.com/photo-1603252109303-2751441dd157?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800','https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800','https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800']},
+  'beige-linen':      {id:'beige-linen',      sku:'DS-008',name:'Beige Linen Shirt',              fabric:'Italian Linen',    weave:'Plain Weave',    fit:'Regular Fit',  collar:'Spread Collar',  cuff:'Barrel Cuff, Single Button', occasion:'Formal / Summer',   reviews:6,  price:1300,oldPrice:null,b50:1120,b100:1020,b300:880, badge:'New',         bc:'b-new', stock:{'14':3,'14.5':3,'15':4,'15.5':4,'16':3,'16.5':3,'17':2,'17.5':2}, imgs:['https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800','https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800','https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800']},
+  'royal-blue':       {id:'royal-blue',       sku:'DS-009',name:'Royal Blue Ceremonial Shirt',    fabric:'Cotton-Satin',     weave:'Satin Weave',    fit:'Slim Fit',     collar:'Spread Collar',  cuff:'Barrel Cuff, Double Button', occasion:'Ceremony / Wedding',reviews:4,  price:1800,oldPrice:null,b50:1550,b100:1400,b300:1200,badge:null,          bc:'',      stock:{'14':0,'14.5':0,'15':2,'15.5':3,'16':3,'16.5':1,'17':0,'17.5':0}, imgs:['https://images.unsplash.com/photo-1566479179817-c0e5c0b45a69?w=800','https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800','https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=800']},
+  'grey-textured':    {id:'grey-textured',    sku:'DS-010',name:'Grey Textured Shirt',            fabric:'Cotton-Poly Blend',weave:'Textured Dobby', fit:'Regular Fit',  collar:'Spread Collar',  cuff:'Barrel Cuff, Single Button', occasion:'Office / Business', reviews:8,  price:1250,oldPrice:1500,b50:1080,b100:980, b300:850, badge:'Sale −17%',  bc:'b-sale',stock:{'14':0,'14.5':2,'15':2,'15.5':0,'16':0,'16.5':0,'17':0,'17.5':0}, imgs:['https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=800','https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=800','https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800']},
+  'ivory-wedding':    {id:'ivory-wedding',    sku:'DS-011',name:'Ivory Wedding Shirt',            fabric:'Cotton-Silk Blend',weave:'Satin Weave',    fit:'Slim Fit',     collar:'Spread Collar',  cuff:'Barrel Cuff, Double Button', occasion:'Wedding / Nikah / Walima',reviews:3,price:2000,oldPrice:null,b50:1750,b100:1600,b300:1400,badge:'New',  bc:'b-new', stock:{'14':2,'14.5':3,'15':4,'15.5':3,'16':2,'16.5':1,'17':1,'17.5':0}, imgs:['https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800','https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800','https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800']},
+  'dark-green':       {id:'dark-green',       sku:'DS-012',name:'Dark Green Casual Shirt',        fabric:'100% Cotton',      weave:'Plain Weave',    fit:'Regular Fit',  collar:'Button-Down',    cuff:'Barrel Cuff, Single Button', occasion:'Casual / Smart Casual',reviews:5,price:1100,oldPrice:null,b50:950, b100:870, b300:750, badge:null, bc:'',      stock:{'14':3,'14.5':4,'15':4,'15.5':4,'16':2,'16.5':2,'17':1,'17.5':1}, imgs:['https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800','https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800','https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=800','https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=800']},
+};
+
+var COLLAR_SIZES = ['14','14.5','15','15.5','16','16.5','17','17.5'];
+var COLLAR_LABELS = {'14':'14','14.5':'14\u00bd','15':'15','15.5':'15\u00bd','16':'16','16.5':'16\u00bd','17':'17','17.5':'17\u00bd'};
+
+var pid = new URLSearchParams(location.search).get('id') || 'classic-white';
+var p   = PRODUCTS[pid] || PRODUCTS['classic-white'];
+var selSize   = null;
+var orderType = 'retail';
+var currentImgSrc = '';
+
+function totalStock(prod) {
+  return Object.values(prod.stock).reduce(function(a,b){return a+b;},0);
+}
+
+// ── ZOOM ─────────────────────────────────────────────────────
+function initZoom() {
+  var container = document.getElementById('zoom-container');
+  var lens      = document.getElementById('zoom-lens');
+  var result    = document.getElementById('zoom-result');
+  var resultImg = document.getElementById('zoom-result-img');
+  var hint      = document.getElementById('zoom-hint');
+  var ZOOM      = 3;
+
+  container.addEventListener('mouseenter', function() {
+    resultImg.src = currentImgSrc;
+    resultImg.style.width  = (container.offsetWidth  * ZOOM) + 'px';
+    resultImg.style.height = (container.offsetHeight * ZOOM) + 'px';
+    hint.style.display = 'none';
+  });
+
+  container.addEventListener('mousemove', function(e) {
+    var rect = container.getBoundingClientRect();
+    var mx   = e.clientX - rect.left;
+    var my   = e.clientY - rect.top;
+    var lw   = lens.offsetWidth;
+    var lh   = lens.offsetHeight;
+
+    // Keep lens inside container
+    var lx = Math.max(0, Math.min(mx - lw/2, rect.width  - lw));
+    var ly = Math.max(0, Math.min(my - lh/2, rect.height - lh));
+    lens.style.left    = lx + 'px';
+    lens.style.top     = ly + 'px';
+    lens.style.display = 'block';
+
+    // Calculate zoom offset
+    var rx = -(lx / rect.width)  * rect.width  * ZOOM;
+    var ry = -(ly / rect.height) * rect.height * ZOOM;
+    resultImg.style.left = rx + 'px';
+    resultImg.style.top  = ry + 'px';
+
+    // Show zoom in bottom-right quadrant if cursor is top-left, else top-left
+    var showRight  = mx < rect.width  * 0.5;
+    var showBottom = my < rect.height * 0.5;
+    var zw = rect.width  * 0.55;
+    var zh = rect.height * 0.55;
+    result.style.width  = zw + 'px';
+    result.style.height = zh + 'px';
+    result.style.left   = showRight  ? (rect.width  - zw - 4) + 'px' : '4px';
+    result.style.top    = showBottom ? (rect.height - zh - 4) + 'px' : '4px';
+    result.style.display = 'block';
+  });
+
+  container.addEventListener('mouseleave', function() {
+    lens.style.display   = 'none';
+    result.style.display = 'none';
+    hint.style.display   = 'block';
+  });
+}
+
+// ── INIT ─────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', function() {
+  var total = totalStock(p);
+  var isOut = total === 0;
+
+  document.title = p.name + ' | DE-SHAZEB';
+  document.getElementById('bc-name').textContent = p.name;
+  document.getElementById('pname').textContent   = p.name;
+  document.getElementById('psku').textContent    = 'SKU: ' + p.sku;
+  document.getElementById('star-count').textContent = '4.9 \u00b7 ' + p.reviews + ' reviews';
+  document.getElementById('price-now').textContent  = 'Rs ' + p.price.toLocaleString();
+  document.getElementById('b50').textContent  = 'Rs ' + p.b50.toLocaleString();
+  document.getElementById('b100').textContent = 'Rs ' + p.b100.toLocaleString();
+  document.getElementById('b300').textContent = 'Rs ' + p.b300.toLocaleString();
+
+  if (p.oldPrice) {
+    document.getElementById('price-was').textContent = 'Rs ' + p.oldPrice.toLocaleString();
+    document.getElementById('price-was').style.display = 'inline';
+  }
+
+  if (isOut) {
+    var sn = document.getElementById('stock-note');
+    sn.innerHTML = '\u274c Out of stock \u2014 <a href="https://wa.me/923332518070" style="color:var(--teal);">WhatsApp us</a> to be notified.';
+    sn.style.background   = 'rgba(192,57,43,.06)';
+    sn.style.borderColor  = 'rgba(192,57,43,.2)';
+    sn.style.color        = '#c0392b';
+  }
+
+  var imgBadge = document.getElementById('img-badge');
+  if (p.badge) { imgBadge.textContent = p.badge; imgBadge.className = 'img-badge ' + p.bc; imgBadge.style.display = ''; }
+
+  // images
+  currentImgSrc = p.imgs[0];
+  document.getElementById('main-img').src = p.imgs[0];
+  document.getElementById('zoom-result-img').src = p.imgs[0];
+
+  document.getElementById('thumbs').innerHTML = p.imgs.map(function(src,i) {
+    return '<div class="thumb'+(i===0?' active':'')+'" onclick="setImg(this,\''+src+'\')">' +
+           '<img src="'+src+'" alt="View '+(i+1)+'" loading="lazy" /></div>';
+  }).join('');
+
+  // collar sizes
+  document.getElementById('sizes').innerHTML = COLLAR_SIZES.map(function(s) {
+    var qty = p.stock[s];
+    var lbl = COLLAR_LABELS[s];
+    if (qty === 0) return '<button class="csz csz-oos" disabled title="Out of stock in size '+lbl+'">' + lbl + '</button>';
+    return '<button class="csz" onclick="pickSize(this,\''+s+'\','+qty+')">' + lbl + '</button>';
+  }).join('');
+
+  // cart button
+  var avail = COLLAR_SIZES.filter(function(s){ return p.stock[s] > 0; });
+  var btn   = document.getElementById('cart-btn');
+  btn.setAttribute('data-item-id',      p.id);
+  btn.setAttribute('data-item-name',    p.name);
+  btn.setAttribute('data-item-price',   p.price);
+  btn.setAttribute('data-item-image',   p.imgs[0]);
+  btn.setAttribute('data-item-description', p.fabric + ' ' + p.weave + ' formal shirt');
+  btn.setAttribute('data-item-custom1-options', avail.map(function(s){return COLLAR_LABELS[s];}).join('|') || 'N/A');
+  if (isOut) { btn.disabled=true; btn.textContent='Out of Stock'; btn.style.background='#ccc'; btn.style.cursor='not-allowed'; }
+
+  // Product Details bullets
+  document.getElementById('pd-bullets').innerHTML = [
+    'Crafted from ' + p.fabric + ' for exceptional comfort and breathability',
+    p.weave + ' construction creates a distinctive refined texture',
+    p.collar + ' ensures a sharp, modern look — perfect with or without a tie',
+    p.cuff + ' provides a polished, professional finish',
+    p.fit + ' tailoring for a clean silhouette and ease of movement',
+    'Designed for ' + p.occasion + ' occasions',
+    'Manufactured in Karachi, Pakistan to strict quality standards',
+  ].map(function(t){ return '<li>' + t + '</li>'; }).join('');
+
+  // Specifications grid
+  var specs = [
+    {k:'Category',          v:'Formal Shirt'},
+    {k:'Fabric Type',       v:p.fabric},
+    {k:'Weave / Texture',   v:p.weave},
+    {k:'Fabric Composition',v:p.fabric},
+    {k:'Collar',            v:p.collar},
+    {k:'Cuff',              v:p.cuff},
+    {k:'Fit',               v:p.fit},
+    {k:'Occasion',          v:p.occasion},
+  ];
+  document.getElementById('specs-grid').innerHTML = specs.map(function(s) {
+    return '<div class="spec-row"><div class="spec-key">'+s.k+'</div><div class="spec-val">'+s.v+'</div></div>';
+  }).join('');
+
+  // Related
+  var others = Object.values(PRODUCTS).filter(function(x){return x.id!==p.id;}).slice(0,4);
+  document.getElementById('related-grid').innerHTML = others.map(function(r) {
+    return '<a class="rel-card" href="product.html?id='+r.id+'">'+
+      '<div class="rel-img"><img src="'+r.imgs[0]+'" alt="'+r.name+'" loading="lazy" /></div>'+
+      '<div class="rel-body"><div class="rel-name">'+r.name+'</div>'+
+      '<div class="rel-price">Rs '+r.price.toLocaleString()+'</div></div></a>';
+  }).join('');
+
+  initZoom();
+});
+
+function setImg(thumb, src) {
+  currentImgSrc = src;
+  document.getElementById('main-img').src = src;
+  document.getElementById('zoom-result-img').src = src;
+  document.querySelectorAll('.thumb').forEach(function(t){t.classList.remove('active');});
+  thumb.classList.add('active');
+}
+
+function pickSize(btn, size, qty) {
+  selSize = size;
+  document.querySelectorAll('.csz').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.getElementById('sel-size').textContent = '\u2014 ' + COLLAR_LABELS[size];
+  document.getElementById('qty').max = qty;
+  document.getElementById('qty').value = 1;
+  document.getElementById('cart-btn').setAttribute('data-item-max-quantity', qty);
+  document.getElementById('size-warning').style.display = 'none';
+}
+
+function setOrderType(type) {
+  orderType = type;
+  document.getElementById('toggle-retail').classList.toggle('active', type==='retail');
+  document.getElementById('toggle-bulk').classList.toggle('active',   type==='bulk');
+  document.getElementById('retail-price-box').style.display = type==='retail' ? '' : 'none';
+  document.getElementById('bulk-price-box').style.display   = type==='bulk'   ? '' : 'none';
+  document.getElementById('cta-retail').style.display = type==='retail' ? '' : 'none';
+  document.getElementById('cta-bulk').style.display   = type==='bulk'   ? '' : 'none';
+}
+
+function waOrder(type) {
+  var size = selSize ? COLLAR_LABELS[selSize] : 'Not selected';
+  var msg;
+  if (type==='bulk') {
+    msg = 'Hi De-Shazeb! Bulk Order Enquiry\n\nProduct: '+p.name+' ('+p.sku+')\nCollar Size: '+size+'\n\nPlease share bulk pricing and lead time.';
+  } else {
+    msg = 'Hi De-Shazeb! I\'d like to order:\n\nProduct: '+p.name+' ('+p.sku+')\nCollar Size: '+size+'\nPrice: Rs '+p.price.toLocaleString()+'/pc\n\nPlease confirm availability.';
+  }
+  window.open('https://wa.me/923332518070?text='+encodeURIComponent(msg), '_blank');
+}
+
+function bulkQuote() {
+  var msg = 'Hi De-Shazeb! Bulk quote request for:\n\n'+p.name+' ('+p.sku+')\n\nPlease share pricing tiers, lead time and payment terms.';
+  window.open('https://wa.me/923332518070?text='+encodeURIComponent(msg), '_blank');
+}
+
+function switchTab(key, e) {
+  if (e && e.preventDefault) e.preventDefault();
+  var map = {sizeguide:'tab-sizeguide', shipping:'tab-shipping'};
+  document.querySelectorAll('.tab-panel').forEach(function(el){el.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(el){el.classList.remove('active');});
+  if (map[key]) document.getElementById(map[key]).classList.add('active');
+  var keys = Object.keys(map);
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var idx = keys.indexOf(key);
+  if (tabBtns[idx]) tabBtns[idx].classList.add('active');
+}
+</script>
+</body>
+</html>
