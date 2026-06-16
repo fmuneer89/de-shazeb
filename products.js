@@ -181,6 +181,31 @@ var PRODUCTS = [
     stock     : { '14':2, '14.5':3, '15':4, '15.5':3, '16':2, '16.5':1, '17':1, '17.5':0 }
   },
   {
+  id        : 'black-formal',
+  cat       : 'formal',
+  name      : 'Black Formal Shirt',
+  fabric    : 'Egyptian Cotton · Twill',
+  price     : 1500,
+  oldPrice  : null,
+  onSale    : false,
+  badge     : 'Best Seller',
+  badgeClass: 'b-best',
+  featured  : true,
+
+  // ── MAIN image — shows on homepage, shop, and product page ──
+  img : 'https://i.ibb.co/abc123/black-formal-front.jpg',
+
+  // ── EXTRA images — show as clickable thumbnails on product page only ──
+  images : [
+    'https://i.ibb.co/abc123/black-formal-front.jpg',   // thumbnail 1 — front
+    'https://i.ibb.co/def456/black-formal-back.jpg',    // thumbnail 2 — back
+    'https://i.ibb.co/ghi789/black-formal-collar.jpg',  // thumbnail 3 — collar closeup
+    'https://i.ibb.co/jkl012/black-formal-cuff.jpg',    // thumbnail 4 — cuff detail
+  ],
+
+  stock : { '14':2, '14.5':4, '15':6, '15.5':5, '16':3, '16.5':2, '17':0, '17.5':0 }
+  },
+    {
     id        : 'dark-green',
     cat       : 'casual',
     name      : 'Dark Green Casual Shirt',
