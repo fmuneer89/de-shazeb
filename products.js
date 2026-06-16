@@ -181,9 +181,9 @@ var PRODUCTS = [
     stock     : { '14':2, '14.5':3, '15':4, '15.5':3, '16':2, '16.5':1, '17':1, '17.5':0 }
   },
   {
-  id        : 'black-formal',
+  id        : 'black-formal Plain',
   cat       : 'formal',
-  name      : 'Black Formal Shirt',
+  name      : 'Black Formal Plain Shirt',
   fabric    : 'Egyptian Cotton · Twill',
   price     : 1500,
   oldPrice  : null,
