@@ -197,7 +197,7 @@ var PRODUCTS = [
 
   // ── EXTRA images — show as clickable thumbnails on product page only ──
   images : [
-    'https://i.ibb.co/abc123/black-formal-front.jpg',   // thumbnail 1 — front
+    'https://i.ibb.co/qFVtyPmh/Gemini-Generated-Image-6ggaok6ggaok6gga.png',   // thumbnail 1 — front
     'https://i.ibb.co/def456/black-formal-back.jpg',    // thumbnail 2 — back
     'https://i.ibb.co/ghi789/black-formal-collar.jpg',  // thumbnail 3 — collar closeup
     'https://i.ibb.co/jkl012/black-formal-cuff.jpg',    // thumbnail 4 — cuff detail
