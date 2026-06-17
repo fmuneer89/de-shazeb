@@ -193,7 +193,7 @@ var PRODUCTS = [
   featured  : true,
 
   // ── MAIN image — shows on homepage, shop, and product page ──
-  img : 'https://i.ibb.co/abc123/black-formal-front.jpg',
+  img : 'https://i.ibb.co/BKS6TQZT/Gemini-Generated-Image-5zc7mq5zc7mq5zc7.png',
 
   // ── EXTRA images — show as clickable thumbnails on product page only ──
   images : [
