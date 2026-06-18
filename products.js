@@ -41,6 +41,20 @@ var PRODUCTS = [
     stock     : { '14':0, '14.5':3, '15':5, '15.5':4, '16':2, '16.5':3, '17':1, '17.5':0 }
   },
   {
+    id        : 'charcoal-business',
+    cat       : 'formal',
+    name      : 'Charcoal Business Shirt',
+    fabric    : 'Cotton-Poly · Plain Weave',
+    price     : 1350,
+    oldPrice  : null,
+    onSale    : false,
+    badge     : null,
+    badgeClass: '',
+    featured  : false,
+    img       : 'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=600',
+    stock     : { '14':0, '14.5':2, '15':2, '15.5':4, '16':0, '16.5':0, '17':0, '17.5':0 }
+  },
+  {
     id        : 'Classic-Gingham-Check',
     cat       : 'formal',
     name      : 'Classic Gingham Check Cotton Shirt',
@@ -64,20 +78,6 @@ var PRODUCTS = [
   ],
     
     stock     : { '14':2, '14.5':4, '15':6, '15.5':3, '16':0, '16.5':2, '17':1, '17.5':0 }
-  },
-  {
-    id        : 'charcoal-business',
-    cat       : 'formal',
-    name      : 'Charcoal Business Shirt',
-    fabric    : 'Cotton-Poly · Plain Weave',
-    price     : 1350,
-    oldPrice  : null,
-    onSale    : false,
-    badge     : null,
-    badgeClass: '',
-    featured  : false,
-    img       : 'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=600',
-    stock     : { '14':0, '14.5':2, '15':2, '15.5':4, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'maroon-party',
