@@ -103,6 +103,7 @@ var PRODUCTS = [
     'https://i.ibb.co/jPJXc7JT/Gemini-Generated-Image-d7t0rud7t0rud7t0.png',    // thumbnail 2 — Side
     'https://i.ibb.co/B28yHjhW/Gemini-Generated-Image-hf7qb3hf7qb3hf7q.png',  // thumbnail 3 — collar closeup
     'https://i.ibb.co/398sx1XC/Gemini-Generated-Image-cuibjhcuibjhcuib.png',    // thumbnail 4 — cuff detail
+    'https://i.ibb.co/SDJdwSmx/Gemini-Generated-Image-3j7yfy3j7yfy3j7y.png',    // thumbnail 4 — cuff detail
   ],
 
     stock     : { '14':3, '14.5':5, '15':8, '15.5':7, '16':4, '16.5':3, '17':2, '17.5':1 }
