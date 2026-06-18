@@ -51,17 +51,28 @@ var PRODUCTS = [
     stock     : { '14':0, '14.5':3, '15':5, '15.5':4, '16':2, '16.5':3, '17':1, '17.5':0 }
   },
   {
-    id        : 'charcoal-business',
-    cat       : 'formal',
-    name      : 'Charcoal Business Shirt',
-    fabric    : 'Cotton-Poly · Plain Weave',
-    price     : 1350,
-    oldPrice  : null,
-    onSale    : false,
-    badge     : null,
-    badgeClass: '',
+    id        : 'Premium-Textured-Casual',
+    cat       : 'casual',
+    name      : 'remium Textured Casual Long Sleeve Button-Down Shirt',
+    fabric    : 'Cotton-Poly · vertical stripe pattern',
+    price     : 2125,
+    oldPrice  : 2500,
+    onSale    : true,
+    badge     : 'Sale \u221215%',
+    badgeClass: 'b-sale',
     featured  : false,
-    img       : 'https://images.unsplash.com/photo-1607345366928-199ea26cfe3e?w=600',
+    
+  // ── MAIN image — shows on homepage, shop, and product page ──
+  img : 'https://i.ibb.co/YBcBmWtf/Gemini-Generated-Image-qydmumqydmumqydm.png',
+
+  // ── EXTRA images — show as clickable thumbnails on product page only ──
+  images : [
+    'https://i.ibb.co/YBcBmWtf/Gemini-Generated-Image-qydmumqydmumqydm.png',   // thumbnail 1 — front
+    'https://i.ibb.co/TxPrKsQC/Gemini-Generated-Image-1nd3vf1nd3vf1nd3.png',    // thumbnail 2 — Side
+    'https://i.ibb.co/N6GR7Q00/Gemini-Generated-Image-p2cpzhp2cpzhp2cp.png',  // thumbnail 3 — collar closeup
+    'https://i.ibb.co/6RpyFrc2/Gemini-Generated-Image-skv25tskv25tskv2.png',    // thumbnail 4 — cuff detail
+  ],
+    
     stock     : { '14':0, '14.5':2, '15':2, '15.5':4, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
