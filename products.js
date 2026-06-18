@@ -190,9 +190,9 @@ var PRODUCTS = [
     stock     : { '14':0, '14.5':2, '15':2, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
-    id        : 'ivory-wedding',
-    cat       : 'party',
-    name      : 'Ivory Wedding Shirt',
+    id        : 'Light-Blue-Dobby-Dot',
+    cat       : 'formal',
+    name      : 'Light Blue Dobby Dot Shirt',
     fabric    : 'Cotton-Silk · Satin',
     price     : 2000,
     oldPrice  : null,
@@ -200,7 +200,17 @@ var PRODUCTS = [
     badge     : 'New',
     badgeClass: 'b-new',
     featured  : false,
-    img       : 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600',
+
+  // ── MAIN image — shows on homepage, shop, and product page ──
+  img : 'https://i.ibb.co/JFc6M3xH/Gemini-Generated-Image-nz5yznz5yznz5yzn-Copy.png',
+
+  // ── EXTRA images — show as clickable thumbnails on product page only ──
+  images : [
+    'https://i.ibb.co/JFc6M3xH/Gemini-Generated-Image-nz5yznz5yznz5yzn-Copy.png',   // thumbnail 1 — front
+    'https://i.ibb.co/7xkN4YsV/Gemini-Generated-Image-j013psj013psj013.png',    // thumbnail 2 — back
+    'https://i.ibb.co/gMNdV323/Gemini-Generated-Image-7bo0cx7bo0cx7bo0.png',  // thumbnail 3 — collar closeup
+    'https://i.ibb.co/RTmyRYH6/Gemini-Generated-Image-hezb29hezb29hezb.png',    // thumbnail 4 — cuff detail
+  ],
     stock     : { '14':2, '14.5':3, '15':4, '15.5':3, '16':2, '16.5':1, '17':1, '17.5':0 }
   },
   {
