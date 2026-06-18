@@ -83,17 +83,28 @@ var PRODUCTS = [
     stock     : { '14':0, '14.5':3, '15':5, '15.5':5, '16':4, '16.5':2, '17':0, '17.5':0 }
   },
   {
-    id        : 'light-blue-office',
+    id        : 'Plaid-Formal-Shirt',
     cat       : 'formal',
-    name      : 'Light Blue Office Shirt',
+    name      : 'Classic Navy & White Plaid Formal Shirt',
     fabric    : '100% Cotton · Poplin',
-    price     : 1100,
+    price     : 1750,
     oldPrice  : null,
     onSale    : false,
     badge     : null,
     badgeClass: '',
     featured  : false,
-    img       : 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600',
+      
+  // ── MAIN image — shows on homepage, shop, and product page ──
+  img : 'https://i.ibb.co/TMdP1rPT/Gemini-Generated-Image-n0ctxn0ctxn0ctxn.png',
+
+  // ── EXTRA images — show as clickable thumbnails on product page only ──
+  images : [
+    'https://i.ibb.co/TMdP1rPT/Gemini-Generated-Image-n0ctxn0ctxn0ctxn.png',   // thumbnail 1 — front
+    'https://i.ibb.co/jPJXc7JT/Gemini-Generated-Image-d7t0rud7t0rud7t0.png',    // thumbnail 2 — Side
+    'https://i.ibb.co/B28yHjhW/Gemini-Generated-Image-hf7qb3hf7qb3hf7q.png',  // thumbnail 3 — collar closeup
+    'https://i.ibb.co/398sx1XC/Gemini-Generated-Image-cuibjhcuibjhcuib.png',    // thumbnail 4 — cuff detail
+  ],
+
     stock     : { '14':3, '14.5':5, '15':8, '15.5':7, '16':4, '16.5':3, '17':2, '17.5':1 }
   },
   {
