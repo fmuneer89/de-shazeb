@@ -53,14 +53,14 @@ var PRODUCTS = [
   {
     id        : 'Premium-Textured-Casual',
     cat       : 'casual',
-    name      : 'remium Textured Casual Long Sleeve Button-Down Shirt',
+    name      : 'Premium Textured Casual Long Sleeve Button-Down Shirt',
     fabric    : 'Cotton-Poly · vertical stripe pattern',
     price     : 2125,
     oldPrice  : 2500,
     onSale    : true,
     badge     : 'Sale \u221215%',
     badgeClass: 'b-sale',
-    featured  : false,
+    featured  : true,
     
   // ── MAIN image — shows on homepage, shop, and product page ──
   img : 'https://i.ibb.co/YBcBmWtf/Gemini-Generated-Image-qydmumqydmumqydm.png',
@@ -217,7 +217,7 @@ var PRODUCTS = [
     onSale    : true,
     badge     : 'Sale \u221217%',
     badgeClass: 'b-sale',
-    featured  : true,
+    featured  : false,
     img       : 'https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=600',
     stock     : { '14':0, '14.5':2, '15':2, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
