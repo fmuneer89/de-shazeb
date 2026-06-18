@@ -37,7 +37,17 @@ var PRODUCTS = [
     badge     : 'Best Seller',
     badgeClass: 'b-best',
     featured  : true,
-    img       : 'https://i.ibb.co/b5S0XNZ4/Gemini-Generated-Image-s5ae6rs5ae6rs5ae.png',
+    
+  // ── MAIN image — shows on homepage, shop, and product page ──
+  img : 'https://i.ibb.co/b5S0XNZ4/Gemini-Generated-Image-s5ae6rs5ae6rs5ae.png',
+
+  // ── EXTRA images — show as clickable thumbnails on product page only ──
+  images : [
+    'https://i.ibb.co/b5S0XNZ4/Gemini-Generated-Image-s5ae6rs5ae6rs5ae.png',   // thumbnail 1 — front
+    'https://i.ibb.co/nsgx9BZK/Gemini-Generated-Image-kx5dmwkx5dmwkx5d.png',    // thumbnail 2 — Side
+    'https://i.ibb.co/h1R7RDGp/Gemini-Generated-Image-eekqxheekqxheekq.png',  // thumbnail 3 — collar closeup
+  ],
+    
     stock     : { '14':0, '14.5':3, '15':5, '15.5':4, '16':2, '16.5':3, '17':1, '17.5':0 }
   },
   {
