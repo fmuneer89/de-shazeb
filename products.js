@@ -41,17 +41,28 @@ var PRODUCTS = [
     stock     : { '14':0, '14.5':3, '15':5, '15.5':4, '16':2, '16.5':3, '17':1, '17.5':0 }
   },
   {
-    id        : 'navy-executive',
+    id        : 'Classic-Gingham-Check',
     cat       : 'formal',
-    name      : 'Navy Executive Shirt',
+    name      : 'Classic Gingham Check Cotton Shirt',
     fabric    : 'Cotton-Poly · Twill',
-    price     : 1450,
+    price     : 1650,
     oldPrice  : null,
     onSale    : false,
     badge     : 'New',
     badgeClass: 'b-new',
     featured  : true,
-    img       : 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600',
+    
+  // ── MAIN image — shows on homepage, shop, and product page ──
+  img : 'https://i.ibb.co/5xshTqq3/Gemini-Generated-Image-749g8749g8749g87.png',
+
+  // ── EXTRA images — show as clickable thumbnails on product page only ──
+  images : [
+    'https://i.ibb.co/5xshTqq3/Gemini-Generated-Image-749g8749g8749g87.png',   // thumbnail 1 — front
+    'https://i.ibb.co/Gv0xqxN8/Gemini-Generated-Image-a0bixxa0bixxa0bi.png',    // thumbnail 2 — Side
+    'https://i.ibb.co/0jt56kC7/Gemini-Generated-Image-x165tsx165tsx165.png',  // thumbnail 3 — collar closeup
+    'https://i.ibb.co/j983Z6nW/Gemini-Generated-Image-5xe9rb5xe9rb5xe9.png',    // thumbnail 4 — cuff detail
+  ],
+    
     stock     : { '14':2, '14.5':4, '15':6, '15.5':3, '16':0, '16.5':2, '17':1, '17.5':0 }
   },
   {
