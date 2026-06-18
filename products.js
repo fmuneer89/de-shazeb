@@ -139,17 +139,28 @@ var PRODUCTS = [
     stock     : { '14':3, '14.5':3, '15':4, '15.5':4, '16':3, '16.5':3, '17':2, '17.5':2 }
   },
   {
-    id        : 'royal-blue',
-    cat       : 'party',
-    name      : 'Royal Blue Ceremonial Shirt',
-    fabric    : 'Cotton-Satin · Satin Weave',
+    id        : 'Olive-Vertical-Stripe',
+    cat       : 'Casual',
+    name      : 'Olive Vertical Stripe Shirt',
+    fabric    : 'Cotton-Poly · Plain Weave',
     price     : 1800,
     oldPrice  : null,
     onSale    : false,
     badge     : null,
     badgeClass: '',
     featured  : false,
-    img       : 'https://images.unsplash.com/photo-1566479179817-c0e5c0b45a69?w=600',
+   
+  // ── MAIN image — shows on homepage, shop, and product page ──
+  img : 'https://i.ibb.co/BVY6gXDw/Gemini-Generated-Image-8m3hyi8m3hyi8m3h.png',
+
+  // ── EXTRA images — show as clickable thumbnails on product page only ──
+  images : [
+    'https://i.ibb.co/BVY6gXDw/Gemini-Generated-Image-8m3hyi8m3hyi8m3h.png',   // thumbnail 1 — front
+    'https://i.ibb.co/fYgbRFK2/Gemini-Generated-Image-a39og6a39og6a39o.png',    // thumbnail 2 — Side
+    'https://i.ibb.co/j9dhCsJc/Gemini-Generated-Image-n1z8b2n1z8b2n1z8.png',  // thumbnail 3 — collar closeup
+    'https://i.ibb.co/N6QjR593/Gemini-Generated-Image-ie7u1wie7u1wie7u.png',    // thumbnail 4 — cuff detail
+  ],
+
     stock     : { '14':0, '14.5':0, '15':2, '15.5':3, '16':3, '16.5':1, '17':0, '17.5':0 }
   },
   {
