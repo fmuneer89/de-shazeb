@@ -52,7 +52,7 @@ var PRODUCTS = [
   },
   {
     id        : 'Premium-Textured-Casual',
-    cat       : 'casual',
+    cat       : 'sale casual',
     name      : 'Premium Textured Casual Long Sleeve Button-Down Shirt',
     fabric    : 'Cotton-Poly · vertical stripe pattern',
     price     : 2125,
