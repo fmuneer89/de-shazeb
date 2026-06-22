@@ -101,18 +101,29 @@ var PRODUCTS = [
     stock     : { '14':2, '14.5':4, '15':6, '15.5':3, '16':0, '16.5':2, '17':1, '17.5':0 }
   },
   {
-    id        : 'maroon-party',
-    cat       : 'party',
-    name      : 'Maroon Party Wear Shirt',
+    id        : 'Black-Vertical-Striped',
+    cat       : 'formal',
+    name      : 'Black Premium Vertical Striped Formal Shirt',
     fabric    : 'Premium Cotton · Satin',
     price     : 1600,
-    oldPrice  : 2000,
-    onSale    : true,
-    badge     : 'Sale \u221220%',
-    badgeClass: 'b-sale',
-    featured  : true,
+    oldPrice  : null,
+    onSale    : false,
+    badge     : null,
+    badgeClass: '',
+    featured  : false,
     img       : 'https://images.unsplash.com/photo-1620012253295-c15cc3e65df4?w=600',
-    stock     : { '14':0, '14.5':3, '15':5, '15.5':5, '16':4, '16.5':2, '17':0, '17.5':0 }
+       
+  // ── MAIN image — shows on homepage, shop, and product page ──
+  img : 'https://i.ibb.co/7dKVqGN2/Gemini-Generated-Image-ef1cxsef1cxsef1c.png',
+
+  // ── EXTRA images — show as clickable thumbnails on product page only ──
+  images : [
+    'https://i.ibb.co/7dKVqGN2/Gemini-Generated-Image-ef1cxsef1cxsef1c.png',   // thumbnail 1 — front
+    'https://i.ibb.co/whdt3fn2/Gemini-Generated-Image-ah0gbwah0gbwah0g.png',    // thumbnail 2 — Side
+    'hhttps://i.ibb.co/Jw7HXwd7/Gemini-Generated-Image-va64ykva64ykva64.png',  // thumbnail 3 — collar closeup
+    'https://i.ibb.co/kgc2fx1T/Gemini-Generated-Image-o3lfuxo3lfuxo3lf.png',    // thumbnail 4 — cuff detail
+  ],
+     stock     : { '14':0, '14.5':3, '15':5, '15.5':5, '16':4, '16.5':2, '17':0, '17.5':0 }
   },
   {
     id        : 'Plaid-Formal-Shirt',
