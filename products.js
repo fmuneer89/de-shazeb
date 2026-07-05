@@ -48,7 +48,7 @@ var PRODUCTS = [
     'https://i.ibb.co/h1R7RDGp/Gemini-Generated-Image-eekqxheekqxheekq.png',  // thumbnail 3 — collar closeup
   ],
     
-    stock     : { '14':0, '14.5':3, '15':5, '15.5':4, '16':2, '16.5':3, '17':1, '17.5':0 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'Premium-Textured-Casual',
@@ -73,7 +73,7 @@ var PRODUCTS = [
     'https://i.ibb.co/6RpyFrc2/Gemini-Generated-Image-skv25tskv25tskv2.png',    // thumbnail 4 — cuff detail
   ],
     
-    stock     : { '14':0, '14.5':2, '15':2, '15.5':4, '16':0, '16.5':0, '17':0, '17.5':0 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'Classic-Gingham-Check',
@@ -98,7 +98,7 @@ var PRODUCTS = [
     'https://i.ibb.co/j983Z6nW/Gemini-Generated-Image-5xe9rb5xe9rb5xe9.png',    // thumbnail 4 — cuff detail
   ],
     
-    stock     : { '14':2, '14.5':4, '15':6, '15.5':3, '16':0, '16.5':2, '17':1, '17.5':0 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'Black-Vertical-Striped',
@@ -123,7 +123,7 @@ var PRODUCTS = [
     'hhttps://i.ibb.co/Jw7HXwd7/Gemini-Generated-Image-va64ykva64ykva64.png',  // thumbnail 3 — collar closeup
     'https://i.ibb.co/kgc2fx1T/Gemini-Generated-Image-o3lfuxo3lfuxo3lf.png',    // thumbnail 4 — cuff detail
   ],
-     stock     : { '14':0, '14.5':3, '15':5, '15.5':5, '16':4, '16.5':2, '17':0, '17.5':0 }
+     stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'Plaid-Formal-Shirt',
@@ -149,7 +149,7 @@ var PRODUCTS = [
     'https://i.ibb.co/SDJdwSmx/Gemini-Generated-Image-3j7yfy3j7yfy3j7y.png',    // thumbnail 4 — cuff detail
   ],
 
-    stock     : { '14':3, '14.5':5, '15':8, '15.5':7, '16':4, '16.5':3, '17':2, '17.5':1 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'black-formal',
@@ -163,7 +163,7 @@ var PRODUCTS = [
     badgeClass: 'b-best',
     featured  : true,
     img       : 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600',
-    stock     : { '14':2, '14.5':4, '15':6, '15.5':5, '16':3, '16.5':2, '17':0, '17.5':0 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'Pink-Geometric-Weave',
@@ -187,7 +187,7 @@ var PRODUCTS = [
     'https://i.ibb.co/zVvTzvBp/Gemini-Generated-Image-wk6ns9wk6ns9wk6n.png',  // thumbnail 3 — collar closeup
     'https://i.ibb.co/ynstr7w2/Gemini-Generated-Image-1d4r2w1d4r2w1d4r.png',    // thumbnail 4 — cuff detail
   ],
-    stock     : { '14':1, '14.5':1, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'beige-linen',
@@ -201,7 +201,7 @@ var PRODUCTS = [
     badgeClass: 'b-new',
     featured  : false,
     img       : 'https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=600',
-    stock     : { '14':3, '14.5':3, '15':4, '15.5':4, '16':3, '16.5':3, '17':2, '17.5':2 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'Olive-Vertical-Stripe',
@@ -226,7 +226,7 @@ var PRODUCTS = [
     'https://i.ibb.co/N6QjR593/Gemini-Generated-Image-ie7u1wie7u1wie7u.png',    // thumbnail 4 — cuff detail
   ],
 
-    stock     : { '14':0, '14.5':0, '15':2, '15.5':3, '16':3, '16.5':1, '17':0, '17.5':0 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'grey-textured',
@@ -240,7 +240,7 @@ var PRODUCTS = [
     badgeClass: 'b-sale',
     featured  : false,
     img       : 'https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=600',
-    stock     : { '14':0, '14.5':2, '15':2, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
     id        : 'Light-Blue-Dobby-Dot',
@@ -264,7 +264,7 @@ var PRODUCTS = [
     'https://i.ibb.co/gMNdV323/Gemini-Generated-Image-7bo0cx7bo0cx7bo0.png',  // thumbnail 3 — collar closeup
     'https://i.ibb.co/RTmyRYH6/Gemini-Generated-Image-hezb29hezb29hezb.png',    // thumbnail 4 — cuff detail
   ],
-    stock     : { '14':2, '14.5':3, '15':4, '15.5':3, '16':2, '16.5':1, '17':1, '17.5':0 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
   {
   id        : 'black-formal Plain',
@@ -289,7 +289,7 @@ var PRODUCTS = [
     'https://i.ibb.co/jkl012/black-formal-cuff.jpg',    // thumbnail 4 — cuff detail
   ],
 
-  stock : { '14':2, '14.5':4, '15':6, '15.5':5, '16':3, '16.5':2, '17':0, '17.5':0 }
+  stock : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   },
     {
     id        : 'dark-green',
@@ -303,7 +303,7 @@ var PRODUCTS = [
     badgeClass: '',
     featured  : false,
     img       : 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600',
-    stock     : { '14':3, '14.5':4, '15':4, '15.5':4, '16':2, '16.5':2, '17':1, '17.5':1 }
+    stock     : { '14':0, '14.5':0, '15':0, '15.5':0, '16':0, '16.5':0, '17':0, '17.5':0 }
   }
 ];
 
