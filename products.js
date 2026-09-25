@@ -2,7 +2,7 @@
 const PRODUCTS = [
   { id:"ivory-spread", name:"The Ivory Spread", price:4200, badge:{label:"New", type:"new"},
     category:"plain", rating:5, reviewCount:24,
-    sizes:{ "14":4, "14.5":3, "15":5, "15.5":4, "16":6, "16.5":5, "17":4 },
+    sizes:{ "14":0, "14.5":0, "15":1, "15.5":0, "16":0, "16.5":1, "17":0 },
     specs:{ fabric:"100% Cotton Poplin", fit:"Regular Fit", pattern:"Plain", collar:"Spread Collar", cuff:"Button Cuff", care:"Machine wash cold, hang dry, warm iron", origin:"Made in Pakistan" } },
   { id:"charcoal-oxford", name:"The Charcoal Oxford", price:3680, was:4600, badge:{label:"-20%", type:"sale"},
     category:"textured", rating:5, reviewCount:18,
