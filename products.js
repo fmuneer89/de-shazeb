@@ -1,9 +1,9 @@
 
 const PRODUCTS = [
-  { id:"ivory-spread", name:"The Ivory Spread", price:4200, badge:{label:"New", type:"new"},
-    category:"plain", rating:5, reviewCount:24, featured:true,
-    sizes:{ "14":4, "14.5":3, "15":5, "15.5":4, "16":6, "16.5":5, "17":4 },
-    specs:{ fabric:"100% Cotton Poplin", fit:"Regular Fit", pattern:"Plain", collar:"Spread Collar", cuff:"Button Cuff", care:"Machine wash cold, hang dry, warm iron", origin:"Made in Pakistan" } },
+  { id:"Blue-Striped", name:"The Blue-Striped", price:2700, badge:{label:"New", type:"new"},
+    category:"stripe", rating:5, reviewCount:24, featured:true,
+    sizes:{ "14":0, "14.5":0, "15":1, "15.5":0, "16":0, "16.5":1, "17":0 },
+    specs:{ fabric:"Irish Cotton (Imported)", fit:"Regular Fit", pattern:"Striped (Plain weave construction with stripes)", collar:"Spread Collar", cuff:"Button Cuff", care:"Machine wash cold, hang dry, warm iron", origin:"Made in Pakistan" } },
   { id:"charcoal-oxford", name:"The Charcoal Oxford", price:3680, was:4600, badge:{label:"-20%", type:"sale"},
     category:"textured", rating:5, reviewCount:18, featured:true,
     sizes:{ "14":2, "14.5":0, "15":3, "15.5":0, "16":5, "16.5":4, "17":3 },
