@@ -6,7 +6,7 @@ const PRODUCTS = [
     specs:{ fabric:"Irish Cotton (Imported)", fit:"Regular Fit", pattern:"Striped (Plain weave construction with stripes)", collar:"Spread Collar", cuff:"Button Cuff", care:"Machine wash cold, hang dry, warm iron", origin:"Made in Pakistan" } },
   { id:"Warm Brown-Striped", name:"The Classic Grey-Khaki Striped Formal Long-Sleeve Shirt", price:2200, badge:{label:"New", type:"new"},
     category:"stripe", rating:5, reviewCount:24, featured:true,
-    sizes:{ "14":0, "14.5":0, "15":1, "15.5":2, "16":2, "16.5":2, "17":0 },
+    sizes:{ "14":0, "14.5":0, "15":2, "15.5":2, "16":2, "16.5":2, "17":0 },
     specs:{ fabric:"Irish Cotton (Imported)", fit:"Regular Fit", pattern:"Striped (Plain weave construction with stripes)", collar:"Spread Collar", cuff:"Button Cuff", care:"Machine wash cold, hang dry, warm iron", origin:"Made in Pakistan" } },
   { id:"charcoal-oxford", name:"The Charcoal Oxford", price:3680, was:4600, badge:{label:"-20%", type:"sale"},
     category:"textured", rating:5, reviewCount:18, featured:false,
