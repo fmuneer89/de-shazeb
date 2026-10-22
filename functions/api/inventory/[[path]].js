@@ -1,3 +1,5 @@
+import {validateSettings} from '../../../product-settings.mjs';
+import baseline from '../../../catalog-base.mjs';
 const enc=new TextEncoder();
 const json=(data,status=200,extra={})=>Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...extra}});
 const fail=(message,status=400)=>Object.assign(new Error(message),{status});
@@ -42,7 +44,20 @@ export async function onRequest({request,env,params}){
     if(path==='session'&&request.method==='GET')return json({ok:true});
     if(path==='logout'&&request.method==='POST')return json({ok:true},200,{'Set-Cookie':cookie('',0)});
     if(path==='catalog'&&request.method==='GET'){
-      const {results}=await db.prepare('SELECT v.*,p.name,p.colour,p.category,p.active FROM inv_variants v JOIN inv_products p ON p.id=v.product_id ORDER BY p.name,CAST(v.collar AS REAL)').all();return json({variants:results});
+      const {results}=await db.prepare(`SELECT v.*,COALESCE(json_extract(s.settings_json,'$.name'),p.name) AS name,COALESCE(json_extract(s.settings_json,'$.colour'),p.colour) AS colour,COALESCE(json_extract(s.settings_json,'$.category'),p.category) AS category,p.active FROM inv_variants v JOIN inv_products p ON p.id=v.product_id LEFT JOIN inv_product_settings s ON s.product_id=p.id ORDER BY name,CAST(v.collar AS REAL)`).all();return json({variants:results});
+    }
+    if(path==='products'&&request.method==='GET'){
+      const {results}=await db.prepare('SELECT p.*,s.version AS settings_version,s.cost_paisa,s.price_rupees,s.settings_json,s.updated_at FROM inv_products p LEFT JOIN inv_product_settings s ON s.product_id=p.id ORDER BY p.name').all();
+      return json({products:results.map(p=>({...p,settings:p.settings_json?JSON.parse(p.settings_json):{...(baseline.find(b=>b.id===p.id)||{}),name:p.name,colour:p.colour,category:p.category},settings_json:undefined}))});
+    }
+    if(path==='product-save'&&request.method==='POST'){
+      const d=await body(request);if(typeof d.product_id!=='string'||!integer(d.version))throw fail('Invalid product reference.');
+      let value;try{value=validateSettings(d)}catch(e){throw fail(e.message)}
+      const p=await db.prepare('SELECT * FROM inv_products WHERE id=?').bind(d.product_id).first();if(!p)throw fail('Product not found.',404);
+      // A single optimistic update plus an audit trigger avoids partial metadata and price writes.
+      const r=await db.prepare("UPDATE inv_product_settings SET cost_paisa=?,price_rupees=?,settings_json=?,version=version+1,updated_at=strftime('%Y-%m-%dT%H:%M:%fZ','now') WHERE product_id=? AND version=?").bind(value.cost_paisa,value.price_rupees,JSON.stringify(value.settings),d.product_id,d.version).run();
+      if(!r.meta.changes)throw fail('This product changed in another session. Close this form, refresh and open it again.',409);
+      return json({ok:true});
     }
     if(path==='movements'&&request.method==='GET'){
       const variant=url.searchParams.get('variant')||'',raw=url.searchParams.get('before')||'',before=raw||'9999';
@@ -68,6 +83,7 @@ export async function onRequest({request,env,params}){
       const d=await body(request);if(!Array.isArray(d.products)||!d.products.length||d.products.length>200)throw fail('Provide 1–200 products.');let queries=[];
       for(const p of d.products){if(typeof p.id!=='string'||!p.id||p.id.length>100||typeof p.name!=='string'||!p.name.trim()||p.name.length>150||!Array.isArray(p.sizes)||!p.sizes.length||p.sizes.length>20)throw fail('Invalid product.');
         queries.push(db.prepare('INSERT INTO inv_products(id,name,colour,category) VALUES (?,?,?,?) ON CONFLICT(id) DO UPDATE SET name=excluded.name,colour=excluded.colour,category=excluded.category').bind(p.id,p.name.trim(),String(p.colour||'').slice(0,80),String(p.category||'Plain').slice(0,50)));
+        const b=baseline.find(x=>x.id===p.id);if(b)queries.push(db.prepare('INSERT OR IGNORE INTO inv_product_settings(product_id,price_rupees,settings_json) VALUES (?,?,?)').bind(p.id,b.price,JSON.stringify({...b,published:true,sales_enabled:true,purchase_enabled:true})));
         for(const s of p.sizes){if(!/^\d{2}(\.5)?$/.test(String(s))||Number(s)<12||Number(s)>24)throw fail('Collar sizes must be 12–24 inches in half-inch increments.');queries.push(db.prepare('INSERT OR IGNORE INTO inv_variants(id,product_id,collar) VALUES (?,?,?)').bind(p.id+':'+s,p.id,String(s)));}
       }
       if(queries.length>900)throw fail('Too many sizes. Sync a smaller catalogue.');await db.batch(queries);return json({ok:true});
