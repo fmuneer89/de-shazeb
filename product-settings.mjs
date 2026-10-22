@@ -1,3 +1,5 @@
+export const defaultFeatured=id=>['20','19','17','18'].includes(String(id));
+export const merchandisingFlags=(s,id)=>({featured:s.featured===undefined?defaultFeatured(id):s.featured===true,is_new:s.is_new===undefined?/^new$/i.test(String(s.ribbon||'').trim()):s.is_new===true});
 // A full UUID is encoded without truncation, so generated codes retain the product ID's uniqueness.
 // Internal identifiers only: these are not GS1-issued retail GTINs.
 export function productIdentifiers(id){
@@ -24,6 +26,7 @@ export function validateSettings(d){
  const discount=d.discount_percent??0;if(typeof discount!=='number'||!Number.isFinite(discount)||discount<0||discount>99||Math.abs(discount*100-Math.round(discount*100))>0.000001)throw Error('Discount must be 0–99%, with at most two decimal places.');
  const settings={discount_percent:discount,name,category:d.category,colour:str(d.colour,50,'Colour'),description:str(d.description,800,'Description')};
  for(const k of ['published','sales_enabled','purchase_enabled']){if(typeof d[k]!=='boolean')throw Error('Invalid product status.');settings[k]=d[k]}
+ for(const k of ['featured','is_new']){if(d[k]!==undefined&&typeof d[k]!=='boolean')throw Error('Invalid merchandising setting.');settings[k]=d[k]??false;}
  for(const k of ['reference','barcode','tags','fabric','hem','pattern','sleeve','collar_style','cuffs','pocket','ribbon'])settings[k]=str(d[k]??'',150,k);
  settings.notes=str(d.notes??'',2000,'Internal notes');
  for(const k of ['weight','volume','delivery_days']){const v=d[k];if(v!==null&&(typeof v!=='number'||!Number.isFinite(v)||v<0||v>1000000||(k==='delivery_days'&&!Number.isInteger(v))))throw Error('Enter valid nonnegative shipping details.');settings[k]=v;}
@@ -36,7 +39,7 @@ export function publicProduct(base,row){
  const s=row?JSON.parse(row.settings_json):base;
  if(s.published===false||s.sales_enabled===false)return null;
  const p={id:base.id,name:s.name??base.name,price:row?.price_rupees??base.price,category:s.category??base.category,colour:s.colour??base.colour,description:s.description??base.description,sizes:base.sizes,image:s.image??base.image,images:s.images??base.images};
- p.regular_price=p.price;p.discount_percent=s.discount_percent??0;p.price=discountedPrice(p.regular_price,p.discount_percent);if(p.price===p.regular_price)p.discount_percent=0;
+ Object.assign(p,merchandisingFlags(s,base.id));p.regular_price=p.price;p.discount_percent=s.discount_percent??0;p.price=discountedPrice(p.regular_price,p.discount_percent);if(p.price===p.regular_price)p.discount_percent=0;
  // Explicit allow-list: all other settings remain private, including cost, reference and notes.
  p.details={};for(const k of ['fabric','pattern','sleeve','collar_style','cuffs','pocket','ribbon'])if(s[k]!==undefined&&s[k]!==null&&s[k]!=='')p.details[k]=s[k];
  return p;
