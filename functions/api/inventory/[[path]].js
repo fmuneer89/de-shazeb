@@ -1,4 +1,4 @@
-import {validateSettings} from '../../../product-settings.mjs';
+import {validateSettings,withProductIdentifiers} from '../../../product-settings.mjs';
 import baseline from '../../../catalog-base.mjs';
 const enc=new TextEncoder();
 const json=(data,status=200,extra={})=>Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...extra}});
@@ -58,8 +58,8 @@ export async function onRequest({request,env,params}){
       const id=hex(await crypto.subtle.digest('SHA-256',bytes));await db.prepare('INSERT OR IGNORE INTO inv_media(id,mime,data_base64) VALUES (?,?,?)').bind(id,mime,match[2]).run();return json({url:'https://de-shazeb.pages.dev/api/media/'+id});
     }
     if(path==='product-create'&&request.method==='POST'){
-      const d=await body(request);if(!/^ds-[a-f0-9-]{36}$/.test(d.product_id||''))throw fail('Invalid new product reference.');
-      let value;try{value=validateSettings(d)}catch(e){throw fail(e.message)}if(!value.settings.sizes)throw fail('Choose the collar sizes to offer.');
+      let d=await body(request);
+      let value;try{d=withProductIdentifiers(d);value=validateSettings(d)}catch(e){throw fail(e.message)}if(!value.settings.sizes)throw fail('Choose the collar sizes to offer.');
       const encoded=JSON.stringify(value.settings),old=await db.prepare('SELECT * FROM inv_product_settings WHERE product_id=?').bind(d.product_id).first();if(old){if(old.price_rupees===value.price_rupees&&old.cost_paisa===value.cost_paisa&&old.settings_json===encoded)return json({ok:true,replayed:true,product_id:d.product_id});throw fail('This product reference already exists. Refresh and try again.',409);}
       const p=value.settings;await db.batch([
         db.prepare('INSERT INTO inv_products(id,name,colour,category) VALUES (?,?,?,?)').bind(d.product_id,p.name,p.colour,p.category),

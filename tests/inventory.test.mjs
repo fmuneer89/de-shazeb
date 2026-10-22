@@ -1,3 +1,4 @@
+// All products, amounts and notes below are synthetic in-memory test fixtures. No live customer, stock, cost or credential data is used.
 import {readFileSync} from 'node:fs';import {DatabaseSync} from 'node:sqlite';import {webcrypto,timingSafeEqual} from 'node:crypto';import {fileURLToPath} from 'node:url';
 const root=fileURLToPath(new URL('../',import.meta.url));
 Object.defineProperty(globalThis,'crypto',{value:webcrypto});crypto.subtle.timingSafeEqual=timingSafeEqual;
@@ -5,7 +6,7 @@ const {onRequest}=await import(new URL('../functions/api/inventory/[[path]].js',
 const sql=new DatabaseSync(':memory:');sql.exec(readFileSync(root+'migrations/0001_inventory.sql','utf8'));sql.exec(readFileSync(root+'migrations/0002_product_settings.sql','utf8'));sql.exec(readFileSync(root+'migrations/0003_media.sql','utf8'));
 const wrap=(q,values=[])=>({bind(...v){return wrap(q,v)},async first(){return sql.prepare(q).get(...values)||null},async all(){return {results:sql.prepare(q).all(...values)}},async run(){const r=sql.prepare(q).run(...values);return {meta:{changes:Number(r.changes)}}}});
 const db={prepare:wrap,async batch(qs){sql.exec('BEGIN');try{let out=[];for(const q of qs)out.push(await q.run());sql.exec('COMMIT');return out}catch(e){sql.exec('ROLLBACK');throw e}}};
-const env={INVENTORY_DB:db,INVENTORY_ADMIN_PASSWORD:'test-password-only-not-production-123'};let cookie='';
+const env={INVENTORY_DB:db,INVENTORY_ADMIN_PASSWORD:crypto.randomUUID()+crypto.randomUUID()};let cookie='';
 async function req(path,data,override={}){const headers={cookie,...(data?{'Content-Type':'application/json',origin:'https://store.test'}:{}),...override};return onRequest({request:new Request('https://store.test/api/inventory/'+path,{method:data?'POST':'GET',headers,body:data?JSON.stringify(data):undefined}),env,params:{path:path.split('?')[0].split('/')}})}
 function ok(v,m){if(!v)throw Error(m)};
 ok((await req('catalog')).status===401,'Unauthenticated stock protected');ok((await req('login',{password:'wrong'})).status===401,'Wrong password rejected');let r=await req('login',{password:env.INVENTORY_ADMIN_PASSWORD});ok(r.status===200,'Login works');cookie=r.headers.get('set-cookie').split(';')[0];
@@ -46,4 +47,18 @@ r=await req('photo-upload',{data:png});ok(r.status===200,'Photo saved');const ph
 const {onRequestGet:getPhoto}=await import('../functions/api/media/[id].js');r=await getPhoto({env,params:{id:photoURL.split('/').pop()}});ok(r.status===200&&r.headers.get('content-type')==='image/png'&&(await r.arrayBuffer()).byteLength>0,'Uploaded photo publicly readable');
 console.log('PASS: authenticated creation, retry safety, collar initialization, live new products, private fields, existing stock preservation and photo upload/read.');
 
-ok(pub.details.fabric==='Cotton'&&pub.details.hem==='Curved','Fabric and hem persist into the public specifications');ok(!('weight' in pub.details)&&!('delivery_days' in pub.details),'Weight and delivery excluded from customer specifications');
+ok(pub.details.fabric==='Cotton'&&!('hem' in pub.details),'Fabric is public and Hem is omitted from specifications');ok(!('weight' in pub.details)&&!('delivery_days' in pub.details),'Weight and delivery excluded from customer specifications');
+
+const autoDraft={...newDraft,product_id:'ds-'+crypto.randomUUID(),reference:'',barcode:''};
+r=await req('product-create',autoDraft);ok(r.status===200,'Blank identifiers auto-generated on server');
+const autoSettings=JSON.parse(sql.prepare('SELECT settings_json FROM inv_product_settings WHERE product_id=?').get(autoDraft.product_id).settings_json);
+ok(/^DS-[0-9A-Z]{25}$/.test(autoSettings.reference)&&/^\d{39}$/.test(autoSettings.barcode),'Generated internal SKU and barcode format');
+ok((await req('product-create',autoDraft)).status===200,'Auto generation remains stable on retry');
+const otherDraft={...autoDraft,product_id:'ds-'+crypto.randomUUID()};ok((await req('product-create',otherDraft)).status===200,'Second automatic product saved');
+const otherSettings=JSON.parse(sql.prepare('SELECT settings_json FROM inv_product_settings WHERE product_id=?').get(otherDraft.product_id).settings_json);
+ok(autoSettings.reference!==otherSettings.reference&&autoSettings.barcode!==otherSettings.barcode,'Different products receive different identifiers');
+const manual=JSON.parse(sql.prepare('SELECT settings_json FROM inv_product_settings WHERE product_id=?').get(newDraft.product_id).settings_json);ok(manual.reference==='SH-01'&&manual.barcode==='123456','Explicit identifiers preserved');
+r=await req('product-save',{...autoDraft,version:0,reference:autoSettings.reference,barcode:autoSettings.barcode,name:'Renamed automatic shirt'});ok(r.status===200,'Editing automatic product works');
+const afterEdit=JSON.parse(sql.prepare('SELECT settings_json FROM inv_product_settings WHERE product_id=?').get(autoDraft.product_id).settings_json);ok(afterEdit.reference===autoSettings.reference&&afterEdit.barcode===autoSettings.barcode,'Codes stable after edits');
+ok((await req('product-create',{...autoDraft,product_id:'ds-'+crypto.randomUUID(),reference:123})).status===400,'Invalid identifier types rejected');
+console.log('PASS: automatic identifiers, retry stability, distinct product codes, manual identifiers, edit preservation and identifier validation.');
