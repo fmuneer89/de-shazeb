@@ -1,3 +1,15 @@
+// A full UUID is encoded without truncation, so generated codes retain the product ID's uniqueness.
+// Internal identifiers only: these are not GS1-issued retail GTINs.
+export function productIdentifiers(id){
+ if(typeof id!=='string'||!/^ds-[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/.test(id))throw Error('Invalid new product reference.');
+ const number=BigInt('0x'+id.slice(3).replaceAll('-',''));
+ return {reference:'DS-'+number.toString(36).toUpperCase().padStart(25,'0'),barcode:number.toString(10).padStart(39,'0')};
+}
+export function withProductIdentifiers(d){
+ const codes=productIdentifiers(d.product_id),result={...d};
+ for(const key of ['reference','barcode'])if(d[key]===undefined||d[key]===null||(typeof d[key]==='string'&&!d[key].trim()))result[key]=codes[key];
+ return result;
+}
 // Percentages use integer basis points; public prices are rounded to the nearest whole PKR.
 export function discountedPrice(regular,percent=0){return Math.max(1,Math.round(regular*(10000-Math.round(percent*100))/10000));}
 // Shared validation and public/private boundary. Costs and internal notes never enter the public catalogue.
@@ -26,6 +38,6 @@ export function publicProduct(base,row){
  const p={id:base.id,name:s.name??base.name,price:row?.price_rupees??base.price,category:s.category??base.category,colour:s.colour??base.colour,description:s.description??base.description,sizes:base.sizes,image:s.image??base.image,images:s.images??base.images};
  p.regular_price=p.price;p.discount_percent=s.discount_percent??0;p.price=discountedPrice(p.regular_price,p.discount_percent);if(p.price===p.regular_price)p.discount_percent=0;
  // Explicit allow-list: all other settings remain private, including cost, reference and notes.
- p.details={};for(const k of ['fabric','pattern','sleeve','collar_style','cuffs','pocket','hem','ribbon'])if(s[k]!==undefined&&s[k]!==null&&s[k]!=='')p.details[k]=s[k];
+ p.details={};for(const k of ['fabric','pattern','sleeve','collar_style','cuffs','pocket','ribbon'])if(s[k]!==undefined&&s[k]!==null&&s[k]!=='')p.details[k]=s[k];
  return p;
 }
