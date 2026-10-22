@@ -6,6 +6,23 @@ for(const[sx,sy]of[[0,0],[w-8,0],[0,h-8],[w-8,h-8]]){x.clearRect(0,0,1,1);x.draw
 return'rgb('+(r/n|0)+','+(g/n|0)+','+(b/n|0)+')'}catch(e){return null}}
 window.dsFit=(img,...t)=>{if(!img)return;const run=()=>{const c=edge(img);if(c)t.forEach(e=>e&&(e.style.background=c))};
 img.complete&&img.naturalWidth?run():img.addEventListener('load',run,{once:true})};
+// Preload the second dashboard photo, then swap instantly on mouse hover.
+// Keep the primary photo if the preview is missing or cannot be loaded.
+function preview(frame,img){
+ const button=frame.querySelector('.product-image-button');
+ const catalog=window.DE_SHAHZAIB_PRODUCTS||[];
+ const product=catalog.find(p=>String(p.id)===button?.dataset.product);
+ const primary=img.getAttribute('src');
+ const second=product?.images?.find(url=>url&&url!==primary);
+ if(!second)return;
+ const preload=new Image();let ready=false,hovered=false,focused=false;
+ const show=()=>{const src=ready&&(hovered||focused)?second:primary;if(img.getAttribute('src')!==src){img.src=src;dsFit(img,frame,button)}};
+ preload.onload=()=>{ready=true;show()};preload.src=second;
+ frame.addEventListener('mouseenter',()=>{hovered=matchMedia('(hover: hover) and (pointer: fine)').matches;show()});
+ frame.addEventListener('mouseleave',()=>{hovered=false;show()});
+ button.addEventListener('focus',()=>{focused=true;show()});
+ button.addEventListener('blur',()=>{focused=false;show()});
+}
 const g=document.getElementById('productGrid');
-if(g){const go=()=>g.querySelectorAll('.product-photo').forEach(f=>{const i=f.querySelector('img');if(i&&!i.dataset.fit){i.dataset.fit=1;dsFit(i,f,f.querySelector('.product-image-button'))}});
+if(g){const go=()=>g.querySelectorAll('.product-photo').forEach(f=>{const i=f.querySelector('img');if(i&&!i.dataset.fit){i.dataset.fit=1;dsFit(i,f,f.querySelector('.product-image-button'));preview(f,i)}});
 new MutationObserver(go).observe(g,{childList:true});go()}})();
