@@ -12,7 +12,7 @@ export function validateSettings(d){
  const discount=d.discount_percent??0;if(typeof discount!=='number'||!Number.isFinite(discount)||discount<0||discount>99||Math.abs(discount*100-Math.round(discount*100))>0.000001)throw Error('Discount must be 0–99%, with at most two decimal places.');
  const settings={discount_percent:discount,name,category:d.category,colour:str(d.colour,50,'Colour'),description:str(d.description,800,'Description')};
  for(const k of ['published','sales_enabled','purchase_enabled']){if(typeof d[k]!=='boolean')throw Error('Invalid product status.');settings[k]=d[k]}
- for(const k of ['reference','barcode','tags','pattern','sleeve','collar_style','cuffs','pocket','ribbon'])settings[k]=str(d[k]??'',150,k);
+ for(const k of ['reference','barcode','tags','fabric','hem','pattern','sleeve','collar_style','cuffs','pocket','ribbon'])settings[k]=str(d[k]??'',150,k);
  settings.notes=str(d.notes??'',2000,'Internal notes');
  for(const k of ['weight','volume','delivery_days']){const v=d[k];if(v!==null&&(typeof v!=='number'||!Number.isFinite(v)||v<0||v>1000000||(k==='delivery_days'&&!Number.isInteger(v))))throw Error('Enter valid nonnegative shipping details.');settings[k]=v;}
  if(!Array.isArray(d.images)||!d.images.length||d.images.length>10||d.images.some(x=>typeof x!=='string'||x.length>2048||!photo(x)))throw Error('Add 1–10 image paths or HTTPS URLs.');
@@ -26,6 +26,6 @@ export function publicProduct(base,row){
  const p={id:base.id,name:s.name??base.name,price:row?.price_rupees??base.price,category:s.category??base.category,colour:s.colour??base.colour,description:s.description??base.description,sizes:base.sizes,image:s.image??base.image,images:s.images??base.images};
  p.regular_price=p.price;p.discount_percent=s.discount_percent??0;p.price=discountedPrice(p.regular_price,p.discount_percent);if(p.price===p.regular_price)p.discount_percent=0;
  // Explicit allow-list: all other settings remain private, including cost, reference and notes.
- p.details={};for(const k of ['pattern','sleeve','collar_style','cuffs','pocket','weight','delivery_days','ribbon'])if(s[k]!==undefined&&s[k]!==null&&s[k]!=='')p.details[k]=s[k];
+ p.details={};for(const k of ['fabric','pattern','sleeve','collar_style','cuffs','pocket','hem','ribbon'])if(s[k]!==undefined&&s[k]!==null&&s[k]!=='')p.details[k]=s[k];
  return p;
 }
