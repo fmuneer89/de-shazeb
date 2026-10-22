@@ -16,6 +16,7 @@ export function validateSettings(d){
  settings.notes=str(d.notes??'',2000,'Internal notes');
  for(const k of ['weight','volume','delivery_days']){const v=d[k];if(v!==null&&(typeof v!=='number'||!Number.isFinite(v)||v<0||v>1000000||(k==='delivery_days'&&!Number.isInteger(v))))throw Error('Enter valid nonnegative shipping details.');settings[k]=v;}
  if(!Array.isArray(d.images)||!d.images.length||d.images.length>10||d.images.some(x=>typeof x!=='string'||x.length>2048||!photo(x)))throw Error('Add 1–10 image paths or HTTPS URLs.');
+ if(d.sizes!==undefined){if(!Array.isArray(d.sizes)||!d.sizes.length||d.sizes.length>9||d.sizes.some(x=>!['14.5','15','15.5','16','16.5','17','17.5','18','18.5'].includes(x)))throw Error('Choose at least one collar size.');settings.sizes=[...new Set(d.sizes)].sort((a,b)=>Number(a)-Number(b));}
  settings.images=[...new Set(d.images)];settings.image=settings.images[0];
  return {cost_paisa:cents(d.cost),price_rupees:d.price,settings};
 }
