@@ -16,9 +16,9 @@
 .add{flex:1;min-width:200px;background:var(--text);color:var(--bg)}.msg{min-height:24px;margin-top:14px;font-size:13px}.msg a{text-decoration:underline}
 .more{flex:0 0 100%;min-width:0;padding-top:30px}.more h2{font-size:clamp(28px,3vw,44px);margin-bottom:24px}.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:18px}.mg a{display:block}.mg img{aspect-ratio:1;object-fit:contain;background:#f2f1ed;width:100%;border:1px solid var(--line);margin-bottom:8px}
 @media(max-width:820px){.pp{padding-top:104px}}
-</style></head><body>
+</style><style>@media(max-width:800px){.site-header{flex-wrap:wrap;gap:10px}.site-header .desktop-nav{display:flex;order:3;width:100%;justify-content:center;gap:24px}.pp{padding-top:155px}}</style></head><body>
 <header class="site-header"><a class="brand" href="index.html" aria-label="De-Shahzaib home"><span class="mark"><img src="assets/logo.png" alt="" width="25" height="30"></span><span>DE-SHAHZAIB<small>CRAFTED FOR CONFIDENCE</small></span></a>
-<nav class="desktop-nav"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="index.html#craft">The details</a><a href="index.html#story">Our story</a></nav>
+<nav class="desktop-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="index.html#craft">The details</a><a href="index.html#story">Our story</a></nav>
 <div class="header-actions"><a class="bag-button" href="shop.html#bag">Bag <span id="bagCount">0</span></a></div></header>
 <main class="pp section-shell" id="app"></main>
 <footer class="section-shell" style="border-top:1px solid var(--line);padding:30px 0 40px;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:13px;color:var(--muted)"><span>© 2026 De-Shahzaib · Made in Pakistan</span><nav><a href="index.html">Home</a> · <a href="shop.html">Shop</a> · <a href="index.html#care">Customer care</a> · <a href="terms.html">Shopping policies</a></nav></footer><script src="products.js"></script><script src="fit.js"></script>
@@ -26,7 +26,7 @@
 (()=>{const K='de-shahzaib-ready-html-v1-cart',P=window.DE_SHAHZAIB_PRODUCTS||[],$=id=>document.getElementById(id),
 E=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),money=n=>'Rs '+Number(n).toLocaleString('en-PK');
 const rd=()=>{try{return JSON.parse(localStorage.getItem(K))||[]}catch{return[]}},wr=c=>{try{localStorage.setItem(K,JSON.stringify(c));return true}catch{return false}};
-const count=()=>{$('bagCount').textContent=rd().reduce((n,l)=>n+(l.quantity||0),0)};count();
+const count=()=>{$('bagCount').textContent=rd().reduce((n,l)=>n+(l.quantity||0),0)};count();window.addEventListener('pageshow',count);
 const id=new URLSearchParams(location.search).get('id'),p=P.find(x=>x.id===id),app=$('app');
 if(!p){app.innerHTML='<div class="crumbs"><a href="index.html">Home</a></div><div class="info"><h1>Shirt not found</h1><p class="desc">This shirt is no longer available.</p><p><a class="button" href="shop.html#collection" style="margin-top:20px">Back to the collection</a></p></div>';return}
 const imgs=(p.images&&p.images.length?p.images:[p.image]);let cur=0,size=null,q=1;
@@ -36,7 +36,7 @@ app.innerHTML=`<div class="crumbs"><a href="index.html">Home</a> / <a href="shop
 <div class="thumbs" id="thumbs" ${imgs.length<2?'hidden':''}>${imgs.map((s,i)=>`<button data-i="${i}" aria-label="Photo ${i+1}"><img src="${E(s)}" alt=""></button>`).join('')}</div></div>
 <div class="info"><p class="eyebrow">${E(p.category==='Dobby'?'Dobby & texture':p.category)} · ${E(p.colour)}</p><h1>${E(p.name)}</h1><p class="price">${money(p.price)}</p><p class="desc">${E(p.description)}</p>
 <p class="eyebrow" style="margin-top:30px">Collar size · <a href="terms.html#size-guide" style="text-decoration:underline">Size guide</a></p><div class="sizes" id="sizes">${p.sizes.map(s=>`<button data-s="${E(s)}" aria-pressed="false">${E(s)}"</button>`).join('')}</div>
-<div class="row"><div class="qty"><button id="minus" aria-label="Less">−</button><span id="qv">1</span><button id="plus" aria-label="More">+</button></div><button class="button add" id="add">Add to bag</button></div><p class="msg" id="msg" role="status"></p><p class="desc" style="font-size:13px">Preview bag only. Online ordering is not open yet. Confirm stock before purchasing. <a href="terms.html#returns" style="text-decoration:underline">7-day return policy</a>.</p></div>`;
+<div class="row"><div class="qty"><button id="minus" aria-label="Less">−</button><span id="qv">1</span><button id="plus" aria-label="More">+</button></div><button class="button add" id="add">Add to bag</button></div><p class="msg" id="msg" role="status"></p><p class="desc" style="font-size:13px">Need help choosing? <a href="https://wa.me/923120251679" target="_blank" rel="noopener">WhatsApp: 0312 0251679</a> · <a href="mailto:hello@de-shahzaib.com">hello@de-shahzaib.com</a></p><p class="desc" style="font-size:13px">Add your selection to the bag, then request your order on WhatsApp. Stock, shipping and payment are confirmed before acceptance. <a href="terms.html#returns" style="text-decoration:underline">7-day return policy</a>.</p></div>`;
 const show=()=>{$('big').src=imgs[cur];dsFit($('big'),$('main'));document.querySelectorAll('#thumbs button').forEach((b,i)=>b.setAttribute('aria-current',i===cur))};show();
 const go=d=>{cur=(cur+d+imgs.length)%imgs.length;show()};$('prev').onclick=e=>{e.stopPropagation();go(-1)};$('next').onclick=e=>{e.stopPropagation();go(1)};
 $('main').onclick=e=>{const m=$('main'),r=m.getBoundingClientRect();$('big').style.transformOrigin=((e.clientX-r.left)/r.width*100)+'% '+((e.clientY-r.top)/r.height*100)+'%';m.classList.toggle('zoom')};$('thumbs').onclick=e=>{const b=e.target.closest('button');if(b){cur=+b.dataset.i;show()}};
