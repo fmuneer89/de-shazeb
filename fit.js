@@ -11,7 +11,7 @@ img.complete&&img.naturalWidth?run():img.addEventListener('load',run,{once:true}
 function preview(frame,img){
  const button=frame.querySelector('.product-image-button');
  const catalog=window.DE_SHAHZAIB_PRODUCTS||[];
- const product=catalog.find(p=>String(p.id)===button?.dataset.product);
+ const product=catalog.find(p=>String(p.id)===(button?.dataset.product||button?.dataset.productId));
  const primary=img.getAttribute('src');
  const second=product?.images?.find(url=>url&&url!==primary);
  if(!second)return;
@@ -23,6 +23,6 @@ function preview(frame,img){
  button.addEventListener('focus',()=>{focused=true;show()});
  button.addEventListener('blur',()=>{focused=false;show()});
 }
-const g=document.getElementById('productGrid');
+for(const g of [document.getElementById('productGrid'),document.getElementById('featuredGrid')]){
 if(g){const go=()=>g.querySelectorAll('.product-photo').forEach(f=>{const i=f.querySelector('img');if(i&&!i.dataset.fit){i.dataset.fit=1;dsFit(i,f,f.querySelector('.product-image-button'));preview(f,i)}});
-new MutationObserver(go).observe(g,{childList:true});go()}})();
+new MutationObserver(go).observe(g,{childList:true});go()}}})();

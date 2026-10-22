@@ -1,4 +1,4 @@
-import {validateSettings,withProductIdentifiers} from '../../../product-settings.mjs';
+import {validateSettings,withProductIdentifiers,merchandisingFlags} from '../../../product-settings.mjs';
 import baseline from '../../../catalog-base.mjs';
 const enc=new TextEncoder();
 const json=(data,status=200,extra={})=>Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...extra}});
@@ -48,7 +48,7 @@ export async function onRequest({request,env,params}){
     }
     if(path==='products'&&request.method==='GET'){
       const {results}=await db.prepare('SELECT p.*,s.version AS settings_version,s.cost_paisa,s.price_rupees,s.settings_json,s.updated_at FROM inv_products p LEFT JOIN inv_product_settings s ON s.product_id=p.id ORDER BY p.name').all();
-      return json({products:results.map(p=>({...p,settings:p.settings_json?JSON.parse(p.settings_json):{...(baseline.find(b=>b.id===p.id)||{}),name:p.name,colour:p.colour,category:p.category},settings_json:undefined}))});
+      return json({products:results.map(p=>{const settings=p.settings_json?JSON.parse(p.settings_json):{...(baseline.find(b=>b.id===p.id)||{}),name:p.name,colour:p.colour,category:p.category};return {...p,settings:{...settings,...merchandisingFlags(settings,p.id)},settings_json:undefined}})});
     }
     if(path==='photo-upload'&&request.method==='POST'){
       const d=await body(request,700000),match=typeof d.data==='string'&&d.data.match(/^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+/]+={0,2})$/);if(!match)throw fail('Choose a JPEG, PNG or WebP photo.');
