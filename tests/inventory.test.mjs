@@ -1,0 +1,19 @@
+import {readFileSync} from 'node:fs';import {DatabaseSync} from 'node:sqlite';import {webcrypto,timingSafeEqual} from 'node:crypto';import {fileURLToPath} from 'node:url';
+const root=fileURLToPath(new URL('../',import.meta.url));
+Object.defineProperty(globalThis,'crypto',{value:webcrypto});crypto.subtle.timingSafeEqual=timingSafeEqual;
+const {onRequest}=await import(new URL('../functions/api/inventory/[[path]].js',import.meta.url));
+const sql=new DatabaseSync(':memory:');sql.exec(readFileSync(root+'migrations/0001_inventory.sql','utf8'));
+const wrap=(q,values=[])=>({bind(...v){return wrap(q,v)},async first(){return sql.prepare(q).get(...values)||null},async all(){return {results:sql.prepare(q).all(...values)}},async run(){const r=sql.prepare(q).run(...values);return {meta:{changes:Number(r.changes)}}}});
+const db={prepare:wrap,async batch(qs){sql.exec('BEGIN');try{let out=[];for(const q of qs)out.push(await q.run());sql.exec('COMMIT');return out}catch(e){sql.exec('ROLLBACK');throw e}}};
+const env={INVENTORY_DB:db,INVENTORY_ADMIN_PASSWORD:'test-password-only-not-production-123'};let cookie='';
+async function req(path,data,override={}){const headers={cookie,...(data?{'Content-Type':'application/json',origin:'https://store.test'}:{}),...override};return onRequest({request:new Request('https://store.test/api/inventory/'+path,{method:data?'POST':'GET',headers,body:data?JSON.stringify(data):undefined}),env,params:{path:path.split('?')[0].split('/')}})}
+function ok(v,m){if(!v)throw Error(m)};
+ok((await req('catalog')).status===401,'Unauthenticated stock protected');ok((await req('login',{password:'wrong'})).status===401,'Wrong password rejected');let r=await req('login',{password:env.INVENTORY_ADMIN_PASSWORD});ok(r.status===200,'Login works');cookie=r.headers.get('set-cookie').split(';')[0];
+r=await req('sync',{products:[{id:'shirt1',name:'Test shirt',sizes:['15','16']}]});ok(r.status===200,'Sync works');let rows=(await (await req('catalog')).json()).variants;ok(rows.length===2&&rows.every(x=>x.quantity===null),'Opening quantities unknown');
+const v=rows[0],id=crypto.randomUUID();r=await req('adjust',{id,variant:v.id,version:0,kind:'opening',amount:5,note:'Opening count'});ok(r.status===200,'Opening saved');r=await req('adjust',{id,variant:v.id,version:0,kind:'opening',amount:5,note:'Opening count'});ok(r.status===200,'Retry idempotent');
+r=await req('adjust',{id:crypto.randomUUID(),variant:v.id,version:0,kind:'receive',amount:2,note:'Delivery'});ok(r.status===409,'Stale edit rejected');r=await req('adjust',{id:crypto.randomUUID(),variant:v.id,version:1,kind:'issue',amount:6,note:'Sale'});ok(r.status===400,'Negative stock rejected');
+r=await req('adjust',{id:crypto.randomUUID(),variant:v.id,version:1,kind:'issue',amount:2,note:'Order 1001'});ok(r.status===200,'Issue works');ok(sql.prepare('SELECT quantity FROM inv_variants WHERE id=?').get(v.id).quantity===3,'Correct resulting stock');ok(sql.prepare('SELECT COUNT(*) n FROM inv_movements').get().n===2,'Exactly two audit entries');
+r=await req('sync',{products:[{id:'shirt1',name:'Renamed shirt',sizes:['15','16','17']}]});ok(r.status===200,'Resync works');ok(sql.prepare('SELECT quantity FROM inv_variants WHERE id=?').get(v.id).quantity===3,'Sync preserves stock');
+ok((await req('threshold',{variant:v.id,version:2,value:4},{origin:'https://evil.test'})).status===403,'Cross-origin change blocked');ok((await req('logout',{})).status===200,'Logout response');
+const locked=await onRequest({request:new Request('https://store.test/api/inventory/catalog'),env:{INVENTORY_DB:db},params:{path:['catalog']}});ok(locked.status===503,'Missing password fails closed');
+console.log('PASS: authentication, session, unknown opening counts, collar variants, receipts/issues, nonnegative stock, idempotent retry, stale edit prevention, audit history, resync preservation, CSRF rejection, fail-closed setup.');

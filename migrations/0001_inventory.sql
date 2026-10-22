@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS inv_products (id TEXT PRIMARY KEY, name TEXT NOT NULL, colour TEXT NOT NULL DEFAULT '', category TEXT NOT NULL DEFAULT 'Plain', active INTEGER NOT NULL DEFAULT 1 CHECK(active IN (0,1)));
+CREATE TABLE IF NOT EXISTS inv_variants (id TEXT PRIMARY KEY, product_id TEXT NOT NULL REFERENCES inv_products(id), collar TEXT NOT NULL, quantity INTEGER CHECK(quantity IS NULL OR (quantity>=0 AND quantity<=1000000)), low_stock INTEGER NOT NULL DEFAULT 3 CHECK(low_stock>=0), version INTEGER NOT NULL DEFAULT 0, UNIQUE(product_id,collar));
+CREATE TABLE IF NOT EXISTS inv_movements (id TEXT PRIMARY KEY, variant_id TEXT NOT NULL REFERENCES inv_variants(id), kind TEXT NOT NULL CHECK(kind IN ('opening','receive','issue','correction')), amount INTEGER NOT NULL CHECK(amount>=0 AND amount<=1000000), before_qty INTEGER, after_qty INTEGER NOT NULL CHECK(after_qty>=0 AND after_qty<=1000000), note TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')));
+CREATE INDEX IF NOT EXISTS inv_movements_variant ON inv_movements(variant_id,created_at);
+CREATE TRIGGER IF NOT EXISTS inv_apply_movement AFTER INSERT ON inv_movements BEGIN UPDATE inv_variants SET quantity=NEW.after_qty,version=version+1 WHERE id=NEW.variant_id; END;
+CREATE TABLE IF NOT EXISTS inv_login_limits (key TEXT PRIMARY KEY, attempts INTEGER NOT NULL DEFAULT 0);
