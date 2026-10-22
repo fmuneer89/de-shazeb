@@ -16,3 +16,6 @@ dialog{position:fixed;border:1px solid var(--line);background:var(--bg);color:va
 
 /* Sale prices keep the store palette and wrap naturally on narrow cards. */
 .sale-original{font-size:.8em;color:var(--muted);font-weight:400;margin-right:6px}.sale-current{color:var(--text);font-weight:600}.sale-badge{display:inline-block;vertical-align:middle;font-size:10px;letter-spacing:.06em;line-height:1.4;padding:4px 7px;margin:4px 0 4px 6px;border:1px solid #a99169;border-radius:3px;color:#e4cfaa}.product-price,.detail-price,.price,.bag-line-price{line-height:1.8}
+
+/* Champagne-gold wordmark, drawn as paths for crisp, font-independent rendering. */
+.brand{flex-shrink:0}.brand .brand-logo{display:block;width:244px;height:auto;max-width:100%;object-fit:contain}.footer-main>.brand .brand-logo{width:230px}@media(max-width:800px){.brand .brand-logo{width:210px}}@media(max-width:540px){.brand .brand-logo{width:170px}}@media(max-width:360px){.brand .brand-logo{width:150px}}
