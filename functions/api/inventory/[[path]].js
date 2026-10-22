@@ -4,10 +4,10 @@ const enc=new TextEncoder();
 const json=(data,status=200,extra={})=>Response.json(data,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff',...extra}});
 const fail=(message,status=400)=>Object.assign(new Error(message),{status});
 const integer=(x,min=0,max=1000000)=>Number.isInteger(x)&&x>=min&&x<=max;
-async function body(request){
+async function body(request,maxBytes=65536){
   if(!request.headers.get('content-type')?.includes('application/json'))throw fail('Use JSON requests.',415);
   const reader=request.body?.getReader();if(!reader)throw fail('Request body required.');let size=0,parts=[];
-  for(;;){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>65536){await reader.cancel();throw fail('Request too large.',413);}parts.push(value);}
+  for(;;){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>maxBytes){await reader.cancel();throw fail('Request too large.',413);}parts.push(value);}
   const bytes=new Uint8Array(size);let at=0;for(const p of parts){bytes.set(p,at);at+=p.length;}try{return JSON.parse(new TextDecoder().decode(bytes));}catch{throw fail('Invalid JSON.');}
 }
 async function key(secret){return crypto.subtle.importKey('raw',enc.encode(secret),{name:'HMAC',hash:'SHA-256'},false,['sign','verify']);}
@@ -49,6 +49,23 @@ export async function onRequest({request,env,params}){
     if(path==='products'&&request.method==='GET'){
       const {results}=await db.prepare('SELECT p.*,s.version AS settings_version,s.cost_paisa,s.price_rupees,s.settings_json,s.updated_at FROM inv_products p LEFT JOIN inv_product_settings s ON s.product_id=p.id ORDER BY p.name').all();
       return json({products:results.map(p=>({...p,settings:p.settings_json?JSON.parse(p.settings_json):{...(baseline.find(b=>b.id===p.id)||{}),name:p.name,colour:p.colour,category:p.category},settings_json:undefined}))});
+    }
+    if(path==='photo-upload'&&request.method==='POST'){
+      const d=await body(request,700000),match=typeof d.data==='string'&&d.data.match(/^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+/]+={0,2})$/);if(!match)throw fail('Choose a JPEG, PNG or WebP photo.');
+      let bytes;try{bytes=Uint8Array.from(atob(match[2]),c=>c.charCodeAt(0))}catch{throw fail('Invalid image.');}
+      if(bytes.length<12||bytes.length>500000)throw fail('Optimized photos must be below 500 KB.');
+      const mime=match[1],head=String.fromCharCode(...bytes.slice(0,12));if(!(mime==='image/jpeg'&&bytes[0]===255&&bytes[1]===216&&bytes[2]===255||mime==='image/png'&&bytes[0]===137&&head.slice(1,4)==='PNG'&&bytes[4]===13&&bytes[5]===10||mime==='image/webp'&&head.startsWith('RIFF')&&head.slice(8,12)==='WEBP'))throw fail('Photo format does not match its contents.');
+      const id=hex(await crypto.subtle.digest('SHA-256',bytes));await db.prepare('INSERT OR IGNORE INTO inv_media(id,mime,data_base64) VALUES (?,?,?)').bind(id,mime,match[2]).run();return json({url:'https://de-shazeb.pages.dev/api/media/'+id});
+    }
+    if(path==='product-create'&&request.method==='POST'){
+      const d=await body(request);if(!/^ds-[a-f0-9-]{36}$/.test(d.product_id||''))throw fail('Invalid new product reference.');
+      let value;try{value=validateSettings(d)}catch(e){throw fail(e.message)}if(!value.settings.sizes)throw fail('Choose the collar sizes to offer.');
+      const encoded=JSON.stringify(value.settings),old=await db.prepare('SELECT * FROM inv_product_settings WHERE product_id=?').bind(d.product_id).first();if(old){if(old.price_rupees===value.price_rupees&&old.cost_paisa===value.cost_paisa&&old.settings_json===encoded)return json({ok:true,replayed:true,product_id:d.product_id});throw fail('This product reference already exists. Refresh and try again.',409);}
+      const p=value.settings;await db.batch([
+        db.prepare('INSERT INTO inv_products(id,name,colour,category) VALUES (?,?,?,?)').bind(d.product_id,p.name,p.colour,p.category),
+        db.prepare('INSERT INTO inv_product_settings(product_id,cost_paisa,price_rupees,settings_json) VALUES (?,?,?,?)').bind(d.product_id,value.cost_paisa,value.price_rupees,encoded),
+        ...p.sizes.map(size=>db.prepare('INSERT INTO inv_variants(id,product_id,collar) VALUES (?,?,?)').bind(d.product_id+':'+size,d.product_id,size))
+      ]);return json({ok:true,product_id:d.product_id});
     }
     if(path==='product-save'&&request.method==='POST'){
       const d=await body(request);if(typeof d.product_id!=='string'||!integer(d.version))throw fail('Invalid product reference.');

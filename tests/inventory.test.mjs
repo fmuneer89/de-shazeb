@@ -2,7 +2,7 @@ import {readFileSync} from 'node:fs';import {DatabaseSync} from 'node:sqlite';im
 const root=fileURLToPath(new URL('../',import.meta.url));
 Object.defineProperty(globalThis,'crypto',{value:webcrypto});crypto.subtle.timingSafeEqual=timingSafeEqual;
 const {onRequest}=await import(new URL('../functions/api/inventory/[[path]].js',import.meta.url));
-const sql=new DatabaseSync(':memory:');sql.exec(readFileSync(root+'migrations/0001_inventory.sql','utf8'));sql.exec(readFileSync(root+'migrations/0002_product_settings.sql','utf8'));
+const sql=new DatabaseSync(':memory:');sql.exec(readFileSync(root+'migrations/0001_inventory.sql','utf8'));sql.exec(readFileSync(root+'migrations/0002_product_settings.sql','utf8'));sql.exec(readFileSync(root+'migrations/0003_media.sql','utf8'));
 const wrap=(q,values=[])=>({bind(...v){return wrap(q,v)},async first(){return sql.prepare(q).get(...values)||null},async all(){return {results:sql.prepare(q).all(...values)}},async run(){const r=sql.prepare(q).run(...values);return {meta:{changes:Number(r.changes)}}}});
 const db={prepare:wrap,async batch(qs){sql.exec('BEGIN');try{let out=[];for(const q of qs)out.push(await q.run());sql.exec('COMMIT');return out}catch(e){sql.exec('ROLLBACK');throw e}}};
 const env={INVENTORY_DB:db,INVENTORY_ADMIN_PASSWORD:'test-password-only-not-production-123'};let cookie='';
@@ -31,3 +31,17 @@ r=await req('product-save',{...draft,version:2,discount_percent:10});ok(r.status
 for(const discount_percent of [-1,100,10.001,'10'])ok((await req('product-save',{...draft,version:3,discount_percent})).status===400,'Invalid discount rejected');
 r=await req('product-save',{...draft,version:3,discount_percent:0});ok(r.status===200,'Sale can be ended');saved=sql.prepare('SELECT * FROM inv_product_settings WHERE product_id=?').get('shirt1');ok(publicProduct({id:'shirt1'},saved).price===2000,'Ending sale restores regular price');ok(JSON.stringify(sql.prepare('SELECT * FROM inv_variants ORDER BY id').all())===beforeStock,'Sale changes preserve stock');
 console.log('PASS: discount persistence, price calculation, validation, sale removal and stock preservation.');
+
+const newDraft={...draft,product_id:'ds-'+crypto.randomUUID(),price:2300,discount_percent:25,sizes:['15','16']};
+const existingStock=JSON.stringify(sql.prepare('SELECT * FROM inv_variants ORDER BY id').all());
+ok((await req('product-create',newDraft,{cookie:''})).status===401,'Creating products requires login');
+ok((await req('product-create',{...newDraft,sizes:[]})).status===400,'New product requires collar sizes');
+r=await req('product-create',newDraft);ok(r.status===200,'New product saved');ok((await req('product-create',newDraft)).status===200,'Creation retry does not duplicate product');ok((await req('product-create',{...newDraft,price:2500})).status===409,'Creation retry cannot overwrite a product');
+const added=sql.prepare('SELECT * FROM inv_variants WHERE product_id=?').all(newDraft.product_id);ok(added.length===2&&added.every(v=>v.quantity===null),'New collar stock starts uncounted');
+const publicResponse=await onRequestGet({env:{INVENTORY_DB:db}}),publicContext={window:{}};const {default:vm}=await import('node:vm');vm.runInNewContext(await publicResponse.text(),publicContext);const createdPublic=publicContext.window.DE_SHAHZAIB_PRODUCTS.find(p=>p.id===newDraft.product_id);ok(createdPublic?.price===1725&&createdPublic.regular_price===2300&&createdPublic.sizes.length===2,'Non-baseline product reaches public catalogue with actual sale price');ok(!JSON.stringify(createdPublic).includes('PRIVATE'),'Created products keep internal notes private');
+ok(JSON.stringify(sql.prepare('SELECT * FROM inv_variants WHERE product_id<>? ORDER BY id').all(newDraft.product_id))===existingStock,'Creation preserves every previous stock row');
+const png='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aRMsAAAAASUVORK5CYII=';
+ok((await req('photo-upload',{data:png},{cookie:''})).status===401,'Photo uploads require authentication');ok((await req('photo-upload',{data:'data:image/svg+xml;base64,PHN2Zz4='})).status===400,'Executable image types rejected');
+r=await req('photo-upload',{data:png});ok(r.status===200,'Photo saved');const photoURL=(await r.json()).url;await req('photo-upload',{data:png});ok(sql.prepare('SELECT COUNT(*) n FROM inv_media').get().n===1,'Duplicate uploads share storage');
+const {onRequestGet:getPhoto}=await import('../functions/api/media/[id].js');r=await getPhoto({env,params:{id:photoURL.split('/').pop()}});ok(r.status===200&&r.headers.get('content-type')==='image/png'&&(await r.arrayBuffer()).byteLength>0,'Uploaded photo publicly readable');
+console.log('PASS: authenticated creation, retry safety, collar initialization, live new products, private fields, existing stock preservation and photo upload/read.');

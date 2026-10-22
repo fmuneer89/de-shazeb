@@ -1,1 +1,1 @@
-{"version":1,"include":["/api/inventory/*","/products.js"],"exclude":[]}
+{"version": 1, "include": ["/api/inventory/*", "/products.js", "/api/storefront", "/api/media/*"], "exclude": []}
