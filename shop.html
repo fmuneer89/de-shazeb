@@ -81,7 +81,7 @@
       if(!available.length||available.some(s=>!sizes.includes(s)))throw Error('Choose at least one valid collar size.');
       ids.add(id);
       const regular=Number(p.regular_price??price),discount=Number(p.discount_percent??0);
-      return {id,name,price,regular_price:Number.isSafeInteger(regular)&&regular>=price&&regular<=10000000?regular:price,discount_percent:Number.isFinite(discount)&&discount>=0&&discount<=99?discount:0,image,category:p.category,colour:String(p.colour||'').slice(0,50),sizes:available,description:String(p.description||'').slice(0,800)};
+      return {id,name,price,regular_price:Number.isSafeInteger(regular)&&regular>=price&&regular<=10000000?regular:price,discount_percent:Number.isFinite(discount)&&discount>=0&&discount<=99?discount:0,image,images:[image,...(Array.isArray(p.images)?p.images:[])].filter((url,i,all)=>typeof url==='string'&&all.indexOf(url)===i&&(/^assets\/[A-Za-z0-9_.-]+\.(webp|png|jpe?g)$/i.test(url)||/^https:\/\/[^\s<>"']+$/i.test(url)||/^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/=]+$/.test(url))).slice(0,12),category:p.category,colour:String(p.colour||'').slice(0,50),sizes:available,description:String(p.description||'').slice(0,800)};
     });
   }
   const product=(catalog,id)=>catalog.find(p=>p.id===String(id));
