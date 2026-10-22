@@ -19,3 +19,5 @@ Regular prices use whole PKR. Discounts accept 0–99%, with up to two decimal p
 Stock adjustments are immutable movements with optimistic version checks and idempotent request IDs. A correction retains the original history. Product edits never change quantities. Sync imports product metadata and collar sizes without overwriting counts. Exported history is limited to the displayed latest 500 movements. New and uncounted stock is not treated as zero in valuation labels.
 
 WhatsApp requests do not automatically deduct or reserve stock. Record an issue on dispatch. Full purchase orders, invoices, expenses, taxes, payments and automated WhatsApp notifications remain separate integrations.
+
+The public product page has a Specifications table: Fabric, Color, Pattern, Sleeve, Collar Style, Cuffs, Pocket and Hem. Fabric and Hem are editable in Attributes & collars. Empty values display a dash; no composition or construction claims are invented. Collar sizes remain in the selection controls. Weight and delivery_days remain internal logistics fields and are excluded from the public catalogue.
