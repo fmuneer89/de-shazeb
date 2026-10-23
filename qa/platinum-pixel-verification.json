@@ -1,0 +1,119 @@
+[
+  {
+    "source": "blue-micro-dobby-cotton-shirt.webp",
+    "output": "platinum-blue-micro-dobby-cotton-shirt.webp",
+    "background_fraction": 0.1976,
+    "changed_pixels": 194485,
+    "protected_pixels_identical": true,
+    "bytes": 945704,
+    "icc_profile_preserved": false
+  },
+  {
+    "source": "blue-white-striped-shirt.webp",
+    "output": "platinum-blue-white-striped-shirt.webp",
+    "background_fraction": 0.1146,
+    "changed_pixels": 111815,
+    "protected_pixels_identical": true,
+    "bytes": 997986,
+    "icc_profile_preserved": false
+  },
+  {
+    "source": "executive-detail.jpg",
+    "output": "platinum-executive-detail.webp",
+    "background_fraction": 0.1298,
+    "changed_pixels": 216799,
+    "protected_pixels_identical": true,
+    "bytes": 2129956,
+    "icc_profile_preserved": true
+  },
+  {
+    "source": "executive-front.jpg",
+    "output": "platinum-executive-front.webp",
+    "background_fraction": 0.2686,
+    "changed_pixels": 529050,
+    "protected_pixels_identical": true,
+    "bytes": 1607442,
+    "icc_profile_preserved": true
+  },
+  {
+    "source": "light-blue-dobby-shirt.webp",
+    "output": "platinum-light-blue-dobby-shirt.webp",
+    "background_fraction": 0.1347,
+    "changed_pixels": 132285,
+    "protected_pixels_identical": true,
+    "bytes": 1050626,
+    "icc_profile_preserved": false
+  },
+  {
+    "source": "light-blue-textured-shirt.webp",
+    "output": "platinum-light-blue-textured-shirt.webp",
+    "background_fraction": 0.1666,
+    "changed_pixels": 163904,
+    "protected_pixels_identical": true,
+    "bytes": 648432,
+    "icc_profile_preserved": false
+  },
+  {
+    "source": "micro-dot-dobby-shirt.webp",
+    "output": "platinum-micro-dot-dobby-shirt.webp",
+    "background_fraction": 0.1678,
+    "changed_pixels": 165258,
+    "protected_pixels_identical": true,
+    "bytes": 919134,
+    "icc_profile_preserved": false
+  },
+  {
+    "source": "pink-classic-formal-cotton-shirt.webp",
+    "output": "platinum-pink-classic-formal-cotton-shirt.webp",
+    "background_fraction": 0.6281,
+    "changed_pixels": 412380,
+    "protected_pixels_identical": true,
+    "bytes": 122320,
+    "icc_profile_preserved": false
+  },
+  {
+    "source": "pink-detail1.jpg",
+    "output": "platinum-pink-detail1.webp",
+    "background_fraction": 0.0,
+    "changed_pixels": 0,
+    "protected_pixels_identical": true,
+    "bytes": 1298134,
+    "icc_profile_preserved": true
+  },
+  {
+    "source": "pink-detail2.jpg",
+    "output": "platinum-pink-detail2.webp",
+    "background_fraction": 0.4875,
+    "changed_pixels": 820831,
+    "protected_pixels_identical": true,
+    "bytes": 467234,
+    "icc_profile_preserved": true
+  },
+  {
+    "source": "slate-detail1.jpg",
+    "output": "platinum-slate-detail1.webp",
+    "background_fraction": 0.5337,
+    "changed_pixels": 734789,
+    "protected_pixels_identical": true,
+    "bytes": 722010,
+    "icc_profile_preserved": true
+  },
+  {
+    "source": "slate-detail2.jpg",
+    "output": "platinum-slate-detail2.webp",
+    "background_fraction": 0.1868,
+    "changed_pixels": 263257,
+    "protected_pixels_identical": true,
+    "bytes": 1399770,
+    "icc_profile_preserved": true
+  },
+  {
+    "source": "slate-front.jpg",
+    "output": "platinum-slate-front.webp",
+    "background_fraction": 0.4069,
+    "changed_pixels": 596203,
+    "protected_pixels_identical": true,
+    "bytes": 845484,
+    "icc_profile_preserved": true
+  }
+]
