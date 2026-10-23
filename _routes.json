@@ -1,1 +1,1 @@
-{"version": 1, "include": ["/api/inventory/*", "/products.js", "/api/storefront", "/api/media/*"], "exclude": []}
+{"version": 1, "include": ["/api/inventory/*", "/products.js", "/api/storefront", "/api/media/*", "/api/orders/*", "/api/payments/*"], "exclude": []}

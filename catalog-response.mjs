@@ -7,7 +7,7 @@ export async function onRequestGet({env}){
   if(!env.INVENTORY_DB)products=baseline.map(p=>publicProduct(p));
   else {
    const {results:rows}=await env.INVENTORY_DB.prepare('SELECT p.id,p.name,p.colour,p.category,s.price_rupees,s.settings_json FROM inv_products p JOIN inv_product_settings s ON s.product_id=p.id WHERE p.active=1 ORDER BY p.rowid').all();
-   const {results:variants}=await env.INVENTORY_DB.prepare('SELECT product_id,collar,quantity FROM inv_variants ORDER BY CAST(collar AS REAL)').all();
+   const {results:variants}=await env.INVENTORY_DB.prepare('SELECT v.product_id,v.collar,CASE WHEN v.quantity IS NULL THEN NULL ELSE MAX(0,v.quantity-COALESCE(r.quantity,0)) END AS quantity FROM inv_variants v LEFT JOIN erp_reserved r ON r.variant_id=v.id ORDER BY CAST(v.collar AS REAL)').all();
    products=rows.map(row=>{const old=baseline.find(p=>p.id===row.id)||{},settings=JSON.parse(row.settings_json),sizes=variants.filter(v=>v.product_id===row.id&&(!settings.sizes||settings.sizes.includes(v.collar))).map(v=>v.collar);return publicProduct({...old,id:row.id,name:row.name,colour:row.colour,category:row.category,sizes,stock_by_size:Object.fromEntries(variants.filter(v=>v.product_id===row.id).map(v=>[v.collar,v.quantity])),unavailable_sizes:variants.filter(v=>v.product_id===row.id&&(v.quantity===null||v.quantity<=0)).map(v=>v.collar)},row)}).filter(Boolean);
   }
   products=products.map(platinumPhotos);
