@@ -6,7 +6,7 @@ import baseline from '../catalog-base.mjs';
 import {onRequestGet} from '../functions/products.js.js';
 for(const [regular,pct,want] of [[2000,10,1800],[1999,10,1799],[2000,12.5,1750],[1999,0,1999],[1000,99,10],[1,99,1]])assert.equal(discountedPrice(regular,pct),want);
 const base=baseline[0],row={product_id:base.id,price_rupees:2000,settings_json:JSON.stringify({...base,discount_percent:10,notes:'PRIVATE',cost:1234})};
-const response=await onRequestGet({env:{INVENTORY_DB:{prepare(sql){return {async all(){return {results:sql.includes('FROM inv_variants')?base.sizes.map(collar=>({product_id:base.id,collar})):[{...row,id:base.id,name:base.name,colour:base.colour,category:base.category}]}}}}}}});
+const response=await onRequestGet({env:{INVENTORY_DB:{prepare(sql){return {async all(){return {results:sql.includes('FROM inv_variants')?base.sizes.map(collar=>({product_id:base.id,collar,quantity:10})):[{...row,id:base.id,name:base.name,colour:base.colour,category:base.category}]}}}}}}});
 assert.equal(response.status,200);const publicJS=await response.text();assert(!publicJS.includes('PRIVATE'));assert(!publicJS.includes('"cost"'));
 const browser={window:{}};vm.runInNewContext(publicJS,browser);const products=browser.window.DE_SHAHZAIB_PRODUCTS;assert.equal(products[0].price,1800);assert.equal(products[0].regular_price,2000);const ordinary=publicProduct(baseline[1]);products.push(ordinary);assert.equal(ordinary.price,baseline[1].price);
 for(const file of ['index.html','shop.html']){
