@@ -31,6 +31,7 @@ const rd=()=>{try{return JSON.parse(localStorage.getItem(K))||[]}catch{return[]}
 const count=()=>{$('bagCount').textContent=rd().reduce((n,l)=>n+(l.quantity||0),0)};count();window.addEventListener('pageshow',count);
 const id=new URLSearchParams(location.search).get('id'),p=P.find(x=>x.id===id),app=$('app');
 if(!p){app.innerHTML='<div class="crumbs"><a href="/">Home</a></div><div class="info"><h1>Shirt not found</h1><p class="desc">This shirt is no longer available.</p><p><a class="button" href="shop.html#collection" style="margin-top:20px">Back to the collection</a></p></div>';return}
+const stockLimit=s=>p.stock_by_size?Math.max(0,p.stock_by_size[s]||0):10;
 const imgs=(p.images&&p.images.length?p.images:[p.image]);let cur=0,size=null,q=1;
 document.title=p.name+' — De-Shahzaib';document.querySelector('meta[name=description]').content=p.description;
 app.innerHTML=`<div class="crumbs"><a href="/">Home</a> / <a href="shop.html#collection">Collection</a> / ${E(p.name)}</div>
@@ -42,12 +43,15 @@ app.innerHTML=`<div class="crumbs"><a href="/">Home</a> / <a href="shop.html#col
 const show=()=>{$('big').src=imgs[cur];dsFit($('big'),$('main'));document.querySelectorAll('#thumbs button').forEach((b,i)=>b.setAttribute('aria-current',i===cur))};show();
 const go=d=>{cur=(cur+d+imgs.length)%imgs.length;show()};$('prev').onclick=e=>{e.stopPropagation();go(-1)};$('next').onclick=e=>{e.stopPropagation();go(1)};
 $('main').onclick=e=>{const m=$('main'),r=m.getBoundingClientRect();$('big').style.transformOrigin=((e.clientX-r.left)/r.width*100)+'% '+((e.clientY-r.top)/r.height*100)+'%';m.classList.toggle('zoom')};$('thumbs').onclick=e=>{const b=e.target.closest('button');if(b){cur=+b.dataset.i;show()}};
-$('sizes').onclick=e=>{const b=e.target.closest('button');if(!b||b.disabled)return;size=b.dataset.s;document.querySelectorAll('#sizes button').forEach(x=>x.setAttribute('aria-pressed',x===b))};
-$('minus').onclick=()=>{q=Math.max(1,q-1);$('qv').textContent=q};$('plus').onclick=()=>{q=Math.min(10,q+1);$('qv').textContent=q};
+$('sizes').onclick=e=>{const b=e.target.closest('button');if(!b||b.disabled)return;size=b.dataset.s;document.querySelectorAll('#sizes button').forEach(x=>x.setAttribute('aria-pressed',x===b));q=1;updateQuantity()};
+const used=s=>rd().filter(l=>l.id===p.id&&l.size===s).reduce((n,l)=>n+Number(l.quantity||0),0);
+function updateQuantity(){const remaining=size?Math.max(0,stockLimit(size)-used(size)):0;q=Math.max(1,Math.min(q,remaining));$('qv').textContent=q;$('minus').disabled=q<=1;$('plus').disabled=!size||q>=remaining;$('add').disabled=!size||remaining===0;$('msg').textContent=size&&remaining===0?'All available stock for this size is already in your bag.':'';}
+$('minus').onclick=()=>{q=Math.max(1,q-1);updateQuantity()};$('plus').onclick=()=>{q++;updateQuantity()};updateQuantity();
 $('add').onclick=()=>{const m=$('msg');if(!size){m.textContent='Please select a collar size first.';return}
 if(!p.sizes.includes(size)||(p.unavailable_sizes||[]).includes(size)){m.textContent='This collar size is out of stock.';return}
-const c=rd(),l=c.find(x=>x.id===p.id&&x.size===size);if(l){if(l.quantity+q>10){m.textContent='Up to 10 of each size per order.';return}l.quantity+=q}else c.push({id:p.id,size,quantity:q});
-if(!wr(c)){m.textContent='Could not save your bag. Please allow site storage.';return}count();m.innerHTML='Added to your bag. <a href="shop.html#bag">View bag</a>'};
+if(used(size)+q>stockLimit(size)){m.textContent='Only '+stockLimit(size)+' available in this collar size, including items already in your bag.';return}
+const c=rd(),l=c.find(x=>x.id===p.id&&x.size===size);if(l){l.quantity+=q}else c.push({id:p.id,size,quantity:q});
+if(!wr(c)){m.textContent='Could not save your bag. Please allow site storage.';return}count();updateQuantity();m.innerHTML='Added to your bag. <a href="shop.html#bag">View bag</a>'};
 const o=P.filter(x=>x.id!==p.id).slice(0,4);if(o.length){const s=document.createElement('section');s.className='more';
 s.innerHTML='<h2>You may also like</h2><div class="mg">'+o.map(x=>`<a href="product.html?id=${encodeURIComponent(x.id)}"><img src="${E(x.image.replace('assets/','assets/thumbs/'))}" onerror="this.onerror=null;this.src='${E(x.image)}'" alt="" loading="lazy"><h3>${E(x.name)}</h3><p class="muted">${priceMarkup(x)}</p></a>`).join('')+'</div>';app.appendChild(s);s.querySelectorAll('.mg img').forEach(i=>dsFit(i,i))}
 })();
