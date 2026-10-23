@@ -4,7 +4,7 @@
 function edge(img){try{const w=img.naturalWidth,h=img.naturalHeight;if(!w||!h)return null;const x=cv.getContext('2d',{willReadFrequently:true});let r=0,g=0,b=0,n=0;
 for(const[sx,sy]of[[0,0],[w-8,0],[0,h-8],[w-8,h-8]]){x.clearRect(0,0,1,1);x.drawImage(img,sx,sy,8,8,0,0,1,1);const d=x.getImageData(0,0,1,1).data;r+=d[0];g+=d[1];b+=d[2];n++}
 return'rgb('+(r/n|0)+','+(g/n|0)+','+(b/n|0)+')'}catch(e){return null}}
-window.dsFit=(img,...t)=>{if(!img)return;const run=()=>{const c=edge(img);if(c)t.forEach(e=>e&&(e.style.background=c))};
+window.dsFit=(img,...t)=>{if(!img)return;const run=()=>{const c=edge(img)||(img.src.includes('/assets/platinum-')?'rgb(243,243,243)':null);if(c)t.forEach(e=>e&&(e.style.background=c))};
 img.complete&&img.naturalWidth?run():img.addEventListener('load',run,{once:true})};
 // Preload the second dashboard photo, then swap instantly on mouse hover.
 // Keep the primary photo if the preview is missing or cannot be loaded.
