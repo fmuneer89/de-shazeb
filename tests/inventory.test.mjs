@@ -3,7 +3,7 @@ import {readFileSync} from 'node:fs';import {DatabaseSync} from 'node:sqlite';im
 const root=fileURLToPath(new URL('../',import.meta.url));
 Object.defineProperty(globalThis,'crypto',{value:webcrypto});crypto.subtle.timingSafeEqual=timingSafeEqual;
 const {onRequest}=await import(new URL('../functions/api/inventory/[[path]].js',import.meta.url));
-const sql=new DatabaseSync(':memory:');sql.exec(readFileSync(root+'migrations/0001_inventory.sql','utf8'));sql.exec(readFileSync(root+'migrations/0002_product_settings.sql','utf8'));sql.exec(readFileSync(root+'migrations/0003_media.sql','utf8'));
+const sql=new DatabaseSync(':memory:');sql.exec(readFileSync(root+'migrations/0001_inventory.sql','utf8'));sql.exec(readFileSync(root+'migrations/0002_product_settings.sql','utf8'));sql.exec(readFileSync(root+'migrations/0003_media.sql','utf8'));sql.exec(readFileSync(root+'migrations/0004_orders.sql','utf8'));
 const wrap=(q,values=[])=>({bind(...v){return wrap(q,v)},async first(){return sql.prepare(q).get(...values)||null},async all(){return {results:sql.prepare(q).all(...values)}},async run(){const r=sql.prepare(q).run(...values);return {meta:{changes:Number(r.changes)}}}});
 const db={prepare:wrap,async batch(qs){sql.exec('BEGIN');try{let out=[];for(const q of qs)out.push(await q.run());sql.exec('COMMIT');return out}catch(e){sql.exec('ROLLBACK');throw e}}};
 const env={INVENTORY_DB:db,INVENTORY_ADMIN_PASSWORD:crypto.randomUUID()+crypto.randomUUID()};let cookie='';

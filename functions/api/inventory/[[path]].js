@@ -1,3 +1,4 @@
+import {handleERP} from '../../../erp-api.mjs';
 import {validateSettings,withProductIdentifiers,merchandisingFlags} from '../../../product-settings.mjs';
 import baseline from '../../../catalog-base.mjs';
 const enc=new TextEncoder();
@@ -41,6 +42,7 @@ export async function onRequest({request,env,params}){
       return json({ok:true},200,{'Set-Cookie':cookie(token,43200)});
     }
     if(!await validSession(request,secret))throw fail('Please log in.',401);
+    if(path.startsWith('erp/'))return await handleERP({request,env,path:path.slice(4),db});
     if(path==='session'&&request.method==='GET')return json({ok:true});
     if(path==='logout'&&request.method==='POST')return json({ok:true},200,{'Set-Cookie':cookie('',0)});
     if(path==='catalog'&&request.method==='GET'){
@@ -106,5 +108,5 @@ export async function onRequest({request,env,params}){
       if(queries.length>900)throw fail('Too many sizes. Sync a smaller catalogue.');await db.batch(queries);return json({ok:true});
     }
     return json({error:'Not found.'},404);
-  }catch(error){if(error.status)return json({error:error.message},error.status);console.error(JSON.stringify({event:'inventory_error',message:String(error.message).slice(0,150)}));return json({error:'Inventory service could not complete the request. Refresh and try again.'},500);}
+  }catch(error){if(String(error.message).includes('ERP_RESERVED_STOCK'))return json({error:'This stock is reserved for orders. Cancel the reservation or dispatch through Orders.'},409);if(error.status)return json({error:error.message},error.status);console.error(JSON.stringify({event:'inventory_error',message:String(error.message).slice(0,150)}));return json({error:'Inventory service could not complete the request. Refresh and try again.'},500);}
 }
