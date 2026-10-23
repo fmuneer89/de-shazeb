@@ -38,7 +38,7 @@ export function validateSettings(d){
 export function publicProduct(base,row){
  const s=row?JSON.parse(row.settings_json):base;
  if(s.published===false||s.sales_enabled===false)return null;
- const p={id:base.id,name:s.name??base.name,price:row?.price_rupees??base.price,category:s.category??base.category,colour:s.colour??base.colour,description:s.description??base.description,sizes:base.sizes,image:s.image??base.image,images:s.images??base.images};
+ const p={id:base.id,name:s.name??base.name,price:row?.price_rupees??base.price,category:s.category??base.category,colour:s.colour??base.colour,description:s.description??base.description,sizes:base.sizes,unavailable_sizes:base.unavailable_sizes??[],image:s.image??base.image,images:s.images??base.images};
  Object.assign(p,merchandisingFlags(s,base.id));p.regular_price=p.price;p.discount_percent=s.discount_percent??0;p.price=discountedPrice(p.regular_price,p.discount_percent);if(p.price===p.regular_price)p.discount_percent=0;
  // Explicit allow-list: all other settings remain private, including cost, reference and notes.
  p.details={};for(const k of ['fabric','pattern','sleeve','collar_style','cuffs','pocket','ribbon'])if(s[k]!==undefined&&s[k]!==null&&s[k]!=='')p.details[k]=s[k];
