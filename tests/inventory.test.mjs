@@ -4,6 +4,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 Object.defineProperty(globalThis,'crypto',{value:webcrypto});crypto.subtle.timingSafeEqual=timingSafeEqual;
 const {onRequest}=await import(new URL('../functions/api/inventory/[[path]].js',import.meta.url));
 const sql=new DatabaseSync(':memory:');sql.exec(readFileSync(root+'migrations/0001_inventory.sql','utf8'));sql.exec(readFileSync(root+'migrations/0002_product_settings.sql','utf8'));sql.exec(readFileSync(root+'migrations/0003_media.sql','utf8'));sql.exec(readFileSync(root+'migrations/0004_orders.sql','utf8'));
+sql.exec(readFileSync(root+'migrations/0005_original_photos.sql','utf8'));
 const wrap=(q,values=[])=>({bind(...v){return wrap(q,v)},async first(){return sql.prepare(q).get(...values)||null},async all(){return {results:sql.prepare(q).all(...values)}},async run(){const r=sql.prepare(q).run(...values);return {meta:{changes:Number(r.changes)}}}});
 const db={prepare:wrap,async batch(qs){sql.exec('BEGIN');try{let out=[];for(const q of qs)out.push(await q.run());sql.exec('COMMIT');return out}catch(e){sql.exec('ROLLBACK');throw e}}};
 const env={INVENTORY_DB:db,INVENTORY_ADMIN_PASSWORD:crypto.randomUUID()+crypto.randomUUID()};let cookie='';
@@ -62,3 +63,13 @@ r=await req('product-save',{...autoDraft,version:0,reference:autoSettings.refere
 const afterEdit=JSON.parse(sql.prepare('SELECT settings_json FROM inv_product_settings WHERE product_id=?').get(autoDraft.product_id).settings_json);ok(afterEdit.reference===autoSettings.reference&&afterEdit.barcode===autoSettings.barcode,'Codes stable after edits');
 ok((await req('product-create',{...autoDraft,product_id:'ds-'+crypto.randomUUID(),reference:123})).status===400,'Invalid identifier types rejected');
 console.log('PASS: automatic identifiers, retry stability, distinct product codes, manual identifiers, edit preservation and identifier validation.');
+
+// A multi-chunk payload must round-trip exactly, without texture-destroying recompression.
+const originalBytes=Buffer.concat([Buffer.from(png.split(',')[1],'base64'),Buffer.alloc(1800000,123)]);
+const originalData='data:image/png;base64,'+originalBytes.toString('base64');
+r=await req('photo-upload',{data:originalData});ok(r.status===200,'Original above previous size limit uploads');
+const originalId=(await r.json()).url.split('/').pop();
+r=await getPhoto({env,params:{id:originalId}});ok(Buffer.from(await r.arrayBuffer()).equals(originalBytes),'Original bytes survive multi-chunk upload and delivery');
+await req('photo-upload',{data:originalData});ok(sql.prepare('SELECT COUNT(*) n FROM inv_media_originals').get().n===1,'Original upload retry is idempotent');
+ok(sql.prepare('SELECT MAX(length(data_base64)) n FROM inv_media_chunks').get().n<=600000,'Photo chunks stay below D1 row limits');
+console.log('PASS: original photo bytes, multi-chunk reads, legacy reads and duplicate upload safety.');
