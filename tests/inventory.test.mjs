@@ -73,3 +73,8 @@ r=await getPhoto({env,params:{id:originalId}});ok(Buffer.from(await r.arrayBuffe
 await req('photo-upload',{data:originalData});ok(sql.prepare('SELECT COUNT(*) n FROM inv_media_originals').get().n===1,'Original upload retry is idempotent');
 ok(sql.prepare('SELECT MAX(length(data_base64)) n FROM inv_media_chunks').get().n<=600000,'Photo chunks stay below D1 row limits');
 console.log('PASS: original photo bytes, multi-chunk reads, legacy reads and duplicate upload safety.');
+
+for(const invalid of ['AAAA=AAA','AAAA===','AAAA!AAA','AAA']){
+ ok((await req('photo-upload',{data:'data:image/png;base64,'+invalid})).status===400,'Malformed base64 rejected');
+}
+console.log('PASS: invalid base64 characters, padding and lengths rejected.');

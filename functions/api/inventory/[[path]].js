@@ -1,3 +1,4 @@
+import {Buffer} from 'node:buffer';
 import {handleERP} from '../../../erp-api.mjs';
 import {validateSettings,withProductIdentifiers,merchandisingFlags} from '../../../product-settings.mjs';
 import baseline from '../../../catalog-base.mjs';
@@ -53,12 +54,13 @@ export async function onRequest({request,env,params}){
       return json({products:results.map(p=>{const settings=p.settings_json?JSON.parse(p.settings_json):{...(baseline.find(b=>b.id===p.id)||{}),name:p.name,colour:p.colour,category:p.category};return {...p,settings:{...settings,...merchandisingFlags(settings,p.id)},settings_json:undefined}})});
     }
     if(path==='photo-upload'&&request.method==='POST'){
-      const d=await body(request,20001000),match=typeof d.data==='string'&&d.data.match(/^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+/]+={0,2})$/);if(!match)throw fail('Choose a JPEG, PNG or WebP photo.');
-      let bytes;try{bytes=Uint8Array.from(atob(match[2]),c=>c.charCodeAt(0))}catch{throw fail('Invalid image.');}
+      const d=await body(request,20001000),match=typeof d.data==='string'&&d.data.match(/^data:(image\/(?:jpeg|png|webp));base64,/);if(!match)throw fail('Choose a JPEG, PNG or WebP photo.');
+      const encoded=d.data.slice(match[0].length);if(!encoded.length||encoded.length%4!==0||/[^A-Za-z0-9+/=]/.test(encoded)||!/^={0,2}$/.test(encoded.slice(encoded.indexOf('=')<0?encoded.length:encoded.indexOf('='))))throw fail('Invalid image.');
+      let bytes;try{bytes=Buffer.from(encoded,'base64')}catch{throw fail('Invalid image.');}
       if(bytes.length<12||bytes.length>15000000)throw fail('Photos must be below 15 MB.');
       const mime=match[1],head=String.fromCharCode(...bytes.slice(0,12));if(!(mime==='image/jpeg'&&bytes[0]===255&&bytes[1]===216&&bytes[2]===255||mime==='image/png'&&bytes[0]===137&&head.slice(1,4)==='PNG'&&bytes[4]===13&&bytes[5]===10||mime==='image/webp'&&head.startsWith('RIFF')&&head.slice(8,12)==='WEBP'))throw fail('Photo format does not match its contents.');
-      const id=hex(await crypto.subtle.digest('SHA-256',bytes));const chunks=match[2].match(/.{1,600000}/g);
-      if(chunks.length===1){await db.prepare('INSERT OR IGNORE INTO inv_media(id,mime,data_base64) VALUES (?,?,?)').bind(id,mime,match[2]).run();}
+      const id=hex(await crypto.subtle.digest('SHA-256',bytes));const chunks=[];for(let offset=0;offset<encoded.length;offset+=600000)chunks.push(encoded.slice(offset,offset+600000));
+      if(chunks.length===1){await db.prepare('INSERT OR IGNORE INTO inv_media(id,mime,data_base64) VALUES (?,?,?)').bind(id,mime,encoded).run();}
       else {await db.batch([
         ...chunks.map((data,i)=>db.prepare('INSERT OR IGNORE INTO inv_media_chunks(media_id,part,data_base64) VALUES (?,?,?)').bind(id,i,data)),
         db.prepare('INSERT OR IGNORE INTO inv_media_originals(id,mime,chunk_count) VALUES (?,?,?)').bind(id,mime,chunks.length)
